@@ -127,6 +127,8 @@ Route::get('/affialiate', [App\Http\Controllers\UserPanel\Invest::class, 'affial
 Route::any('/confirmDeposit_new', [App\Http\Controllers\UserPanel\Invest::class, 'confirmDeposit_new'])->name('user.confirmDeposit_new');
 
 // end invest
+
+Route::post('/Deposit2', [App\Http\Controllers\UserPanel\Invest::class, 'deposit2'])->name('user.deposit2');
 Route::get('/DepositHistory', [App\Http\Controllers\UserPanel\Invest::class, 'invest_list'])->name('user.DepositHistory');
 // withdraw
 Route::get('/debitReport', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'debitReport'])->name('user.debitReport');

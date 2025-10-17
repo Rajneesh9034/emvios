@@ -91,12 +91,12 @@
                                     </ol>
                                 </nav>
                             </div>
-                            <div class="automatictrading_body__2khtA">
+                            <div class="automatictrading_body__2khtA" id="opt1">
                                 <div class="automatictrading_inner__Zhu16">
                                     <div class="automatictrading_title__0inp2">
                                         <a
-                                            class="automatictrading_item__VZjX7 automatictrading_active__huO8S"
-                                            href="/en/investments/automatictrading/dynamic">
+                                            class="automatictrading_item__VZjX7 automatictrading_active__huO8S" data-option="crypto"
+                                            href="#">
                                             <img alt width="90" height="90"
                                                 decoding="async" data-nimg="1"
                                                 src="{{ asset('') }}upnl/_next/static/media/dynamic.fb76dd74.svg"
@@ -104,17 +104,15 @@
                                             <div
                                                 class="typography_body__M5DEr typography_h4__m64AO">
                                                 <h4
-                                                    class="typography_title___zbQm">Dynamic
-                                                    Strategy</h4>
+                                                    class="typography_title___zbQm">Crypto
+                                                   </h4>
                                                 <p
                                                     class="typography_text__M0uXO">A
-                                                    strategy with a wide range
-                                                    of investment amounts and
-                                                    short investment periods</p>
+                                                   Safe and fast crypto deposits with flexible amounts.</p>
                                             </div>
                                         </a>
-                                        <a class="automatictrading_item__VZjX7"
-                                            href="/en/investments/automatictrading/static">
+                                        <a class="automatictrading_item__VZjX7 " data-option="cash"
+                                            href="#" id="opt2">
                                             <img alt width="90" height="90"
                                                 decoding="async" data-nimg="1"
                                                 src="{{ asset('') }}upnl/_next/static/media/static.ddaf6dfe.svg"
@@ -122,13 +120,9 @@
                                             <div
                                                 class="typography_body__M5DEr typography_h4__m64AO">
                                                 <h4
-                                                    class="typography_title___zbQm">Static
-                                                    Strategy</h4>
+                                                    class="typography_title___zbQm">Cash Wallet</h4>
                                                 <p
-                                                    class="typography_text__M0uXO">Profitable
-                                                    medium-term strategy with
-                                                    fixed income and investment
-                                                    amount</p>
+                                                    class="typography_text__M0uXO"> Add money to your cash wallet and earn securely.</p>
                                             </div>
                                         </a>
                                     </div>
@@ -220,80 +214,108 @@
                                             class="automatictrading_plans__aVXOP">
                                             <div
                                                 class="strategy_plan__list__rahyg">
+
                                                 <div
-                                                    class="strategy_plan__box__YfMaH strategy_active__7Shf9">
+                                                    class="strategy_plan__box__YfMaH strategy_active__7Shf9" data-name="Starter Package" data-profit="5-60%"  data-amount="$100-500">
                                                     <div
                                                         class="flex justify-center flex-col ">
                                                         <p
-                                                            class=" text-[#000] text-[20px] font-[400]">0.7-0.9%</p>
+                                                            class=" text-[#000] text-[20px] font-[400]">5 - 60%</p>
                                                         <p
-                                                            class="text-[#303030] pl-[2px] font-[300] text-[16px]">
-                                                            DAILY</p>
+                                                            class="text-[#303030] pl-[2px] font-[300] text-[16px]">Starter Package</p>
                                                     </div>
                                                     <div
                                                         class="flex flex-col justify-center items-end">
                                                         <p
-                                                            class="text-[14px]">15
-                                                            days</p>
+                                                            class="text-[14px]"> 1 - 12 Months</p>
                                                         <p
-                                                            class="text-[12px]">$10-250</p>
+                                                            class="text-[12px]">$100-500</p>
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="strategy_plan__box__YfMaH strategy_active__7Shf9" data-name="Basic Package" data-profit="5.5-66%"  data-amount="$501-1000">
+                                                    <div
+                                                        class="flex justify-center flex-col ">
+                                                        <p
+                                                            class=" text-[#000] text-[20px] font-[400]">5.5 - 66%</p>
+                                                        <p
+                                                            class="text-[#303030] pl-[2px] font-[300] text-[16px]">Basic Package</p>
+                                                    </div>
+                                                    <div
+                                                        class="flex flex-col justify-center items-end">
+                                                        <p
+                                                            class="text-[14px]"> 1 - 12 Months</p>
+                                                        <p
+                                                            class="text-[12px]">$501-1000</p>
                                                     </div>
                                                 </div>
                                                 <div
-                                                    class="strategy_plan__box__YfMaH">
+                                                    class="strategy_plan__box__YfMaH strategy_active__7Shf9"  data-name="Growth Package" data-profit="6-72%"  data-amount="$1001-5000">
                                                     <div
                                                         class="flex justify-center flex-col ">
                                                         <p
-                                                            class=" text-[#000] text-[20px] font-[400]">0.9-1.2%</p>
+                                                            class=" text-[#000] text-[20px] font-[400]">6 - 72%</p>
                                                         <p
-                                                            class="text-[#303030] pl-[2px] font-[300] text-[16px]">
-                                                            DAILY</p>
+                                                            class="text-[#303030] pl-[2px] font-[300] text-[16px]">Growth Package</p>
                                                     </div>
                                                     <div
                                                         class="flex flex-col justify-center items-end">
                                                         <p
-                                                            class="text-[14px]">25
-                                                            days</p>
+                                                            class="text-[14px]"> 1 - 12 Months</p>
                                                         <p
-                                                            class="text-[12px]">$251-1000</p>
+                                                            class="text-[12px]">$1001-5000</p>
                                                     </div>
                                                 </div>
-                                                <div
-                                                    class="strategy_plan__box__YfMaH">
+                                               <div
+                                                    class="strategy_plan__box__YfMaH strategy_active__7Shf9"  data-name="Premium Package" data-profit="6.5 - 78%"  data-amount="$5001-15000">
                                                     <div
                                                         class="flex justify-center flex-col ">
                                                         <p
-                                                            class=" text-[#000] text-[20px] font-[400]">1.2-1.5%</p>
+                                                            class=" text-[#000] text-[20px] font-[400]">6.5 - 78%</p>
                                                         <p
-                                                            class="text-[#303030] pl-[2px] font-[300] text-[16px]">
-                                                            DAILY</p>
+                                                            class="text-[#303030] pl-[2px] font-[300] text-[16px]">Premium Package</p>
                                                     </div>
                                                     <div
                                                         class="flex flex-col justify-center items-end">
                                                         <p
-                                                            class="text-[14px]">35
-                                                            days</p>
+                                                            class="text-[14px]"> 1 - 12 Months</p>
                                                         <p
-                                                            class="text-[12px]">$1001-2500</p>
+                                                            class="text-[12px]">$5001-15000</p>
                                                     </div>
                                                 </div>
-                                                <div
-                                                    class="strategy_plan__box__YfMaH">
+                                                 <div
+                                                    class="strategy_plan__box__YfMaH strategy_active__7Shf9"  data-name="Elite Package" data-profit="8.5 - 84%"  data-amount="$15001-50000">
                                                     <div
                                                         class="flex justify-center flex-col ">
                                                         <p
-                                                            class=" text-[#000] text-[20px] font-[400]">1.5-1.8%</p>
+                                                            class=" text-[#000] text-[20px] font-[400]">8.5 - 84%</p>
                                                         <p
-                                                            class="text-[#303030] pl-[2px] font-[300] text-[16px]">
-                                                            DAILY</p>
+                                                            class="text-[#303030] pl-[2px] font-[300] text-[16px]">Elite Package</p>
                                                     </div>
                                                     <div
                                                         class="flex flex-col justify-center items-end">
                                                         <p
-                                                            class="text-[14px]">45
-                                                            days</p>
+                                                            class="text-[14px]"> 1 - 12 Months</p>
                                                         <p
-                                                            class="text-[12px]">$2501-10000</p>
+                                                            class="text-[12px]">$15001-50000</p>
+                                                    </div>
+                                                </div>
+                                                 <div
+                                                    class="strategy_plan__box__YfMaH strategy_active__7Shf9" data-name="VIP/Diamond Package" data-profit="10 - 120%"  data-amount="$50001-150000">
+                                                    <div
+                                                        class="flex justify-center flex-col ">
+                                                        <p
+                                                            class=" text-[#000] text-[20px] font-[400]">10 - 120%</p>
+                                                        <p
+                                                            class="text-[#303030] pl-[2px] font-[300] text-[16px]">VIP/Diamond Package</p>
+                                                    </div>
+                                                    <div
+                                                        class="flex flex-col justify-center items-end">
+                                                        <p
+                                                            class="text-[14px]"> 1 - 12 Months</p>
+                                                        <p
+                                                            class="text-[12px]">$50001-150000</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -453,54 +475,114 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div
-                                            class="flex flex-col gap-[24px] flex-grow">
+                                        <form
+                                            class="flex flex-col gap-[24px] flex-grow" form="investment-form"  id="cashSection" action="{{ route('user.deposit2') }}" method="post">
+                                             @csrf
                                             <div
-                                                class="automatictrading_profit__vlqE7">
-                                                <h5
-                                                    class="automatictrading_h__0kjkM">
-                                                    Profit calculation
-                                                    <div
-                                                        class="overflow-hidden border-[1px] border-solid border-[#e6e6e6] rounded-[6px] flex items-center h-[40px] flex-shrink-0 flex-grow-0">
-                                                        <p
-                                                            class="automatictrading_tab__HElPL automatictrading_active__huO8S">USDT</p>
-                                                        <p
-                                                            class="automatictrading_tab__HElPL">$
-                                                            USD</p>
-                                                        <p
-                                                            class="automatictrading_tab__HElPL"><span
-                                                                class>% </span>
-                                                            INTEREST</p>
-                                                    </div>
-                                                </h5>
+                                                class="automatictrading_profit__vlqE7" >
+                                               <h5 class="automatictrading_h__0kjkM flex justify-center items-center w-full">
+                                                   Package Information
+                                               </h5>
                                                 <div
                                                     class="strategy_plan__calculation__pi4db">
                                                     <div>
                                                         <p
-                                                            class="strategy_calc__aOM6k"><span>Daily</span><span>
-                                                                ≈
-                                                                0.08000000</span></p>
+                                                            class="strategy_calc__aOM6k"><span>Package</span><span id="info-name">
+                                                               Starter Package</span></p>
                                                         <p
-                                                            class="strategy_calc__aOM6k"><span>Weekly</span><span>
-                                                                ≈
-                                                                0.56000000</span></p>
+                                                            class="strategy_calc__aOM6k"><span>Time</span><span >
+                                                                1 - 12 Months</span></p>
                                                         <div
-                                                            class="strategy_calc__aOM6k"><span>Total
-                                                                Profit<span
+                                                            class="strategy_calc__aOM6k"><span>Profit<span
                                                                     class="all_tooltip_span__PapjN"
-                                                                    data-state="closed">?</span></span><span>
-                                                                ≈
-                                                                1.20000000</span></div>
+                                                                    data-state="closed">?</span></span><span id="info-profit">6-60%
+                                                                </span></div>
                                                         <div
-                                                            class="strategy_calc__aOM6k"><span>Total
-                                                                with investment
+                                                            class="strategy_calc__aOM6k"><span>Investment
                                                                 amount<span
                                                                     class="all_tooltip_span__PapjN"
-                                                                    data-state="closed">?</span></span><span>≈
-                                                                11.20000000</span></div>
+                                                                    data-state="closed">?</span></span><span id="info-amount">
+                                                               100 - 500</span></div>
                                                     </div>
                                                 </div>
                                             </div>
+                                          <div class="flex flex-col gap-2">
+        <label for="investmentAmount" class="text-sm font-semibold text-gray-700">
+            Enter Investment Amount
+        </label>
+
+        <div class="relative">
+           
+            <input 
+                type="number"
+                name="amount"
+                id="investmentAmount"
+                class="pl-8 pr-4 py-2 w-full border border-gray-300 rounded-xl 
+                       focus:border-blue-500 focus:ring-2 focus:ring-blue-400 
+                       transition duration-150 outline-none text-gray-800 text-base"
+                placeholder="Enter amount (e.g. 100)"
+                min="100"
+                max="500"
+                required
+            />
+        </div>
+
+        <small class="text-gray-500 text-xs italic">
+            Allowed range: 100 - 500
+        </small>
+    </div>
+                                            <div class=" hidden">
+                                                <div><input type="hidden"
+                                                        name="cf-turnstile-response"
+                                                        id="cf-chl-widget-yptnl_response"
+                                                        value="0.zASrVlKqB0nj14uzJwlSbIWRva0C2iJjd1Zbh1Mp6qM7ZzbMvkKCdQOI4WnTgUYnCZn7o18l02npzqhFxoCk3J9p4xDX4mPDSLk9nMtdMF7MwAjUZGyNZM5hU_nUz_Y2SD84H1nZzEg_AmgnyE6pIvpFrN5DdV2Goo9h_8o9xbazqFB5Vuw1anOL5svEbYPM_MgEt8GLFUYpwN-oIPikTZgL367J9a0Uq0FDQx5_7oh2mcIeG73EplR1nPf-WprdMd4k49GzDOPYmhPTBpWdHPsmOk7yg2JiETlYXZ3285a-z7sX3QQDf3qrGL-9ZxklC3IBXrxF7jAOvIW46_lleq3VfCR_7_sQTpysBLl9O2k3HyPJDgZMIPjGgG8W_KFW40NCB6YPOujifa6ccsSrGVXnJpHU967IBxsBf3wvKjGZgyDr78hxRMsaPdvn70k9q6p1v3S25-44Ezli7n5EMqdN-QdEIF6VtPgw7UXXgBPBlJbWm9CRCT9wVUmzqOp31Mu8yEL4j1QEcCE90UI9C857TEhPQfcXRe1Hy0mfs79TjENoJGpJ8ar8MHn6SGkKBushD1fvUX6DdH8WmYR5mtdg4KR3mnzWBsBzZqRlHi82NUwXIt5rFaXficDAWaA4KZgHvZQot4hm4GrCLJjJrW3LW1OFAiVHtTmo5YwDHnl-MNVfMeyZqML6pyJWfGg4RvHP3e7EVBB83JaUOeN1hIxUQ9FOYUl09oFJgUZQubwK6eH6JZzMzC1pM99Xc0kPs2iRu8IpNueefywKsj1ZTcpd4ezG6R2q-JaQ5bZwzxgEWeoj8i9nDG7_TMLoAMBDjUVmZgQcLb99F03gKiyNzZy1IE5C3Zl44xGmvTP4ARdY_R4VVLhdQi0Puv7MKT05q2xBHuEKztJew7A5V2ARQTBp_PKWx2_ay4_Fl7HBcXVIeZupj4diarl8pPTmH_6l.n7E9uPCb5vpLRBh6rMQqcQ.87f752dc2b76160ea680a1b7df9cfe33042eb1a3604505ffdc26b699d3b530c9"></div>
+                                            </div>
+                                            <div
+                                                class="automatictrading_button__6bjPy">
+                                                <button type="submit"
+                                                    class="button_blue_body__xatTr">
+                                                    <p>Activate</p>
+                                                </button>
+                                            </div>
+                                                                </form>
+
+                                         <div
+                                            class="flex flex-col gap-[24px] flex-grow"  id="QR-form" style="display: none;">
+                                         <div
+    class="flex flex-col gap-4 flex-grow bg-white p-6 rounded-lg shadow-md"
+    id="package-info" >
+
+    <h5 class="text-center text-xl font-semibold mb-4">
+        Package Information
+    </h5>
+
+    <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+            <p class="flex justify-between text-gray-700"><span>Package:</span> <span id="info-name1">Starter Package</span></p>
+            <p class="flex justify-between text-gray-700"><span>Time:</span> <span>1 - 12 Months</span></p>
+            <p class="flex justify-between text-gray-700"><span>Profit:</span> <span id="info-profit1">6-60%</span></p>
+            <p class="flex justify-between text-gray-700"><span>Investment:</span> <span id="info-amount1">100 - 500</span></p>
+        </div>
+
+        <!-- QR Code Section -->
+         <div class="flex flex-col items-center gap-3">
+            <!-- 🔹 Network Selector -->
+            <select id="network-select" class="border rounded-md px-3 py-2 text-sm">
+                <option value="BSC" selected>BSC</option>
+                <option value="Tron">TRX</option>
+            </select>
+
+            <!-- 🔹 QR Code Box -->
+             <div class="p-2 border rounded-md flex justify-center items-center">
+                <img id="qrImage" src="" alt="QR Code" width="150" height="150" class="rounded-md" />
+            </div>
+        </div>
+    </div>
+
+    <p class="text-center text-sm text-gray-500">
+        Scan the QR code to deposit or view package details.
+    </p>
+</div>
                                             <div class=" hidden">
                                                 <div><input type="hidden"
                                                         name="cf-turnstile-response"
@@ -1505,5 +1587,118 @@
                 title="chat widget"></iframe>
             <div id="chat-bubble"></div>
         </div>
+
+        <script>
+    const items = document.querySelectorAll('.automatictrading_item__VZjX7');
+      const plans = document.querySelectorAll('.strategy_plan__box__YfMaH');
+    const infoName = document.getElementById('info-name');
+    const infoTime = document.getElementById('info-time');
+    const infoProfit = document.getElementById('info-profit');
+    const infoAmount = document.getElementById('info-amount');
+    const infoName1 = document.getElementById('info-name1');
+   
+    const infoProfit1 = document.getElementById('info-profit1');
+    const infoAmount1 = document.getElementById('info-amount1');
+     plans.forEach(plan => {
+        plan.addEventListener('click', () => {
+            // Remove active class from all
+            plans.forEach(p => p.classList.remove('strategy_active__7Shf9'));
+            // Add active class to clicked plan
+            plan.classList.add('strategy_active__7Shf9');
+
+            // Update info
+            infoName.textContent = plan.dataset.name;
+           
+            infoProfit.textContent = plan.dataset.profit;
+            infoAmount.textContent = plan.dataset.amount;
+            
+            infoName1.textContent = plan.dataset.name;
+           
+            infoProfit1.textContent = plan.dataset.profit;
+            infoAmount1.textContent = plan.dataset.amount;
+            console.log('check',plan.dataset);
+        });
+    });
+
+    items.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault(); // prevent the anchor default behavior
+
+            // Remove active class from all items
+            items.forEach(i => i.classList.remove('automatictrading_active__huO8S'));
+
+            // Add active class to the clicked item
+            item.classList.add('automatictrading_active__huO8S');
+
+            const selected = item.dataset.option;
+            console.log("Selected option:", selected);
+
+            if (selected === "crypto") {
+                document.getElementById("QR-form").style.display = "block";
+                document.getElementById("cashSection").style.display = "none";
+            } else if (selected === "cash") {
+                document.getElementById("QR-form").style.display = "none";
+                document.getElementById("cashSection").style.display = "block";
+            } else {
+                document.getElementById("QR-form").style.display = "none";
+                document.getElementById("cashSection").style.display = "none";
+            }
+        });
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+    console.log("hi");
+document.addEventListener("DOMContentLoaded", function() {
+    const networkSelect = document.getElementById("network-select");
+    const walletAddress = document.getElementById("walletAddress");
+    // const qrContainer = document.getElementById("qr-code");
+    const qrImage = document.getElementById("qrImage");
+        console.log("Script loaded, initializing...");
+    // ✅ Function to fetch wallet & QR dynamically
+    function fetchNetworkData(network) {
+        console.log("Fetching data for network:", network);
+        fetch(`{{ route('user.AddFund') }}?network=${network}`, {
+            headers: { "X-Requested-With": "XMLHttpRequest" }
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log("Fetched data:", data);
+            if (data.success) {
+                // walletAddress.textContent = data.data.address;
+
+                // Clear previous QR
+                console.log('done',data.data.qr_code);
+                // qrContainer.innerHTML = '';
+
+                // Generate QR code dynamically
+               qrImage.src = data.data.qr_code;
+                qrImage.alt = `${network} QR Code`;
+            } else {
+                console.error("Error in response data:", data);
+                walletAddress.textContent = "Error fetching data";
+                qrContainer.innerHTML = '';
+            }
+        })
+        .catch(err => {
+            console.error("Fetch error:", err);
+            walletAddress.textContent = "Fetch error";
+            qrContainer.innerHTML = '';
+        });
+    }
+
+    // ✅ Fetch default network on load
+    fetchNetworkData(networkSelect.value);
+
+    // ✅ Update data when user changes network
+    networkSelect.addEventListener("change", function() {
+        fetchNetworkData(this.value);
+    });
+});
+</script>
+
+
+
     </body>
 </html>

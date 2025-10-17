@@ -20,10 +20,54 @@ class Invest extends Controller
 
   private $downline = "";
 
-    public function index()
+    public function index(Request $request)
     {
         $user=Auth::user();
         $invest_check=Investment::where('user_id',$user->id)->where('status','!=','Decline')->orderBy('id','desc')->limit(1)->first();
+
+        $userInfo = auth()->user();
+    $refId = $userInfo->username;
+
+    $network = $request->network ?? 'BSC'; // default BSC
+    $networkMap = [
+        'BSC'  => 'bep20',
+        'Tron' => 'trc20',
+    ];
+    $chain = $networkMap[$network] ?? 'bep20';
+
+    $url = "https://api.cryptapi.io/{$chain}/usdt/create/";
+
+    $queryParams = [
+        'callback'      => 'https://www.sabiocryptotrade.com/dynamicupicallback?refid=' . $refId,
+        'address'       => $chain == 'bep20' ? '0xE16FbAC91747cA74f125666aEF34B11D14d12a47' : 'TD4KhBToV1nKRumY4L7jJzR4cWLK9xzmyb', // real Tron address
+        'pending'       => 0,
+        'confirmations' => 1,
+        'email'         => 'string',
+        'post'          => 0,
+        'priority'      => 'default',
+        'multi_token'   => 0,
+        'multi_chain'   => 0,
+        'convert'       => 0,
+    ];
+
+    $response = Http::get($url, $queryParams);
+    $data = $response->json();
+    unset($data['callback_url']);
+
+    // ✅ अगर AJAX call है → JSON return करो
+    if ($request->ajax()) {
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'address' => $data['address_in'] ?? '',
+                'qr_code' => "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($data['address_in'] ?? ''),
+            ]
+        ]);
+    }
+
+    // ✅ Normal page load (HTML view)
+    $this->data['data'] = $data;
+    $this->data['selectedNetwork'] = $network;
 
         $this->data['last_package'] = ($invest_check)?$invest_check->amount:0;
         $this->data['page'] = 'user.invest.Deposit';
@@ -48,6 +92,102 @@ class Invest extends Controller
     }
 
 
+
+    public function deposit2(Request $request)
+  {
+
+    // dd("hiii");
+    try {
+      $validation =  Validator::make($request->all(), [
+        'amount' => 'required|numeric|min:160',
+        // 'paymentMode' => 'required',
+      
+      ]);
+
+      if ($validation->fails()) {
+        Log::info($validation->getMessageBag()->first());
+
+        return redirect()->route('user.invest')->withErrors($validation->getMessageBag()->first())->withInput();
+      }
+
+      $user = Auth::user();
+      $password = $request->transaction_password;
+
+
+      // date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
+      // $plan = "1";
+
+      // $user_detail = User::where('username', $request->username)->orderBy('id', 'desc')->limit(1)->first();
+      // $invest_check = Investment::where('user_id', $user_detail->id)->where('status', '!=', 'Decline')->orderBy('id', 'desc')->limit(1)->first();
+      // $invoice = substr(str_shuffle("0123456789"), 0, 7);
+      $joining_amt = $request->amount;
+     
+
+
+
+      $last_package = ($invest_check) ? $invest_check->amount : 0;
+
+      if ($last_package > 0 && $request->amount < 100) {
+        return Redirect::back()->withErrors(['Minimum Topup is 100 USDT.']);
+      }
+
+
+
+
+      $invoice = substr(str_shuffle("0123456789"), 0, 7);
+
+
+           $data = [
+            'orderId' => $invoice,
+            'plan' => 1,
+            'transaction_id' => md5(time() . rand()),
+            'user_id' => $user_detail->id,
+            'user_id_fk' => $user_detail->username,
+            'amount' => $request->amount,
+            'payment_mode' => 'USDT',
+            'status' => 'Active',
+            'sdate' => Date("Y-m-d"),
+            //  'next_date' =>$nextCycle,
+            'active_from' => $user->username,
+            'walletType' => 1,
+          ];
+          $payment =  Investment::insert($data);
+            $notify[] = ['success', 'user activation submitted successfully'];
+          return redirect()->route('user.invest')->withNotify($notify);
+      if (Hash::check($password, $user->tpassword)) {
+
+        if ($balance >= $request->amount) {
+          // $nextCycle =Carbon::parse(Date("Y-m-d H:i:s"))->addDays(10)->format('Y-m-d H:i:s');
+
+         
+
+
+
+          // if ($user_detail->active_status == "Pending") {
+          //   $user_update = array('active_status' => 'Active', 'adate' => Date("Y-m-d H:i:s"), 'package' => $request->amount, 'rank' => 1);
+          //   User::where('id', $user_detail->id)->update($user_update);
+          // } else {
+          //   $total = $user_detail->package + $request->amount;
+          //   $user_update = array('active_status' => 'Active', 'package' => $total);
+          //   User::where('id', $user_detail->id)->update($user_update);
+          // }
+
+          // add_direct_income($user_detail->id, $request->amount);
+        
+        } else {
+          return Redirect::back()->withErrors(['Insufficient balance in your account.']);
+        }
+      } else {
+        return Redirect::back()->withErrors(array('Invalid Transaction Password'));
+      }
+    } catch (\Exception $e) {
+      Log::info('error here');
+      Log::info($e->getMessage());
+      print_r($e->getMessage());
+      die("hi");
+      return  redirect()->route('user.dashboard')->withErrors('error', $e->getMessage())->withInput();
+    }
+  }
 
 public function cancel_payment($id)
 
