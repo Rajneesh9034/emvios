@@ -133,6 +133,7 @@ public function fundHistory(Request $request)
     $notes = $notes->where(function($q) use($search){
         $q->Where('user_id_fk', 'LIKE', '%' . $search . '%')
         ->orWhere('txn_no', 'LIKE', '%' . $search . '%')
+        ->orWhere('orderId', 'LIKE', '%' . $search . '%')
         ->orWhere('status', 'LIKE', '%' . $search . '%')
         ->orWhere('type', 'LIKE', '%' . $search . '%')
         ->orWhere('amount', 'LIKE', '%' . $search . '%');

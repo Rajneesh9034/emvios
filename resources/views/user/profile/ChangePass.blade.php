@@ -59,9 +59,7 @@
 
 					</div>
 				</div>
-				<div class="changepassword_button_personal_wYIW9"><button type="submit" class="button_blue_body_xatTr">
-						<p>Change</p>
-					</button></div>
+			<div class="changepassword_button_personal__wYIW9"><button type="submit" class="button_blue_body__xatTr"><p>Change</p></button></div>
 			</div>
 			<div class="flex flex-col justify-center  self-stretch flex-grow  gap-[16px] p-[16px] rounded-[6px]  border border-solid border-[#e6e6e6]">
 				<h3 class="  text-[14px]  text-black">Additional information</h3>
@@ -76,7 +74,6 @@
 				</ul>
 			</div>
 		</form>
-                         @include('partials.notify')
 
 	</div>
 </main>
@@ -88,58 +85,7 @@
 </div>
 
 
-<!-- <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const sendOtpBtn = document.getElementById('sendOtpBtn');
-    const timerText = document.getElementById('timerText');
 
-    let timer;
-    let countdown = 60;
-
-    function startTimer() {
-        sendOtpBtn.disabled = true;
-        timerText.textContent = Please wait ${countdown} seconds...;
-
-        timer = setInterval(() => {
-            countdown--;
-            timerText.textContent = Please wait ${countdown} seconds...;
-
-            if (countdown <= 0) {
-                clearInterval(timer);
-                sendOtpBtn.disabled = false;
-                timerText.textContent = '';
-                countdown = 60; // reset for next time
-            }
-        }, 1000);
-    }
-
-    sendOtpBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        fetch('{{ route('user.send-otp') }}', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify({})
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.status) {
-                alert('OTP sent successfully!');
-                startTimer();
-            } else {
-                alert('Error: ' + data.message);
-            }
-        })
-        .catch(err => {
-            alert('Something went wrong.');
-            console.error(err);
-        });
-    });
-});
-</script> -->
 
 </body>
 

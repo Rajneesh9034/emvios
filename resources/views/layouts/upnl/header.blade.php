@@ -4281,7 +4281,8 @@
                         </div>
                     </a>
                     <a id="tour-investments" target="_self"
-                        class="sidebar_tab__XxMVJ sidebar_active__WMqVb"
+                        class="sidebar_tab__XxMVJ "
+                        /* sidebar_active__WMqVb */
                         data-state="closed"
                         href="{{ route('user.invest') }}">
                         <img alt="icon" loading="lazy" width="24"
@@ -4595,39 +4596,19 @@
                                             style="color: transparent;"></a></div>
                             </div>
                         </ul>
+                        
                         <div class="header_auth_auth__EVG1T"
                             id="tour-settings">
                             <div class="profile_menu_trigger__lTRd5" onclick="toggleSidebar()"
                                 type="button" id="radix-«Rqupnb»"
                                 aria-haspopup="menu" aria-expanded="false"
-                                data-state="closed"><img alt="icon"
+                                data-state="closed"><img alt="icon" id=""
                                     loading="lazy" width="36" height="36"
                                     decoding="async" data-nimg="1"
                                     class="w-full h-full"
                                     style="color:transparent"
                                     src="{{ asset('') }}upnl/_next/static/media/person.webp"></div>
-                            <div class="notifications_trigger__1Ijuv"
-                                type="button" id="radix-«R1aupnb»"
-                                aria-haspopup="menu" aria-expanded="false"
-                                data-state="closed"><img alt="icon"
-                                    loading="lazy" width="24" height="24"
-                                    decoding="async" data-nimg="1"
-                                    src="{{ asset('') }}upnl/_next/static/media/bell.0496d9b6.svg"
-                                    style="color: transparent;"></div>
-                            <div class="header_auth_lang__KDVcY">
-                                <div class="languages_body__GFhL4"
-                                    type="button" id="radix-«R1qupnb»"
-                                    aria-haspopup="menu"
-                                    aria-expanded="false"
-                                    data-state="closed">
-                                    <img alt="icon" loading="lazy"
-                                        width="25" height="18"
-                                        decoding="async" data-nimg="1"
-                                        style="color:transparent"
-                                        src="{{ asset('') }}upnl/_next/static/media/en.73069aaa.svg">
-                                    <p>en</p>
-                                </div>
-                            </div>
+                        
                         </div>
                     </div>
                 </div>
