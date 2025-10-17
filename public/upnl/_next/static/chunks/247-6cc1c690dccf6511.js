@@ -1,0 +1,469 @@
+(self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([
+    [247], {
+        15992: e => {
+            e.exports = {
+                span: "all_tooltip_span__PapjN",
+                frame: "all_tooltip_frame__yo5US",
+                arrow: "all_tooltip_arrow__uIQug",
+                box: "all_tooltip_box__WoFo2",
+                orange: "all_tooltip_orange___yANu",
+                green: "all_tooltip_green__ytwsk",
+                yellow: "all_tooltip_yellow__KQiBQ"
+            }
+        },
+        21518: (e, t, s) => {
+            "use strict";
+            s.d(t, {
+                X: () => c
+            });
+            var a = s(95155),
+                r = s(12115),
+                i = s(75313),
+                l = s(29300),
+                n = s.n(l);
+            let d = r.forwardRef((e, t) => {
+                let {
+                    bgFrom: s = "from-[#01b091]",
+                    bgTo: r = "to-[#00b2c8]",
+                    bg: l = "bg-[#00B2C8]",
+                    className: d,
+                    ...c
+                } = e;
+                return (0, a.jsxs)(i.bL, {
+                    ref: t,
+                    className: n()("relative flex w-full touch-none select-none items-center cursor-pointer h-[20px]", d),
+                    ...c,
+                    children: [(0, a.jsx)(i.CC, {
+                        className: "relative h-[6px] w-full grow overflow-hidden rounded-[6px] bg-secondary",
+                        children: (0, a.jsx)(i.Q6, {
+                            className: "absolute h-full bg-gradient-to-r ".concat(s, " ").concat(r)
+                        })
+                    }), (0, a.jsx)(i.zi, {
+                        className: "block relative h-[17px] w-[17px] rounded-full ".concat(l, " ring-offset-background transition-colors after:block after:absolute after:z-[100] after:top-[50%] after:left-[50%] after:w-2/4 after:rounded-[50%] after:bg-[#e4fafc] after:aspect-square after:translate-y-[-50%] after:translate-x-[-50%]")
+                    })]
+                })
+            });
+            d.displayName = i.bL.displayName;
+            let c = e => {
+                let {
+                    type: t,
+                    amount: s,
+                    setAmount: r,
+                    plan: i,
+                    cross: l,
+                    sm: n = !1,
+                    colorSheme: c
+                } = e;
+                return (0, a.jsxs)(a.Fragment, {
+                    children: [!n && (0, a.jsx)("input", {
+                        disabled: "static" === t,
+                        value: s,
+                        onChange: e => {
+                            if (/^[^.]*[.,](?![.,])$/.test(e.target.value)) return void r(e.target.value.replace(",", "."));
+                            /^\d*(?:[.,]\d+)?$/.test(e.target.value) && r(e.target.value)
+                        },
+                        className: "flex text-center text-[20px] font-[400] w-full flex-auto items-center justify-center rounded-[6px] py-0  px-[16px]  h-[56px] bg-[#fafafa] border-[1px] border-solid border-[#cecece]"
+                    }), "dynamic" === t && (0, a.jsx)(d, {
+                        bgFrom: c ? c.from : l ? "from-[#5DB2A6]" : void 0,
+                        bgTo: c ? c.to : l ? "to-[#227C70]" : void 0,
+                        bg: c ? c.bg : l ? "bg-[#227C70]" : void 0,
+                        defaultValue: [i.minsum],
+                        value: [Number(s)],
+                        min: i.minsum,
+                        max: i.maxsum,
+                        step: 1,
+                        onValueChange: e => r(String(e[0]))
+                    })]
+                })
+            }
+        },
+        28756: (e, t, s) => {
+            "use strict";
+            s.d(t, {
+                f: () => x
+            });
+            var a = s(95155),
+                r = s(89953),
+                i = s.n(r),
+                l = s(92338);
+            let n = function(e) {
+                    let {
+                        depositBody: t,
+                        dailyPercent: s,
+                        days: a,
+                        reinvestPercent: r
+                    } = e;
+                    if (void 0 === t || void 0 === s || void 0 === a || void 0 === r) return 0;
+                    let i = t,
+                        l = 0;
+                    for (let e = 0; e < a; e++) {
+                        let e = i / 100 * s,
+                            t = e * r / 100;
+                        l += e, i += t
+                    }
+                    return l
+                },
+                d = function(e, t) {
+                    return ((t / e - 1) * 100).toFixed(2)
+                };
+            var c = s(73397),
+                o = s(17652);
+            let x = e => {
+                let {
+                    profit: t,
+                    type: s,
+                    amount: r,
+                    percent: x,
+                    compouding: m,
+                    reactivationValue: _,
+                    days: h,
+                    cross: p,
+                    symbol: u = "$",
+                    blockStyle: C,
+                    dashboard: f = !1
+                } = e, b = (0, o.c3)("Dashboard");
+                return (0, a.jsx)("div", {
+                    className: (0, c.cn)(i().plan__calculation, C),
+                    children: (0, a.jsxs)("div", {
+                        children: [(0, a.jsxs)("p", {
+                            className: i().calc,
+                            children: [(0, a.jsx)("span", {
+                                children: b("daily")
+                            }), "interest" === t ? (0, a.jsxs)("span", {
+                                children: [" ", "dynamic" === s && "≈", " ", (x + _).toFixed(2), "%"]
+                            }) : (0, a.jsxs)("span", {
+                                children: [" ", "dynamic" === s && "≈", " ", u, ((Number(r) || 0) / 100 * (x + _)).toFixed("$" == u ? 2 : 8)]
+                            })]
+                        }), (0, a.jsxs)("p", {
+                            className: i().calc,
+                            children: [(0, a.jsx)("span", {
+                                children: b("weekly")
+                            }), "interest" === t ? (0, a.jsxs)(a.Fragment, {
+                                children: [!m && (0, a.jsxs)("span", {
+                                    children: ["dynamic" === s && "≈", " ", ((x + _) * 7).toFixed(2), "%"]
+                                }), m && (0, a.jsxs)("span", {
+                                    children: ["dynamic" === s && "≈", " ", r && d(Number(r) || 0, (Number(r) || 0) + Number(n({
+                                        depositBody: Number(r) || 0,
+                                        dailyPercent: Number(x + _),
+                                        days: 7,
+                                        reinvestPercent: 100
+                                    }))), "%"]
+                                })]
+                            }) : (0, a.jsxs)(a.Fragment, {
+                                children: [!m && (0, a.jsxs)("span", {
+                                    children: [" ", "dynamic" === s && "≈", " ", u, ((Number(r) || 0) / 100 * ((x + _) * 7)).toFixed("$" == u ? 2 : 8)]
+                                }), m && (0, a.jsxs)("span", {
+                                    children: ["dynamic" === s && "≈", " ", u, n({
+                                        depositBody: Number(r) || 0,
+                                        dailyPercent: Number(x + _),
+                                        days: 7,
+                                        reinvestPercent: 100
+                                    }).toFixed("$" == u ? 2 : 8)]
+                                })]
+                            })]
+                        }), f && (0, a.jsxs)("p", {
+                            className: i().calc,
+                            children: [(0, a.jsx)("span", {
+                                children: b("monthly")
+                            }), "interest" === t ? (0, a.jsxs)(a.Fragment, {
+                                children: [!m && (0, a.jsxs)("span", {
+                                    children: ["dynamic" === s && "≈", " ", ((x + _) * 30).toFixed(2), "%"]
+                                }), m && (0, a.jsxs)("span", {
+                                    children: ["dynamic" === s && "≈", " ", r && d(Number(r) || 0, (Number(r) || 0) + Number(n({
+                                        depositBody: Number(r) || 0,
+                                        dailyPercent: Number(x + _),
+                                        days: 30,
+                                        reinvestPercent: 100
+                                    }))), "%"]
+                                })]
+                            }) : (0, a.jsxs)(a.Fragment, {
+                                children: [!m && (0, a.jsxs)("span", {
+                                    children: [" ", "dynamic" === s && "≈", " ", u, ((Number(r) || 0) / 100 * ((x + _) * 30)).toFixed("$" == u ? 2 : 8)]
+                                }), m && (0, a.jsxs)("span", {
+                                    children: ["dynamic" === s && "≈", " ", u, n({
+                                        depositBody: Number(r) || 0,
+                                        dailyPercent: Number(x + _),
+                                        days: 30,
+                                        reinvestPercent: 100
+                                    }).toFixed("$" == u ? 2 : 8)]
+                                })]
+                            })]
+                        }), (0, a.jsxs)("div", {
+                            className: i().calc,
+                            children: [(0, a.jsxs)("span", {
+                                children: [b("total_profit"), (0, a.jsx)(l.r, {
+                                    text: b("total_profit_for_the_entire_lock_in_period")
+                                })]
+                            }), "interest" === t ? (0, a.jsxs)(a.Fragment, {
+                                children: [!m && (0, a.jsxs)("span", {
+                                    children: ["dynamic" === s && "≈", " ", ((x + _) * h).toFixed(2), "%"]
+                                }), m && (0, a.jsxs)("span", {
+                                    children: ["dynamic" === s && "≈", " ", r && d(Number(r) || 0, (Number(r) || 0) + Number(n({
+                                        depositBody: Number(r) || 0,
+                                        dailyPercent: Number(x + _),
+                                        days: h,
+                                        reinvestPercent: 100
+                                    }))), "%"]
+                                })]
+                            }) : (0, a.jsxs)(a.Fragment, {
+                                children: [!m && (0, a.jsxs)("span", {
+                                    children: [" ", "dynamic" === s && "≈", " ", u, ((Number(r) || 0) / 100 * ((x + _) * h)).toFixed("$" == u ? 2 : 8)]
+                                }), m && (0, a.jsxs)("span", {
+                                    children: ["dynamic" === s && "≈", " ", u, n({
+                                        depositBody: Number(r) || 0,
+                                        dailyPercent: Number(x + _),
+                                        days: h,
+                                        reinvestPercent: 100
+                                    }).toFixed("$" == u ? 2 : 8)]
+                                })]
+                            })]
+                        }), !p && (0, a.jsxs)("div", {
+                            className: i().calc,
+                            children: [(0, a.jsxs)("span", {
+                                children: [b("total_with_investment_amount"), (0, a.jsx)(l.r, {
+                                    text: b("total_profit_for_the_entire_lock_in_period_plus_the_invested_amount_that_is_returned_to_your_balance_at_the_end_of_the_lock_in_period")
+                                })]
+                            }), "interest" === t ? (0, a.jsxs)(a.Fragment, {
+                                children: [!m && (0, a.jsxs)("span", {
+                                    children: ["dynamic" === s && "≈", " ", ((x + _) * h + 100).toFixed(2), "%"]
+                                }), m && (0, a.jsxs)("span", {
+                                    children: ["dynamic" === s && "≈", " ", r && Number(d(Number(r) || 0, (Number(r) || 0) + Number(n({
+                                        depositBody: Number(r) || 0,
+                                        dailyPercent: Number(x + _),
+                                        days: h,
+                                        reinvestPercent: 100
+                                    })))) + 100, "%"]
+                                })]
+                            }) : (0, a.jsxs)(a.Fragment, {
+                                children: [!m && (0, a.jsxs)("span", {
+                                    children: ["dynamic" === s && "≈", " ", u, ((Number(r) || 0) / 100 * ((x + _) * h) + (Number(r) || 0)).toFixed("$" == u ? 2 : 8)]
+                                }), m && (0, a.jsxs)("span", {
+                                    children: ["dynamic" === s && "≈", " ", u, ((Number(r) || 0) + n({
+                                        depositBody: Number(r) || 0,
+                                        dailyPercent: Number(x + _),
+                                        days: h,
+                                        reinvestPercent: 100
+                                    })).toFixed("$" == u ? 2 : 8)]
+                                })]
+                            })]
+                        })]
+                    })
+                })
+            }
+        },
+        73397: (e, t, s) => {
+            "use strict";
+            s.d(t, {
+                cn: () => i
+            });
+            var a = s(52596),
+                r = s(39688);
+
+            function i() {
+                for (var e = arguments.length, t = Array(e), s = 0; s < e; s++) t[s] = arguments[s];
+                return (0, r.QP)((0, a.$)(t))
+            }
+        },
+        89953: e => {
+            e.exports = {
+                body: "strategy_body__qAenM",
+                tab: "strategy_tab__y_8VL",
+                active: "strategy_active__7Shf9",
+                inner: "strategy_inner__AZUn8",
+                title: "strategy_title__1jYuu",
+                item: "strategy_item__gIItl",
+                main: "strategy_main__1DbOQ",
+                plans: "strategy_plans___D53s",
+                plan__list: "strategy_plan__list__rahyg",
+                plan__box: "strategy_plan__box__YfMaH",
+                plan__calculation: "strategy_plan__calculation__pi4db",
+                calc: "strategy_calc__aOM6k",
+                span: "strategy_span__jo0bV",
+                switch: "strategy_switch__YhdOI",
+                list: "strategy_list__pv_n8",
+                box: "strategy_box__ifVs4"
+            }
+        },
+        92338: (e, t, s) => {
+            "use strict";
+            s.d(t, {
+                r: () => C
+            });
+            var a = s(95155),
+                r = s(15992),
+                i = s.n(r),
+                l = s(29300),
+                n = s.n(l);
+            let d = {
+                    src: "/_next/static/media/beak_bottom.5d2b8d4e.svg",
+                    height: 9,
+                    width: 16,
+                    blurWidth: 0,
+                    blurHeight: 0
+                },
+                c = {
+                    src: "/_next/static/media/mark.72686f6e.svg",
+                    height: 24,
+                    width: 24,
+                    blurWidth: 0,
+                    blurHeight: 0
+                };
+            var o = s(12115),
+                x = s(89613);
+            let m = x.Kq,
+                _ = x.bL,
+                h = x.l9,
+                p = o.forwardRef((e, t) => {
+                    let {
+                        className: s,
+                        sideOffset: r = 4,
+                        ...i
+                    } = e;
+                    return (0, a.jsx)(x.UC, {
+                        ref: t,
+                        sideOffset: r,
+                        className: n()("z-50 overflow-hidden  animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2", s),
+                        ...i
+                    })
+                });
+            p.displayName = x.UC.displayName;
+            var u = s(66766);
+            let C = e => {
+                let {
+                    type: t = "",
+                    title: s = "",
+                    text: r = "",
+                    exclamatory: l = !1
+                } = e;
+                return (0, a.jsx)(m, {
+                    children: (0, a.jsxs)(_, {
+                        delayDuration: 0,
+                        children: [(0, a.jsx)(h, {
+                            asChild: !0,
+                            children: l ? (0, a.jsx)("div", {
+                                className: "cursor-pointer",
+                                children: (0, a.jsx)(u.default, {
+                                    src: c,
+                                    width: 24,
+                                    height: 24,
+                                    alt: "icon"
+                                })
+                            }) : (0, a.jsx)("span", {
+                                className: i().span,
+                                children: "?"
+                            })
+                        }), (0, a.jsx)(p, {
+                            asChild: !0,
+                            align: "start",
+                            alignOffset: -16,
+                            children: "orange" === t ? (0, a.jsxs)("div", {
+                                className: n()(i().box, i().orange),
+                                children: [(0, a.jsx)("svg", {
+                                    width: 40,
+                                    height: 40,
+                                    viewBox: "0 0 40 40",
+                                    fill: "none",
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    className: "  w-10 h-10 ",
+                                    preserveAspectRatio: "xMidYMid meet",
+                                    children: (0, a.jsxs)("g", {
+                                        clipPath: "url(#clip0_402_4026)",
+                                        children: [(0, a.jsx)("path", {
+                                            d: "M35 2.5C35.663 2.5 36.2989 2.76339 36.7678 3.23223C37.2366 3.70107 37.5 4.33696 37.5 5V35C37.5 35.663 37.2366 36.2989 36.7678 36.7678C36.2989 37.2366 35.663 37.5 35 37.5H5C4.33696 37.5 3.70107 37.2366 3.23223 36.7678C2.76339 36.2989 2.5 35.663 2.5 35V5C2.5 4.33696 2.76339 3.70107 3.23223 3.23223C3.70107 2.76339 4.33696 2.5 5 2.5H35ZM5 0C3.67392 0 2.40215 0.526784 1.46447 1.46447C0.526784 2.40215 0 3.67392 0 5L0 35C0 36.3261 0.526784 37.5979 1.46447 38.5355C2.40215 39.4732 3.67392 40 5 40H35C36.3261 40 37.5979 39.4732 38.5355 38.5355C39.4732 37.5979 40 36.3261 40 35V5C40 3.67392 39.4732 2.40215 38.5355 1.46447C37.5979 0.526784 36.3261 0 35 0L5 0Z",
+                                            fill: "#FF5F04"
+                                        }), (0, a.jsx)("path", {
+                                            d: "M17.505 27.5C17.505 27.1717 17.5697 26.8467 17.6953 26.5433C17.8209 26.24 18.0051 25.9644 18.2372 25.7323C18.4694 25.5001 18.745 25.316 19.0483 25.1903C19.3516 25.0647 19.6767 25 20.005 25C20.3333 25 20.6584 25.0647 20.9617 25.1903C21.265 25.316 21.5406 25.5001 21.7728 25.7323C22.0049 25.9644 22.1891 26.24 22.3147 26.5433C22.4403 26.8467 22.505 27.1717 22.505 27.5C22.505 28.1631 22.2416 28.799 21.7728 29.2678C21.3039 29.7367 20.668 30 20.005 30C19.342 30 18.7061 29.7367 18.2372 29.2678C17.7684 28.799 17.505 28.1631 17.505 27.5ZM17.75 12.4875C17.7167 12.1722 17.7501 11.8533 17.848 11.5516C17.9459 11.25 18.1061 10.9723 18.3183 10.7365C18.5305 10.5008 18.7898 10.3123 19.0795 10.1833C19.3692 10.0542 19.6829 9.98755 20 9.98755C20.3172 9.98755 20.6308 10.0542 20.9205 10.1833C21.2102 10.3123 21.4695 10.5008 21.6817 10.7365C21.8939 10.9723 22.0541 11.25 22.152 11.5516C22.2499 11.8533 22.2833 12.1722 22.25 12.4875L21.375 21.255C21.3456 21.5995 21.188 21.9203 20.9334 22.1541C20.6788 22.3879 20.3457 22.5177 20 22.5177C19.6543 22.5177 19.3212 22.3879 19.0666 22.1541C18.812 21.9203 18.6544 21.5995 18.625 21.255L17.75 12.4875Z",
+                                            fill: "#FF5F04"
+                                        })]
+                                    })
+                                }), (0, a.jsxs)("div", {
+                                    className: "flex flex-col justify-center    ",
+                                    children: [(0, a.jsx)("p", {
+                                        className: "  text-[16px] text-start  ",
+                                        children: s
+                                    }), (0, a.jsx)("p", {
+                                        className: "  text-[12px]  text-start ",
+                                        children: r
+                                    })]
+                                })]
+                            }) : "green" === t ? (0, a.jsxs)("div", {
+                                className: n()(i().box, i().green),
+                                children: [(0, a.jsx)("svg", {
+                                    width: 40,
+                                    height: 40,
+                                    viewBox: "0 0 40 40",
+                                    fill: "none",
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    className: "  w-10 h-10 ",
+                                    preserveAspectRatio: "xMidYMid meet",
+                                    children: (0, a.jsxs)("g", {
+                                        clipPath: "url(#clip0_402_4033)",
+                                        children: [(0, a.jsx)("path", {
+                                            d: "M35 2.5C35.663 2.5 36.2989 2.76339 36.7678 3.23223C37.2366 3.70107 37.5 4.33696 37.5 5V35C37.5 35.663 37.2366 36.2989 36.7678 36.7678C36.2989 37.2366 35.663 37.5 35 37.5H5C4.33696 37.5 3.70107 37.2366 3.23223 36.7678C2.76339 36.2989 2.5 35.663 2.5 35V5C2.5 4.33696 2.76339 3.70107 3.23223 3.23223C3.70107 2.76339 4.33696 2.5 5 2.5H35ZM5 0C3.67392 0 2.40215 0.526784 1.46447 1.46447C0.526784 2.40215 0 3.67392 0 5L0 35C0 36.3261 0.526784 37.5979 1.46447 38.5355C2.40215 39.4732 3.67392 40 5 40H35C36.3261 40 37.5979 39.4732 38.5355 38.5355C39.4732 37.5979 40 36.3261 40 35V5C40 3.67392 39.4732 2.40215 38.5355 1.46447C37.5979 0.526784 36.3261 0 35 0L5 0Z",
+                                            fill: "#46C688"
+                                        }), (0, a.jsx)("path", {
+                                            d: "M27.425 12.425C27.7749 12.0781 28.2472 11.883 28.7399 11.8816C29.2325 11.8802 29.7059 12.0728 30.0577 12.4177C30.4094 12.7626 30.6114 13.2321 30.6198 13.7246C30.6282 14.2172 30.4424 14.6933 30.1025 15.05L20.1225 27.525C19.951 27.7097 19.744 27.858 19.5139 27.9609C19.2837 28.0638 19.0352 28.1192 18.7832 28.1239C18.5311 28.1286 18.2807 28.0824 18.0469 27.988C17.8131 27.8937 17.6008 27.7532 17.4225 27.575L10.81 20.96C10.6258 20.7883 10.4781 20.5813 10.3756 20.3513C10.2731 20.1213 10.218 19.873 10.2135 19.6213C10.2091 19.3695 10.2554 19.1194 10.3497 18.886C10.444 18.6525 10.5844 18.4404 10.7624 18.2624C10.9405 18.0843 11.1526 17.944 11.386 17.8497C11.6195 17.7554 11.8696 17.709 12.1213 17.7135C12.3731 17.7179 12.6214 17.773 12.8514 17.8755C13.0814 17.978 13.2884 18.1258 13.46 18.31L18.695 23.5425L27.3775 12.48L27.425 12.425Z",
+                                            fill: "#46C688"
+                                        })]
+                                    })
+                                }), (0, a.jsxs)("div", {
+                                    className: "flex flex-col justify-center    ",
+                                    children: [(0, a.jsx)("p", {
+                                        className: "  text-[16px] text-start  ",
+                                        children: s
+                                    }), (0, a.jsx)("p", {
+                                        className: "  text-[12px]  text-start ",
+                                        children: r
+                                    })]
+                                })]
+                            }) : "yellow" === t ? (0, a.jsxs)("div", {
+                                className: n()(i().box, i().yellow),
+                                children: [(0, a.jsx)("svg", {
+                                    width: 40,
+                                    height: 40,
+                                    viewBox: "0 0 40 40",
+                                    fill: "none",
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    className: "  w-10 h-10 ",
+                                    preserveAspectRatio: "xMidYMid meet",
+                                    children: (0, a.jsxs)("g", {
+                                        clipPath: "url(#clip0_402_4040)",
+                                        children: [(0, a.jsx)("path", {
+                                            d: "M35 2.5C35.663 2.5 36.2989 2.76339 36.7678 3.23223C37.2366 3.70107 37.5 4.33696 37.5 5V35C37.5 35.663 37.2366 36.2989 36.7678 36.7678C36.2989 37.2366 35.663 37.5 35 37.5H5C4.33696 37.5 3.70107 37.2366 3.23223 36.7678C2.76339 36.2989 2.5 35.663 2.5 35V5C2.5 4.33696 2.76339 3.70107 3.23223 3.23223C3.70107 2.76339 4.33696 2.5 5 2.5H35ZM5 0C3.67392 0 2.40215 0.526784 1.46447 1.46447C0.526784 2.40215 0 3.67392 0 5L0 35C0 36.3261 0.526784 37.5979 1.46447 38.5355C2.40215 39.4732 3.67392 40 5 40H35C36.3261 40 37.5979 39.4732 38.5355 38.5355C39.4732 37.5979 40 36.3261 40 35V5C40 3.67392 39.4732 2.40215 38.5355 1.46447C37.5979 0.526784 36.3261 0 35 0L5 0Z",
+                                            fill: "#FFB800"
+                                        }), (0, a.jsx)("path", {
+                                            d: "M22.325 16.47L16.6 17.1875L16.395 18.1375L17.52 18.345C18.255 18.52 18.4 18.785 18.24 19.5175L16.395 28.1875C15.91 30.43 16.6575 31.485 18.415 31.485C19.7775 31.485 21.36 30.855 22.0775 29.99L22.2975 28.95C21.7975 29.39 21.0675 29.565 20.5825 29.565C19.895 29.565 19.645 29.0825 19.8225 28.2325L22.325 16.47ZM22.5 11.25C22.5 11.913 22.2366 12.5489 21.7678 13.0178C21.2989 13.4866 20.663 13.75 20 13.75C19.337 13.75 18.7011 13.4866 18.2322 13.0178C17.7634 12.5489 17.5 11.913 17.5 11.25C17.5 10.587 17.7634 9.95107 18.2322 9.48223C18.7011 9.01339 19.337 8.75 20 8.75C20.663 8.75 21.2989 9.01339 21.7678 9.48223C22.2366 9.95107 22.5 10.587 22.5 11.25Z",
+                                            fill: "#FFB800"
+                                        })]
+                                    })
+                                }), (0, a.jsxs)("div", {
+                                    className: "flex flex-col justify-center    ",
+                                    children: [(0, a.jsx)("p", {
+                                        className: "  text-[16px] text-start  ",
+                                        children: s
+                                    }), (0, a.jsx)("p", {
+                                        className: "  text-[12px]  text-start ",
+                                        children: r
+                                    })]
+                                })]
+                            }) : (0, a.jsxs)("div", {
+                                children: [(0, a.jsx)("p", {
+                                    className: i().frame,
+                                    children: r
+                                }), (0, a.jsx)("p", {
+                                    className: i().arrow,
+                                    children: (0, a.jsx)(u.default, {
+                                        src: d,
+                                        width: 16,
+                                        height: 9,
+                                        alt: ""
+                                    })
+                                })]
+                            })
+                        })]
+                    })
+                })
+            }
+        }
+    }
+]);

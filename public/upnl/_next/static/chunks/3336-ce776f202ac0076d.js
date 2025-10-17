@@ -1,0 +1,748 @@
+(self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([
+    [3336], {
+        5309: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/sk.87826a7e.svg",
+                height: 600,
+                width: 900,
+                blurWidth: 0,
+                blurHeight: 0
+            }
+        },
+        13082: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/ro.bca4659c.svg",
+                height: 400,
+                width: 600,
+                blurWidth: 0,
+                blurHeight: 0
+            }
+        },
+        17012: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => s
+            });
+            var a = t(94052),
+                i = t(34953);
+            let s = function() {
+                let {
+                    data: A
+                } = (0, i.Ay)("/api/social-media", a.A);
+                return A
+            }
+        },
+        17505: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/hu.8cafa6c4.png",
+                height: 18,
+                width: 25,
+                blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAHlBMVEX/7fBDbUzNJTTu9vJDa0zMJDTLJDPXNURTeltUe1vKOnJBAAAAB3RSTlP91tb9qqqpyR6daQAAAAlwSFlzAAALEwAACxMBAJqcGAAAACFJREFUeJxjYGUCAzYGdihggANmKGDg5AADTgYWRjBgAQATVwC4Mv1/LQAAAABJRU5ErkJggg==",
+                blurWidth: 8,
+                blurHeight: 6
+            }
+        },
+        19919: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/pl.ab852a1c.svg",
+                height: 400,
+                width: 640,
+                blurWidth: 0,
+                blurHeight: 0
+            }
+        },
+        21060: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/crosschain-icon.66ba2131.svg",
+                height: 42,
+                width: 42,
+                blurWidth: 0,
+                blurHeight: 0
+            }
+        },
+        21162: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/arrow_up.3e6e3a11.svg",
+                height: 8,
+                width: 14,
+                blurWidth: 0,
+                blurHeight: 0
+            }
+        },
+        23788: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/es.0c2acc52.png",
+                height: 18,
+                width: 25,
+                blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAKlBMVEX/0ADDAB/CAB/CAB+/ACDAACDuvxW/hyj2wAHlsRCjbD/brinkVxPcUhU4faGEAAAADHRSTlP92tTTraz9/f39/f2w1v9oAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAKklEQVR4nGNgYWRmYmJmZGXggQIGBg52NgYw4OTiBtM8PLy8YClWiGIWAB6GASAQlRw6AAAAAElFTkSuQmCC",
+                blurWidth: 8,
+                blurHeight: 6
+            }
+        },
+        24955: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/pg.542b46c0.png",
+                height: 18,
+                width: 25,
+                blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAQlBMVEULM6H39PIBNqbMECYANKfNDCL98o7CEy0BOKfOESYBKaLJARZvlsvvfXkANacAO7DZECQXSbT0oauYsuXXJDrOABqEG+GsAAAAD3RSTlP+/ayt2tr9/dTUraz9/da/nblLAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAMElEQVR4nB3BBw4AIAgEsFMRwRH3/79qsEUmERHy2BPdgF3Fx64lg3XuMChRVTWGByvPAbW53/0VAAAAAElFTkSuQmCC",
+                blurWidth: 8,
+                blurHeight: 6
+            }
+        },
+        28124: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => J
+            });
+            var a = t(95155),
+                i = t(98777),
+                s = t.n(i),
+                l = t(39598),
+                r = t(42890),
+                d = t(23788),
+                n = t(98949),
+                c = t(95700),
+                h = t(24955),
+                u = t(69858),
+                o = t(41002),
+                g = t(79735),
+                b = t(89747),
+                m = t(82853),
+                f = t(17505),
+                p = t(98608),
+                x = t(98407),
+                w = t(13082),
+                v = t(19919),
+                C = t(39438),
+                R = t(47861),
+                E = t(5309),
+                B = t(66766),
+                N = t(38769),
+                U = t(46453),
+                y = t(60388),
+                G = t(12115);
+            let D = [{
+                value: "en",
+                icon: l.A
+            }, {
+                value: "fr",
+                icon: c.A
+            }, {
+                value: "es",
+                icon: d.A
+            }, {
+                value: "ph",
+                icon: h.A
+            }, {
+                value: "hi",
+                icon: m.A
+            }, {
+                value: "hu",
+                icon: f.A
+            }, {
+                value: "cn",
+                icon: u.A
+            }, {
+                value: "cz",
+                icon: b.A
+            }, {
+                value: "jp",
+                icon: o.A
+            }, {
+                value: "id",
+                icon: g.A
+            }, {
+                value: "nl",
+                icon: r.A
+            }, {
+                value: "de",
+                icon: n.A
+            }, {
+                value: "it",
+                icon: p.A
+            }, {
+                value: "pt",
+                icon: x.A
+            }, {
+                value: "ro",
+                icon: w.A
+            }, {
+                value: "sk",
+                icon: E.A
+            }, {
+                value: "pl",
+                icon: v.A
+            }, {
+                value: "ar",
+                icon: C.A
+            }, {
+                value: "tr",
+                icon: R.A
+            }];
+
+            function J() {
+                let A = (0, U.Ym)(),
+                    e = (0, y.a8)(),
+                    [t, i] = (0, G.useState)(D[D.findIndex(e => e.value === A) || 0]);
+                return (0, a.jsxs)(N.rI, {
+                    modal: !1,
+                    children: [(0, a.jsx)(N.ty, {
+                        asChild: !0,
+                        children: (0, a.jsxs)("div", {
+                            className: s().body,
+                            children: [(0, a.jsx)(B.default, {
+                                src: t.icon,
+                                alt: "icon",
+                                height: 18
+                            }), (0, a.jsx)("p", {
+                                children: t.value
+                            })]
+                        })
+                    }), (0, a.jsx)(N.SQ, {
+                        className: "w-[186px] my-[8px] mr-[16px]",
+                        children: (0, a.jsx)("div", {
+                            className: "flex  flex-wrap  justify-between gap-[16px] p-[16px] rounded-[6px] bg-neutral-50 border border-solid border-[#d9d9d9]",
+                            children: D.map(A => (0, a.jsx)(y.N_, {
+                                onClick: () => i(A),
+                                href: e,
+                                locale: A.value,
+                                children: (0, a.jsxs)(N._2, {
+                                    className: s().lang,
+                                    children: [(0, a.jsx)(B.default, {
+                                        height: 18,
+                                        src: A.icon,
+                                        alt: "icon",
+                                        className: "flex-grow-0 flex-shrink-0"
+                                    }), (0, a.jsx)("p", {
+                                        className: " text-[16px]  text-black",
+                                        children: A.value
+                                    })]
+                                })
+                            }, A.value))
+                        })
+                    })]
+                })
+            }
+        },
+        38769: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                SQ: () => o,
+                _2: () => g,
+                rI: () => h,
+                ty: () => u
+            });
+            var a = t(95155),
+                i = t(12115),
+                s = t(9449),
+                l = t(13052),
+                r = t(5196),
+                d = t(9428),
+                n = t(29300),
+                c = t.n(n);
+            let h = s.bL,
+                u = s.l9;
+            s.YJ, s.ZL, s.Pb, s.z6, i.forwardRef((A, e) => {
+                let {
+                    className: t,
+                    inset: i,
+                    children: r,
+                    ...d
+                } = A;
+                return (0, a.jsxs)(s.ZP, {
+                    ref: e,
+                    className: c()("flex cursor-default select-none items-center rounded-sm px-2 py-[24px] text-sm outline-none focus:bg-accent data-[state=open]:bg-accent", i && "pl-8", t),
+                    ...d,
+                    children: [r, (0, a.jsx)(l.A, {
+                        className: "ml-auto h-4 w-4"
+                    })]
+                })
+            }).displayName = s.ZP.displayName, i.forwardRef((A, e) => {
+                let {
+                    className: t,
+                    ...i
+                } = A;
+                return (0, a.jsx)(s.G5, {
+                    ref: e,
+                    className: c()("z-50 overflow-hidden rounded-md border bg-popover  text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2", t),
+                    ...i
+                })
+            }).displayName = s.G5.displayName;
+            let o = i.forwardRef((A, e) => {
+                let {
+                    className: t,
+                    sideOffset: i = 4,
+                    ...l
+                } = A;
+                return (0, a.jsx)(s.ZL, {
+                    children: (0, a.jsx)(s.UC, {
+                        ref: e,
+                        sideOffset: i,
+                        className: c()("z-50 overflow-hidden rounded-md border bg-popover  text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2", t),
+                        ...l
+                    })
+                })
+            });
+            o.displayName = s.UC.displayName;
+            let g = i.forwardRef((A, e) => {
+                let {
+                    className: t,
+                    inset: i,
+                    ...l
+                } = A;
+                return (0, a.jsx)(s.q7, {
+                    ref: e,
+                    className: c()("relative flex cursor-default select-none items-center rounded-sm text-sm outline-none transition-colors focus:bg-[#f3fbfc]  focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50", i && "pl-8", t),
+                    ...l
+                })
+            });
+            g.displayName = s.q7.displayName, i.forwardRef((A, e) => {
+                let {
+                    className: t,
+                    children: i,
+                    checked: l,
+                    ...d
+                } = A;
+                return (0, a.jsxs)(s.H_, {
+                    ref: e,
+                    className: c()("relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50", t),
+                    checked: l,
+                    ...d,
+                    children: [(0, a.jsx)("span", {
+                        className: "absolute left-2 flex h-3.5 w-3.5 items-center justify-center",
+                        children: (0, a.jsx)(s.VF, {
+                            children: (0, a.jsx)(r.A, {
+                                className: "h-4 w-4"
+                            })
+                        })
+                    }), i]
+                })
+            }).displayName = s.H_.displayName, i.forwardRef((A, e) => {
+                let {
+                    className: t,
+                    children: i,
+                    ...l
+                } = A;
+                return (0, a.jsxs)(s.hN, {
+                    ref: e,
+                    className: c()("relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50", t),
+                    ...l,
+                    children: [(0, a.jsx)("span", {
+                        className: "absolute left-2 flex h-3.5 w-3.5 items-center justify-center",
+                        children: (0, a.jsx)(s.VF, {
+                            children: (0, a.jsx)(d.A, {
+                                className: "h-2 w-2 fill-current"
+                            })
+                        })
+                    }), i]
+                })
+            }).displayName = s.hN.displayName, i.forwardRef((A, e) => {
+                let {
+                    className: t,
+                    inset: i,
+                    ...l
+                } = A;
+                return (0, a.jsx)(s.JU, {
+                    ref: e,
+                    className: c()("px-2 py-1.5 text-sm font-semibold", i && "pl-8", t),
+                    ...l
+                })
+            }).displayName = s.JU.displayName, i.forwardRef((A, e) => {
+                let {
+                    className: t,
+                    ...i
+                } = A;
+                return (0, a.jsx)(s.wv, {
+                    ref: e,
+                    className: c()("-mx-1 my-1 h-px bg-muted", t),
+                    ...i
+                })
+            }).displayName = s.wv.displayName
+        },
+        39438: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/ar.aa8340ef.svg",
+                height: 600,
+                width: 900,
+                blurWidth: 0,
+                blurHeight: 0
+            }
+        },
+        39598: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/en.73069aaa.svg",
+                height: 18,
+                width: 25,
+                blurWidth: 0,
+                blurHeight: 0
+            }
+        },
+        41002: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/jp.6070043e.png",
+                height: 18,
+                width: 25,
+                blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAG1BMVEX99vj//////f3///+1ABb////WZ4D////fb4oCB04PAAAAB3RSTlP+rdrU/dP9etEYJAAAAAlwSFlzAAALEwAACxMBAJqcGAAAACZJREFUeJxjYGRiZWZmZWJkYGdn4OAAkQzsbCwsbOwMCAZcCqYYABVOAMk1B4kxAAAAAElFTkSuQmCC",
+                blurWidth: 8,
+                blurHeight: 6
+            }
+        },
+        41354: A => {
+            A.exports = {
+                body: "social_media_body__B9piW"
+            }
+        },
+        42117: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/burger_open.3dbbd404.svg",
+                height: 24,
+                width: 24,
+                blurWidth: 0,
+                blurHeight: 0
+            }
+        },
+        42890: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/nl.cc2937a2.png",
+                height: 18,
+                width: 25,
+                blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAJFBMVEUeQ4r87evp8PetGCSsGCStGCSrFyIdQorp8fgcQokqTpS2JTCf3fo6AAAACnRSTlPW/f3U09qtrfysI9OihgAAAAlwSFlzAAALEwAACxMBAJqcGAAAACVJREFUeJxjYGNlYWZmYWVj4IYCBkYoYGCCAA4GLihg4GQAA3YAHHUA+yDf4YwAAAAASUVORK5CYII=",
+                blurWidth: 8,
+                blurHeight: 6
+            }
+        },
+        47861: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/tr.6daca94f.svg",
+                height: 800,
+                width: 1200,
+                blurWidth: 0,
+                blurHeight: 0
+            }
+        },
+        51756: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/copy-trading-icon.e6b345f8.svg",
+                height: 42,
+                width: 42,
+                blurWidth: 0,
+                blurHeight: 0
+            }
+        },
+        52721: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "../_next/static/media/burger_close.5678f0ea.svg",
+                height: 24,
+                width: 24,
+                blurWidth: 0,
+                blurHeight: 0
+            }
+        },
+        60388: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                N_: () => s,
+                a8: () => r,
+                rd: () => d
+            });
+            var a = t(30981);
+            let i = (0, t(49984).A)({
+                    locales: ["en", "fr", "es", "ph", "hi", "hu", "cn", "cz", "jp", "id", "nl", "de", "it", "pt", "ro", "pl", "ar", "tr", "sk"],
+                    defaultLocale: "en"
+                }),
+                {
+                    Link: s,
+                    redirect: l,
+                    usePathname: r,
+                    useRouter: d,
+                    getPathname: n
+                } = (0, a.A)(i)
+        },
+        61186: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/automatic-trading-icon.738486c6.svg",
+                height: 42,
+                width: 42,
+                blurWidth: 0,
+                blurHeight: 0
+            }
+        },
+        65967: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                q: () => g
+            });
+            var a = t(95155),
+                i = t(41354),
+                s = t.n(i),
+                l = t(60388),
+                r = t(66766);
+            let d = {
+                    src: "/_next/static/media/telegram.cc2cb63b.svg",
+                    height: 37,
+                    width: 37,
+                    blurWidth: 0,
+                    blurHeight: 0
+                },
+                n = {
+                    src: "/_next/static/media/tg2.59bedd4b.svg",
+                    height: 37,
+                    width: 37,
+                    blurWidth: 0,
+                    blurHeight: 0
+                },
+                c = {
+                    src: "/_next/static/media/x.6ccecc72.svg",
+                    height: 37,
+                    width: 37,
+                    blurWidth: 0,
+                    blurHeight: 0
+                },
+                h = {
+                    src: "/_next/static/media/facebook.3703a271.svg",
+                    height: 37,
+                    width: 37,
+                    blurWidth: 0,
+                    blurHeight: 0
+                },
+                u = {
+                    src: "/_next/static/media/youtube.9fd27c5c.svg",
+                    height: 37,
+                    width: 37,
+                    blurWidth: 0,
+                    blurHeight: 0
+                };
+            var o = t(17012);
+            let g = () => {
+                var A, e, t, i, g;
+                let b = (0, o.A)(),
+                    m = [{
+                        src: c,
+                        alt: "Icon X",
+                        href: (null == b || null == (A = b.find(A => 3 === A.id)) ? void 0 : A.count) || ""
+                    }, {
+                        src: d,
+                        alt: "Icon Telegram",
+                        href: (null == b || null == (e = b.find(A => 9 === A.id)) ? void 0 : e.count) || ""
+                    }, {
+                        src: n,
+                        alt: "Icon Telegram",
+                        href: (null == b || null == (t = b.find(A => 10 === A.id)) ? void 0 : t.count) || ""
+                    }, {
+                        src: h,
+                        alt: "Icon Facebook",
+                        href: (null == b || null == (i = b.find(A => 12 === A.id)) ? void 0 : i.count) || ""
+                    }, {
+                        src: u,
+                        alt: "Icon Youtube",
+                        href: (null == b || null == (g = b.find(A => 13 === A.id)) ? void 0 : g.count) || ""
+                    }];
+                return b ? (0, a.jsx)("div", {
+                    className: s().body,
+                    children: m.map((A, e) => (0, a.jsx)(l.N_, {
+                        href: A.href,
+                        target: "_blank",
+                        children: (0, a.jsx)(r.default, {
+                            src: A.src,
+                            alt: A.alt
+                        })
+                    }, e))
+                }) : null
+            }
+        },
+        69858: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/zh.32582084.png",
+                height: 18,
+                width: 25,
+                blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAJFBMVEXuHCXwLSLtHCPvHCPuHCTtGCXuGiTuHyTvMiD3HSb8ixT9WR2XT06PAAAACXRSTlP9/q3U2v3U2tMIK88WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAALUlEQVR4nB2KMRIAIAyDSG2r0f//19OFASDmGt0ZnG3ZNpJUAPUJPP1TZPebLxjFAOl6D9RDAAAAAElFTkSuQmCC",
+                blurWidth: 8,
+                blurHeight: 6
+            }
+        },
+        79735: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/id.9fbe523b.png",
+                height: 18,
+                width: 25,
+                blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAIVBMVEX3VmfuXW3////9/f398/TuVWbtVWbsVWX98/T//f/9/f0hAGzwAAAAC3RSTlP++f6/+MzSp++fnqb0iToAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAkSURBVHicY2BnY2VlZWVjZ4ADRihg4GABAw4GJihg4GQGAy4ADxYAlGpNYkAAAAAASUVORK5CYII=",
+                blurWidth: 8,
+                blurHeight: 6
+            }
+        },
+        82853: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/hi.81fe0f8b.png",
+                height: 18,
+                width: 25,
+                blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAANlBMVEUNhgHn9Oq9san/mDD/mC7q9+3/ly2VlaH/9/H9li3/ly8NhgENhQK+y8C9yr//pD4fkxImmhkc4pTdAAAAD3RSTlPW/f3T2v2t/f3U062s/f1b3FbQAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAMElEQVR4nC3BCQ4AIAgDsKkg4Dn//1kTY4sqJaJJxf7gns2yOzQts5kUJHlIYuDpFy8NAav2fiBbAAAAAElFTkSuQmCC",
+                blurWidth: 8,
+                blurHeight: 6
+            }
+        },
+        89747: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/cz.c98556c9.png",
+                height: 18,
+                width: 25,
+                blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAASFBMVEX/+vr////3VF+/VXf4VmfuZHPQ1edDVqn+/f3uVWbqVGbG0OitVH71ZXD//f3tVWbuZHL//f3////9WGbc4PJfb7pXW6rIW343TxsOAAAAEnRSTlP3ysuk/PKm/MXGxPv69sui+aBZXHR9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAANUlEQVR4nB3BARKAIAgEwFNBQDMtLP//U6d2kYOq6nnhmfcHEKn4iRyNeTDe5UTkhBSLmVnfMnsBzrRXzYUAAAAASUVORK5CYII=",
+                blurWidth: 8,
+                blurHeight: 6
+            }
+        },
+        94052: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = function() {
+                for (var A = arguments.length, e = Array(A), t = 0; t < A; t++) e[t] = arguments[t];
+                return fetch(...e).then(A => A.json())
+            }
+        },
+        95700: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/fr.1a8b91b5.png",
+                height: 18,
+                width: 25,
+                blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAMFBMVEX///8EKljTFSrOARfmeYUAF0nOFCnLARYEKVb////9//8AFkjjeINvhJ1wg55yhqGhbpa+AAAAD3RSTlP+/v7+/v6t2q3U1NrT/dORApTzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAI0lEQVR4nGPg4Obj5OJhZ2NgZOVnYGBhZmJgZOXFYEClYIoBHRkBDyb3CuMAAAAASUVORK5CYII=",
+                blurWidth: 8,
+                blurHeight: 6
+            }
+        },
+        98407: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/pt.446aea28.svg",
+                height: 400,
+                width: 600,
+                blurWidth: 0,
+                blurHeight: 0
+            }
+        },
+        98608: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/it.3f86a570.svg",
+                height: 1e3,
+                width: 1500,
+                blurWidth: 0,
+                blurHeight: 0
+            }
+        },
+        98777: A => {
+            A.exports = {
+                body: "languages_body__GFhL4",
+                lang: "languages_lang__DRXOS"
+            }
+        },
+        98949: (A, e, t) => {
+            "use strict";
+            t.d(e, {
+                A: () => a
+            });
+            let a = {
+                src: "/_next/static/media/de.24643249.png",
+                height: 18,
+                width: 25,
+                blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAJFBMVEUAAADFAADkEgD/0QD/0QD/0QAAAADlEQD/0gD/0QD/zAAJAQBmeTZcAAAACnRSTlPW/f3U09qt/aytgtPh9AAAAAlwSFlzAAALEwAACxMBAJqcGAAAACVJREFUeJxjYGMAAzYGbihgYIQCBiYIYGfgggIGDlYWZmYWVk4AGCQA+x+Kb/cAAAAASUVORK5CYII=",
+                blurWidth: 8,
+                blurHeight: 6
+            }
+        }
+    }
+]);

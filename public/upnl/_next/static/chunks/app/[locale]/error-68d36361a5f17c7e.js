@@ -1,0 +1,85 @@
+(self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([
+    [8530], {
+        48724: (e, s, t) => {
+            "use strict";
+            t.r(s), t.d(s, {
+                default: () => c,
+                generateMetadata: () => o
+            });
+            var r = t(95155),
+                n = t(60388),
+                a = t(12115),
+                i = t(46206),
+                l = t(28225),
+                x = t(12108);
+            async function o() {
+                return {
+                    title: "500 - Emvios Limited"
+                }
+            }
+
+            function c(e) {
+                let {
+                    error: s,
+                    reset: t
+                } = e;
+                return (0, a.useEffect)(() => {
+                    console.error(s)
+                }, [s]), (0, r.jsxs)("div", {
+                    className: "wrapper",
+                    children: [(0, r.jsxs)(x.SessionProvider, {
+                        children: [" ", (0, r.jsx)(l.Header, {})]
+                    }), (0, r.jsx)("main", {
+                        children: (0, r.jsx)("div", {
+                            className: "main _container",
+                            children: (0, r.jsxs)("div", {
+                                className: "flex flex-col items-center gap-[30px] text-center ",
+                                children: [(0, r.jsxs)("div", {
+                                    className: "flex flex-col gap-[24px]",
+                                    children: [(0, r.jsx)("h1", {
+                                        className: "text-[64px] font-light text-[#00B2C8] leading-tight",
+                                        children: "500"
+                                    }), (0, r.jsxs)("div", {
+                                        className: "max-w-lg",
+                                        children: [(0, r.jsx)("h2", {
+                                            className: "text-[32px] font-light text-black mb-[16px]",
+                                            children: "Something went wrong"
+                                        }), (0, r.jsx)("p", {
+                                            className: "text-[18px] font-light text-[#666] leading-relaxed",
+                                            children: "Sorry about that! Something went wrong on our end. Our engineers are already working on fixing the issue."
+                                        })]
+                                    })]
+                                }), (0, r.jsxs)("div", {
+                                    className: "flex flex-col sm:flex-row gap-[24px] items-center",
+                                    children: [(0, r.jsx)("button", {
+                                        onClick: () => t(),
+                                        className: "px-[24px] py-[12px] bg-[#00B2C8] text-white rounded-[4px] font-medium hover:bg-[#01B091] transition-colors",
+                                        children: "Try Again"
+                                    }), (0, r.jsx)(n.N_, {
+                                        href: "/",
+                                        className: "px-[24px] py-[12px] border border-[#00B2C8] text-[#00B2C8] rounded-[4px] font-medium hover:bg-[#E4FAFC] transition-colors",
+                                        children: "Go Home"
+                                    })]
+                                }), (0, r.jsx)("div", {
+                                    className: "max-w-md text-[16px] text-[#666] leading-relaxed",
+                                    children: (0, r.jsx)("p", {
+                                        children: "If the problem persists, please contact our support team or try again later."
+                                    })
+                                })]
+                            })
+                        })
+                    }), (0, r.jsx)(i.Footer, {
+                        session: !1
+                    })]
+                })
+            }
+        },
+        78716: (e, s, t) => {
+            Promise.resolve().then(t.bind(t, 48724))
+        }
+    },
+    e => {
+        var s = s => e(e.s = s);
+        e.O(0, [3700, 9149, 5268, 6453, 3063, 6874, 4953, 1755, 5694, 7477, 2441, 3260, 2108, 3336, 9607, 8441, 1684, 7358], () => s(78716)), _N_E = e.O()
+    }
+]);
