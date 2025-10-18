@@ -239,51 +239,53 @@
 
             <thead class="border-b border-solid border-[#d9d9d9] bg-[#f3fbfc]">
                 <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
-                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">Date</th>
-                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">Login</th>
-                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">Amount invested $</th>
-                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">Bonus $</th>
+                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">Name</th>
+                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">User ID</th>
+                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">Email</th>
+                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">Level</th>
+                     <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">Sponsor</th>
+
                     <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">
                         <div class="flex justify-center items-center self-stretch gap-[16px]">
-                            <p>LVL</p>
+                            <p>Status</p>
                         </div>
                     </th>
                 </tr>
             </thead>
 
-            <tbody class="[&_tr:last-child]:border-0">
-                @forelse($level_summary as $row)
-                    <tr class="border-b border-solid border-[#d9d9d9]">
-                        <td class="text-center text-[13px] py-[12px]">
-                            {{ now()->format('d M Y') }}
-                        </td>
-                        <td class="text-center text-[13px] py-[12px]">
-                            {{ Auth::user()->username }}
-                        </td>
-                        <td class="text-center text-[13px] py-[12px]">
-                            {{ $row['total_amount'] }} $
-                        </td>
-                        <td class="text-center text-[13px] py-[12px] text-[#00b2c8] font-semibold">
-                            {{ number_format($row['total_income'], 2) }}
-                        </td>
-                        <td class="text-center text-[13px] py-[12px] font-bold text-[#303030]">
-                            {{ $row['level'] }}
-                        </td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="5" class="text-center py-[20px] text-[#8a8a8a]">
-                            No Available Data
-                        </td>
-                    </tr>
-                @endforelse
-            </tbody>
+           <tbody class="[&_tr:last-child]:border-0">
+    @if(count($direct_team) > 0)
+        @foreach ($direct_team as $value)
+            <tr class="border-b border-solid border-[#d9d9d9]">
+                <td class="text-center text-[13px] py-[12px]">{{ $value->name }}</td>
+                <td class="text-center text-[13px] py-[12px]">{{ $value->username }}</td>
+                <td class="text-center text-[13px] py-[12px]">{{ $value->email }}</td>
+                <td class="text-center text-[13px] py-[12px] text-[#00b2c8] font-semibold">
+                    {{ $value->level - Auth::user()->level }}
+                </td>
+                <td class="text-center text-[13px] py-[12px] font-bold text-[#303030]">
+                    {{ $value->sponsor_detail->username }}
+                </td>
+                <td class="text-center text-[13px] py-[12px] font-bold text-[#303030]">
+                    {{ $value->active_status }}
+                </td>
+            </tr>
+        @endforeach
+    @else
+        <tr>
+            <td colspan="6" class="text-center py-[20px] text-[#8a8a8a]">
+                No Available Data
+            </td>
+        </tr>
+    @endif
+</tbody>
+
 
         </table>
 
         @php
-            $currentPage = $level_summary->currentPage();
-            $lastPage = $level_summary->lastPage();
+            $currentPage = $direct_team->currentPage();
+            $lastPage = $direct_team->lastPage();
         @endphp
     </div>
 </div>
@@ -292,7 +294,7 @@
 <div class="affiliate_buttons_border__5Cqzo mt-auto flex justify-between">
     {{-- Prev Button --}}
     @if ($currentPage > 1)
-        <a href="{{ $level_summary->previousPageUrl() }}" class="button_border_body__yeuoF">Prev</a>
+        <a href="{{ $direct_team->previousPageUrl() }}" class="button_border_body__yeuoF">Prev</a>
     @else
         <button disabled class="button_border_body__yeuoF opacity-50 cursor-not-allowed">Prev</button>
     @endif
@@ -304,7 +306,7 @@
 
     {{-- Next Button --}}
     @if ($currentPage < $lastPage)
-        <a href="{{ $level_summary->nextPageUrl() }}" class="button_border_body__yeuoF">Next</a>
+        <a href="{{ $direct_team->nextPageUrl() }}" class="button_border_body__yeuoF">Next</a>
     @else
         <button disabled class="button_border_body__yeuoF opacity-50 cursor-not-allowed">Next</button>
     @endif
