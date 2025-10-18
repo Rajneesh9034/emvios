@@ -319,7 +319,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div
+                                            <!-- <div
                                                 class="automatictrading_currency__1bI5U">
                                                 <h5
                                                     class="flex justify-between text-[16px] font-[400] translate-y-[10px]">Currency
@@ -473,7 +473,7 @@
                                                             data-state="closed">?</span>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <form
                                             class="flex flex-col gap-[24px] flex-grow" form="investment-form"  id="cashSection" action="{{ route('user.deposit2') }}" method="post">
@@ -503,6 +503,11 @@
                                                                     class="all_tooltip_span__PapjN"
                                                                     data-state="closed">?</span></span><span id="info-amount">
                                                                100 - 500</span></div>
+                                                               <div
+                                                            class="strategy_calc__aOM6k"><span>Available Balance<span
+                                                                    class="all_tooltip_span__PapjN"
+                                                                    data-state="closed">?</span></span><span>
+                                                               {{ $balance }}</span></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -513,22 +518,24 @@
 
         <div class="relative">
            
-            <input 
-                type="number"
-                name="amount"
-                id="investmentAmount"
-                class="pl-8 pr-4 py-2 w-full border border-gray-300 rounded-xl 
-                       focus:border-blue-500 focus:ring-2 focus:ring-blue-400 
-                       transition duration-150 outline-none text-gray-800 text-base"
-                placeholder="Enter amount (e.g. 100)"
-                min="100"
-                max="500"
-                required
-            />
+           <input 
+    type="number"
+    name="amount"
+    id="investmentAmount"
+    style="border: 2px solid #00b2c8; border-radius: 6px; outline: none;"
+    class="pl-8 pr-4 py-2 w-full rounded-xl 
+           focus:ring-2 focus:ring-[#00b2c8]
+           transition duration-150 text-gray-800 text-base"
+    placeholder="Enter amount (e.g. 100)"
+    min="100"
+    max="500"
+    required
+/>
+
         </div>
 
         <small class="text-gray-500 text-xs italic">
-            Allowed range: 100 - 500
+            Allowed range: <span id="info-amount">100 - 500</span>
         </small>
     </div>
                                             <div class=" hidden">
@@ -600,7 +607,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div data-orientation="vertical">
+                            <!-- <div data-orientation="vertical">
                                 <div data-state="open"
                                     data-orientation="vertical"
                                     class="accordion_item">
@@ -1557,7 +1564,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </main>
                 </div>

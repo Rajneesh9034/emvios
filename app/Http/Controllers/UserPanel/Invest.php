@@ -65,9 +65,11 @@ class Invest extends Controller
         ]);
     }
 
+    $balance = round(Auth::user()->FundBalance(), 2);
     // ✅ Normal page load (HTML view)
     $this->data['data'] = $data;
     $this->data['selectedNetwork'] = $network;
+    $this->data['balance'] = $balance;
 
         $this->data['last_package'] = ($invest_check)?$invest_check->amount:0;
         $this->data['page'] = 'user.invest.Deposit';
@@ -111,25 +113,27 @@ class Invest extends Controller
       }
 
       $user = Auth::user();
+
       $password = $request->transaction_password;
 
 
       // date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
       // $plan = "1";
 
-      // $user_detail = User::where('username', $request->username)->orderBy('id', 'desc')->limit(1)->first();
+      $user_detail = User::where('username', $user->username)->orderBy('id', 'desc')->limit(1)->first();
+     
       // $invest_check = Investment::where('user_id', $user_detail->id)->where('status', '!=', 'Decline')->orderBy('id', 'desc')->limit(1)->first();
       // $invoice = substr(str_shuffle("0123456789"), 0, 7);
       $joining_amt = $request->amount;
      
 
+       $balance = round(Auth::user()->FundBalance(), 2);
 
+      // $last_package = ($invest_check) ? $invest_check->amount : 0;
 
-      $last_package = ($invest_check) ? $invest_check->amount : 0;
-
-      if ($last_package > 0 && $request->amount < 100) {
-        return Redirect::back()->withErrors(['Minimum Topup is 100 USDT.']);
-      }
+      // if ($last_package > 0 && $request->amount < 100) {
+      //   return Redirect::back()->withErrors(['Minimum Topup is 100 USDT.']);
+      // }
 
 
 
@@ -137,7 +141,12 @@ class Invest extends Controller
       $invoice = substr(str_shuffle("0123456789"), 0, 7);
 
 
-           $data = [
+
+      
+
+        if ($balance >= $request->amount) {
+          // $nextCycle =Carbon::parse(Date("Y-m-d H:i:s"))->addDays(10)->format('Y-m-d H:i:s');
+                      $data = [
             'orderId' => $invoice,
             'plan' => 1,
             'transaction_id' => md5(time() . rand()),
@@ -147,18 +156,13 @@ class Invest extends Controller
             'payment_mode' => 'USDT',
             'status' => 'Active',
             'sdate' => Date("Y-m-d"),
-            //  'next_date' =>$nextCycle,
+           //  'next_date' =>$nextCycle,
             'active_from' => $user->username,
             'walletType' => 1,
           ];
           $payment =  Investment::insert($data);
             $notify[] = ['success', 'user activation submitted successfully'];
           return redirect()->route('user.invest')->withNotify($notify);
-      if (Hash::check($password, $user->tpassword)) {
-
-        if ($balance >= $request->amount) {
-          // $nextCycle =Carbon::parse(Date("Y-m-d H:i:s"))->addDays(10)->format('Y-m-d H:i:s');
-
          
 
 
@@ -177,9 +181,7 @@ class Invest extends Controller
         } else {
           return Redirect::back()->withErrors(['Insufficient balance in your account.']);
         }
-      } else {
-        return Redirect::back()->withErrors(array('Invalid Transaction Password'));
-      }
+     
     } catch (\Exception $e) {
       Log::info('error here');
       Log::info($e->getMessage());

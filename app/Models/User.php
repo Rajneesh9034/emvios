@@ -53,9 +53,15 @@ class User extends Authenticatable
     } 
 
 
-    public function FundBalance()
+    // public function FundBalance()
+    // {
+    // $balance = (Auth::user()->buy_fundAmt->sum('amount')+Auth::user()->fundtranfered())-(Auth::user()->cashInvest()+Auth::user()->fundtranfer());
+    // return $balance;
+    // } 
+
+     public function FundBalance()
     {
-    $balance = (Auth::user()->buy_fundAmt->sum('amount')+Auth::user()->fundtranfered())-(Auth::user()->cashInvest()+Auth::user()->fundtranfer());
+    $balance = (Auth::user()->buy_fundAmt->sum('amount'))-(Auth::user()->cashInvest());
     return $balance;
     } 
 
