@@ -4307,7 +4307,7 @@
                     </a>
                     <a id="tour-referrals" target="_self"
                         class="sidebar_tab__XxMVJ" data-state="closed"
-                        href="{{ route('user.affialiate') }}">
+                        href="{{ route('user.level-team') }}">
                         <img alt="icon" loading="lazy" width="24"
                             height="25" decoding="async" data-nimg="1"
                             style="color:transparent"
@@ -4520,7 +4520,7 @@
                                             src="{{ asset('') }}upnl/_next/static/media/statistics_aush.3b35cbc8.svg"><span
                                             class="header_auth_text__dCMGD">Statistics</span></a><a
                                         class="header_auth_box__KuP7o"
-                                        href="/en/affiliate"><img alt="icon"
+                                        href="{{route('user.level-team')}}"><img alt="icon"
                                             loading="lazy" width="24"
                                             height="24" decoding="async"
                                             data-nimg="1"

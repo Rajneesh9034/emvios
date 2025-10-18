@@ -13,6 +13,8 @@ use Session;
 use Redirect;
 use Hash;
 use Validator;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class Team extends Controller
 {
@@ -73,51 +75,128 @@ class Team extends Controller
 
     }
 
-    public function LevelTeam(Request $request)
-    {
-      $user=Auth::user();
-      // print_r($user->username);die();
-      $ids=$this->my_level_team_count($user->id);
-
-
-      // print_r($ids);die;
-        $limit = $request->limit ? $request->limit : paginationLimit();
-            $status = $request->status ? $request->status : null;
-            $search = $request->search ? $request->search : null;
-            // $notes = User::where('sponsor',$user->username);
-          $notes = User::where(function($query) use($ids)
+ public function LevelTeam(Request $request)
 {
-  if(!empty($ids)){
-    foreach ($ids as $key => $value) {
-    //   $f = explode(",", $value);
-    //   print_r($f)."<br>";
-      $query->orWhere('id', $value);
+    $user = Auth::user();
+    $levels = $this->my_level_team_count($user->id);
+
+    $level_summary = [];
+
+    // Step 1: Build level summary (user count, income, total amount)
+    foreach ($levels as $level => $user_ids) {
+        if (!empty($user_ids)) {
+            $user_count = count($user_ids);
+
+            $total_income = DB::table('incomes')
+                ->whereIn('user_id', $user_ids)
+                ->sum('comm');
+
+            $total_amount = DB::table('incomes')
+                ->whereIn('user_id', $user_ids)
+                ->sum('amt');
+
+            $level_summary[] = [
+                'level' => $level,
+                'user_count' => $user_count,
+                'total_income' => $total_income,
+                'total_amount' => $total_amount,
+            ];
+        }
     }
-  }else{$query->where('id',null);}
-})->orderBy('id', 'DESC');
-       if($search <> null && $request->reset!="Reset"){
-        $notes = $notes->where(function($q) use($search){
-          $q->orWhere('name', 'LIKE', '%' . $search . '%')
-          ->orWhere('username', 'LIKE', '%' . $search . '%')
-          ->orWhere('email', 'LIKE', '%' . $search . '%')
-          ->orWhere('phone', 'LIKE', '%' . $search . '%')
-          ->orWhere('jdate', 'LIKE', '%' . $search . '%')
-          ->orWhere('active_status', 'LIKE', '%' . $search . '%');
-        });
 
-      }
-            $notes = $notes->paginate($limit)
-                ->appends([
-                    'limit' => $limit
-                ]);
-
-        $this->data['direct_team'] =$notes;
-        $this->data['search'] =$search;
-        $this->data['page'] = 'user.team.level-team';
-        return $this->dashboard_layout();
-
+    // Step 2: Top 10 level income
+    $top10_level_income = [];
+    foreach ($levels as $level => $user_ids) {
+        if ($level <= 10 && !empty($user_ids)) {
+            $income = DB::table('incomes')
+                ->whereIn('user_id', $user_ids)
+                ->sum('comm');
+            $top10_level_income[$level] = $income;
+        }
     }
-    
+
+    // Step 3: Manual pagination for level_summary array
+    $page = $request->get('page', 1);
+    $perPage = 10;
+    $offset = ($page - 1) * $perPage;
+
+    $level_summary_paginated = new \Illuminate\Pagination\LengthAwarePaginator(
+        array_slice($level_summary, $offset, $perPage, true),
+        count($level_summary),
+        $perPage,
+        $page,
+        ['path' => $request->url(), 'query' => $request->query()]
+    );
+
+    // Step 4: Paginate users
+    $ids = [];
+    foreach ($levels as $arr) {
+        $ids = array_merge($ids, $arr);
+    }
+
+    $limit = $request->limit ? $request->limit : paginationLimit();
+    $search = $request->search ?? null;
+
+    $notes = User::whereIn('id', $ids)
+        ->when($search, function ($q) use ($search) {
+            $q->where('name', 'LIKE', "%$search%")
+                ->orWhere('username', 'LIKE', "%$search%")
+                ->orWhere('email', 'LIKE', "%$search%")
+                ->orWhere('phone', 'LIKE', "%$search%");
+        })
+        ->orderBy('id', 'DESC')
+        ->paginate($limit)
+        ->appends(['limit' => $limit]);
+
+    // Step 5: Team total investment
+    $team_total_investment = DB::table('incomes')
+        ->whereIn('user_id', $ids)
+        ->sum('amt');
+
+    // Step 6: Logged-in user total investment
+    $user_total_investment = DB::table('incomes')
+        ->where('user_id', $user->id)
+        ->sum('amt');
+
+      $level_income_total = $user->level_income();
+$tolteam = $this->my_level_team_count($user->id);
+
+// flatten nested array
+$all_team_ids = [];
+foreach ($tolteam as $arr) {
+    if (is_array($arr)) {
+        $all_team_ids = array_merge($all_team_ids, $arr);
+    }
+}
+
+// remove duplicates just in case
+$all_team_ids = array_unique($all_team_ids);
+
+$total_teams = User::whereIn('id', $all_team_ids)->count();
+$total_team = User::whereIn('id', $all_team_ids)
+                  ->where('active_status', 'Active')
+                  ->count();
+
+
+    // Step 7: Pass all data to view
+    $this->data['level_income_total'] = $level_income_total;
+
+    $this->data['direct_team'] = $notes;
+    $this->data['level_summary'] = $level_summary_paginated;
+    $this->data['top10_level_income'] = $top10_level_income;
+    $this->data['team_total_investment'] = $team_total_investment;
+    $this->data['user_total_investment'] = $user_total_investment;
+       $this->data['total_team'] =$total_team;
+       
+        $this->data['total_teams'] =$total_teams;
+    $this->data['search'] = $search;
+    $this->data['page'] = 'user.affialiate';
+
+    return $this->dashboard_layout();
+}
+
+
+
     
         public function leftteam(Request $request)
     {  

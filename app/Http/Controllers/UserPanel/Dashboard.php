@@ -30,6 +30,8 @@ class Dashboard extends Controller
     {
 
       $user=Auth::user();
+            $level_income_total = $user->level_income();
+
       $user_direct=User::where('sponsor',$user->id)->where('active_status','Active')->count();
       $directIds=User::where('sponsor',$user->id)->where('active_status','Active')->pluck('id');
       $personal_deposit=Investment::where('user_id',$user->id)->where('status','Active')->sum('amount');
@@ -45,6 +47,7 @@ class Dashboard extends Controller
       $totalIncome = Income::where('user_id',$user->id)->sum('comm');
 
         $transaction_data = Income::where('user_id',$user->id)->orderBy('id', 'desc')->take(10)->get();
+         $total_teams=User::whereIn('id',(!empty($tolteam)?$tolteam:array()))->count();
 
          $total_team=User::whereIn('id',(!empty($tolteam)?$tolteam:array()))->where('active_status','Active')->count();
          $totalBusiness=Investment::whereIn('user_id',(!empty($tolteam)?$tolteam:array()))->where('status','Active')->sum('amount');
@@ -60,6 +63,9 @@ class Dashboard extends Controller
             $this->data['total_team'] =$total_team;
         $this->data['transaction_data'] =$transaction_data;
         $this->data['totalBusiness'] =$totalBusiness;
+        $this->data['total_teams'] =$total_teams;
+    $this->data['level_income_total'] = $level_income_total;
+
         $this->data['deposit_report'] =$deposit_report;
         $this->data['user_direct'] =$user_direct;
         $total = $personal_deposit*200/100;

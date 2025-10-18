@@ -79,6 +79,12 @@ class User extends Authenticatable
         return $amt;
     }
 
+ public function level_income()
+{
+    return Income::where('user_id', Auth::id())
+                 ->where('remarks', 'Level Bonus')
+                 ->sum('comm');
+}
 
     public function workingInvest(){
         $amt= Investment::where('active_from',Auth::user()->username)->where('walletType',2)->sum('working_amt');
@@ -110,7 +116,7 @@ class User extends Authenticatable
         
     public function level_bonus()
     {
-        return $this->hasMany('App\Models\Income','user_id','id')->where('remarks','Farming Profit');
+        return $this->hasMany('App\Models\Income','user_id','id')->where('remarks','Level Bonus');
     } 
       
     public function trading_profit()

@@ -9,25 +9,25 @@
                     <div class="dashboard_counter__HAxjg">
                         <div class="diagram_auth_stats__ulx7W">
                             <div class="flex  items-center     gap-[16px]"><img alt="icon" loading="lazy" width="24" height="25" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/invested.d3a751a8.svg" style="color: transparent;">
-                                <p class="  text-[14px] font-[400]  uppercase text-[#828282]">Working Wallet</p>
+                                <p class="  text-[14px] font-[400]  uppercase text-[#828282]">Level Bonus</p>
                             </div>
-                            <p class="   font-[400]  ">{{ currency() }}{{ number_format(Auth::user()->investment->sum('amount'), 2) }}</p>
+                            <p class="   font-[400]  ">{{ currency() }}{{ number_format($level_income_total, 2) }}</p>
                         </div>
                     </div>
                     <div class="dashboard_counter__HAxjg">
                         <div class="diagram_auth_stats__ulx7W">
                             <div class="flex  items-center     gap-[16px]"><img alt="icon" loading="lazy" width="24" height="25" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/invested.d3a751a8.svg" style="color: transparent;">
-                                <p class="  text-[14px] font-[400]  uppercase text-[#828282]">Reward Wallet</p>
+                                <p class="  text-[14px] font-[400]  uppercase text-[#828282]">Total Active Team</p>
                             </div>
-                            <p class="   font-[400]  ">{{ currency() }}{{ number_format(Auth::user()->investment->sum('amount'), 2) }}</p>
+                            <p class="   font-[400]  ">{{$total_team}}</p>
                         </div>
                     </div>
                     <div class="dashboard_counter__HAxjg">
                         <div class="diagram_auth_stats__ulx7W">
                             <div class="flex  items-center     gap-[16px]"><img alt="icon" loading="lazy" width="24" height="25" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/invested.d3a751a8.svg" style="color: transparent;">
-                                <p class="  text-[14px] font-[400]  uppercase text-[#828282]">Cash Wallet</p>
+                                <p class="  text-[14px] font-[400]  uppercase text-[#828282]">Inactive Team</p>
                             </div>
-                            <p class="   font-[400]  ">{{ currency() }}{{ number_format(Auth::user()->investment->sum('amount'), 2) }}</p>
+                            <p class="   font-[400]  ">{{$total_teams }}</p>
                         </div>
                     </div>
                 </div>
