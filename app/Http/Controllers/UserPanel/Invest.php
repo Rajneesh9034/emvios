@@ -28,7 +28,7 @@ class Invest extends Controller
         $userInfo = auth()->user();
     $refId = $userInfo->username;
 
-    $network = $request->network ?? 'BSC'; // default BSC
+    $network = 'BSC'; // default BSC
     $networkMap = [
         'BSC'  => 'bep20',
         'Tron' => 'trc20',
@@ -66,10 +66,14 @@ class Invest extends Controller
     }
 
     $balance = round(Auth::user()->FundBalance(), 2);
+    $address = $data['address_in'] ?? '';
+ $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($address);
+
     // ✅ Normal page load (HTML view)
     $this->data['data'] = $data;
     $this->data['selectedNetwork'] = $network;
     $this->data['balance'] = $balance;
+    $this->data['qr_code'] = $qrCodeUrl;
 
         $this->data['last_package'] = ($invest_check)?$invest_check->amount:0;
         $this->data['page'] = 'user.invest.Deposit';
@@ -103,6 +107,7 @@ class Invest extends Controller
       $validation =  Validator::make($request->all(), [
         'amount' => 'required|numeric|min:160',
         // 'paymentMode' => 'required',
+        'username' => 'required|exists:users,username'
       
       ]);
 
@@ -120,7 +125,7 @@ class Invest extends Controller
       // date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
       // $plan = "1";
 
-      $user_detail = User::where('username', $user->username)->orderBy('id', 'desc')->limit(1)->first();
+      $user_detail = User::where('username', $request->username)->orderBy('id', 'desc')->limit(1)->first();
      
       // $invest_check = Investment::where('user_id', $user_detail->id)->where('status', '!=', 'Decline')->orderBy('id', 'desc')->limit(1)->first();
       // $invoice = substr(str_shuffle("0123456789"), 0, 7);
@@ -167,16 +172,16 @@ class Invest extends Controller
 
 
 
-          // if ($user_detail->active_status == "Pending") {
-          //   $user_update = array('active_status' => 'Active', 'adate' => Date("Y-m-d H:i:s"), 'package' => $request->amount, 'rank' => 1);
-          //   User::where('id', $user_detail->id)->update($user_update);
-          // } else {
-          //   $total = $user_detail->package + $request->amount;
-          //   $user_update = array('active_status' => 'Active', 'package' => $total);
-          //   User::where('id', $user_detail->id)->update($user_update);
-          // }
+          if ($user_detail->active_status == "Pending") {
+            $user_update = array('active_status' => 'Active', 'adate' => Date("Y-m-d H:i:s"), 'package' => $request->amount, 'rank' => 1);
+            User::where('id', $user_detail->id)->update($user_update);
+          } else {
+            $total = $user_detail->package + $request->amount;
+            $user_update = array('active_status' => 'Active', 'package' => $total);
+            User::where('id', $user_detail->id)->update($user_update);
+          }
 
-          // add_direct_income($user_detail->id, $request->amount);
+          add_direct_income($user_detail->id, $request->amount);
         
         } else {
           return Redirect::back()->withErrors(['Insufficient balance in your account.']);
