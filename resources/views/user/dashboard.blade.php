@@ -231,7 +231,7 @@
                         <div class="flex flex-col gap-[24px]">
                             <p class="text-[12px]   ">Earn up to $ 60 000 by inviting friends. achieve turnover and receive instant bonuses</p>
                         </div><img alt="icon" loading="lazy" width="100" height="100" decoding="async" data-nimg="1" class=" flex-shrink-0 w-[100px] h-[100px] object-cover" src="{{ asset('') }}upnl/_next/static/media/rocket.webp" style="color: transparent;">
-                    </div><a class="text-[16px]" href="/en/affiliate"><button class="underline-button_body__JNXIx">
+                    </div><a class="text-[16px]" href="{{route('user.affialiate')}}"><button class="underline-button_body__JNXIx">
                             <div class="underline-button_circle__hshhT"><img alt="icon" loading="lazy" width="12" height="8" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/arrow.62791f30.svg" style="color: transparent;"></div>
                             <p class="underline-button_text__mcUAC">Invite friends</p>
                         </button></a>

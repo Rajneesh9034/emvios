@@ -9,7 +9,7 @@
                             <div class="page_info__mMC44">
                                 <h1 class="leading-[500]">Earn instant referral rewards</h1>
                             </div>
-                            <p>Use your voice to inspire crypto investors around the world. Become a Emvios affiliate
+                            <p>Use your voice to inspire crypto investors around the world. Become a Stakia affiliate
                                 and grow with the world&#x27;s leading automated crypto trading platform.</p><a
                                 href="registration.html"><button class="underline-button_body__JNXIx">
                                     <div class="underline-button_circle__hshhT"><img alt="icon" loading="lazy"
@@ -30,7 +30,7 @@
                         <div class="section_section_inner__yN108">
                             <div class="typography_body__M5DEr typography_h3__rNW9t">
                                 <h3 class="typography_title___zbQm">Create teams up to 10 levels deep</h3>
-                                <p class="typography_text__M0uXO">Every Emvios deposit activated by your referrals will
+                                <p class="typography_text__M0uXO">Every Stakia deposit activated by your referrals will
                                     bring you profit.</p>
                             </div>
                             <p class="  text-[28px] font-[500] text-center text-[#00B2C8]"><b>LVL 1-4:</b> 7%, 3%, 2%,

@@ -129,7 +129,58 @@
 
 
         <div class="self-stretch">
-            
+             <div class="flex justify-end border  h-[40px] ">
+                <a class="statistics_plan__DBm_J statistics_active__Rws_8" id="filter-toggle">
+                    Filter
+                </a>
+            </div>
+
+            <div id="filter-dropdown"
+                class="absolute right-0 mt-2  bg-white border border-gray-200 rounded-lg shadow-xl p-4 space-y-4 hidden z-50 transition-all duration-300">
+
+                <!-- Input -->
+                <form action="{{route('user.DepositHistory')}}" method="GET">
+                    <div>
+                        <input type="text" name="search"  value="{{ @$search }}"   style="border: 1px solid gray ;"
+                            placeholder="Type to filter..."
+                            class="border border-gray-300 rounded-md py-2 px-2   "
+                            id="filter-input" />
+                    </div>
+
+                    <!-- Buttons: Apply & Reset -->
+                    <div class="flex justify-between gap-3 " style="margin-top:10px;">
+                        <!-- Apply Button -->
+                        <button type="submit"
+                            class="flex-1  text-black font-medium py-2 rounded-md hover:bg-blue-700 transition" style="background-color: rgb(0 178 200);">
+                            Apply
+                        </button>
+
+                        <!-- Reset Button (styled like a button, but is a link) -->
+                        <a href="{{ route('user.DepositHistory') }}"
+                            class="flex-1 text-center bg-gray-200 text-gray-800 font-medium py-2 rounded-md hover:bg-gray-300 transition">
+                            Reset
+                        </a>
+                    </div>
+
+
+                </form>
+            </div>
+
+            <script>
+                const toggle = document.getElementById('filter-toggle');
+                const dropdown = document.getElementById('filter-dropdown');
+
+                toggle.addEventListener('click', () => {
+                    dropdown.classList.toggle('hidden');
+                });
+
+                // Optional: close dropdown when clicked outside
+                document.addEventListener('click', (e) => {
+                    if (!toggle.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.classList.add('hidden');
+                    }
+                });
+            </script>
             <div class="w-full rounded-[6px] border border-solid border-[#e6e6e6] overflow-x-auto">
                   <div
             class="flex overflow-hidden border border-solid rounded-[6px] border-[#e6e6e6]  h-[40px]">

@@ -263,6 +263,7 @@ class WithdrawRequest extends Controller
                 $q->Where("wdate", "LIKE", "%" . $search . "%")
                     ->orWhere("amount", "LIKE", "%" . $search . "%")
                     ->orWhere("status", "LIKE", "%" . $search . "%")
+                    ->orWhere("orderId", "LIKE", "%" . $search . "%")
                     ->orWhere("txn_id", "LIKE", "%" . $search . "%");
             });
         }

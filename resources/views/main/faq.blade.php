@@ -8,7 +8,7 @@
                         <div class="section_section_inner__yN108">
                             <div class="typography_body__M5DEr typography_h1___Y9O1">
                                 <h1 class="typography_title___zbQm">Our Commitment to Your Security</h1>
-                                <p class="typography_text__M0uXO">At Emvios, safeguarding your funds and personal
+                                <p class="typography_text__M0uXO">At Stakia, safeguarding your funds and personal
                                     information is our top priority. We adhere to the highest standards of security to
                                     ensure that your investments and data are protected at all times. Here’s how we keep
                                     your information safe and secure on our website and platform</p>
@@ -44,14 +44,14 @@
                                 height="450" decoding="async" data-nimg="1" style="color:transparent"
                                 srcSet="{{ asset('') }}main/assets/_next/0054.png 1x, {{ asset('') }}main/assets/_next/0054.png 2x" src="{{ asset('') }}main/assets/_next/0054.png" /></div>
                     </div>
-                </div><a class="security_button__w31UN" href="../pdf/Emvios_security_brief.pdf" target="_blank"><button
+                </div><a class="security_button__w31UN" href="../pdf/Stakia_security_brief.pdf" target="_blank"><button
                         type="submit" class="button_blue_body__xatTr">
                         <p>Security Brief</p>
                     </button></a>
                 <div class="_container">
                     <div class="typography_body__M5DEr typography_h2__axwib">
                         <h2 class="typography_title___zbQm">Advanced tools that meet standards</h2>
-                        <p class="typography_text__M0uXO">At Emvios, we leverage cutting-edge tools and technologies to
+                        <p class="typography_text__M0uXO">At Stakia, we leverage cutting-edge tools and technologies to
                             meet the highest standards of security, efficiency, and reliability.</p>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
                 <div class="_container">
                     <div class="typography_body__M5DEr typography_h2__axwib">
                         <h2 class="typography_title___zbQm">Our Comprehensive Fund Insurance Program</h2>
-                        <p class="typography_text__M0uXO">At Emvios, we understand the importance of protecting your
+                        <p class="typography_text__M0uXO">At Stakia, we understand the importance of protecting your
                             investments against unforeseen circumstances. That’s why we’ve developed a robust Fund
                             Insurance Program and pledged capital to cover potential losses. Here’s how our program
                             works:</p>

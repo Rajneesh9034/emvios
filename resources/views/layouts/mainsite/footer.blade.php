@@ -47,7 +47,7 @@
                             style="color:transparent"
                             src="{{ asset('') }}main/assets/_next/static/rectangle.46e38b08.svg"></div>
                 </div>
-                <div
+                <!-- <div
                     class="languages_body__GFhL4" type="button"
                     id="radix-«R5epnb»" aria-haspopup="menu"
                     aria-expanded="false" data-state="closed"><img
@@ -56,13 +56,13 @@
                         style="color:transparent"
                         src="{{ asset('') }}main/assets/_next/static/media/en.73069aaa.svg">
                     <p>en</p>
-                </div>
+                </div> -->
                 <div
                     class="footer_list__wrapper__lna1n">
                     <ul
                         class="footer_list__toMnc">
                         <h5
-                            class="footer_title__T0JgS">Emvios</h5><a
+                            class="footer_title__T0JgS">Stakia</h5><a
                             href="{{ route('about-us') }}">About</a><a
                             href="{{ route('news') }}">Referral</a><a
                             href="{{ route('help-center') }}">Copy Trading</a>
@@ -71,7 +71,7 @@
                     <ul
                         class="footer_list__toMnc">
                         <h5
-                            class="footer_title__T0JgS">Other links</h5><a href="/en/blog">Blog</a><a
+                            class="footer_title__T0JgS">Other links</h5><a
                             href="{{ route('login') }}">Login</a><a
                             href="{{ route('register') }}">Sign Up</a>
                     </ul>
@@ -84,17 +84,17 @@
                                     height="64.46666666666667"
                                     decoding="async" data-nimg="1"
                                     style="color:transparent"
-                                    src="{{ asset('') }}main/assets/_next/logo/svg/black.svg"></div>
+                                    src="{{ asset('') }}main/assets/_next/logo/stakia.png"></div>
                         </a><a
-                            href="mailto:support@emvios.net">
-                            <p>support@emvios.net</p><img
+                            href="mailto:support@stakia.net">
+                            <p>support@stakia.net</p><img
                                 alt="img" loading="lazy" width="48"
                                 height="48" decoding="async" data-nimg="1"
                                 style="color:transparent"
                                 src="{{ asset('') }}main/assets/_next/static/media/email.7b21cacf.svg">
                         </a><a
-                            href="https://t.me/emvios_support">
-                            <p>https://t.me/emvios_support</p><img
+                            href="#">
+                            <p>https://t.me/stakia</p><img
                                 alt=" wwimg" loading="lazy" width="48"
                                 height="48" decoding="async" data-nimg="1"
                                 src="{{ asset('') }}main/assets/_next/static/media/t_me.310b6e17.svg"
@@ -118,7 +118,7 @@
                         </a></ul>
                 </div>
                 <p
-                    class="footer_bottom__tQEWJ">© 2025 Emvios Limited. All
+                    class="footer_bottom__tQEWJ">© 2025 Stakia Limited. All
                     rights reserved</p>
             </div>
         </div>

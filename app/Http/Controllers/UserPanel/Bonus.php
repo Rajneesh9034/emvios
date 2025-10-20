@@ -161,9 +161,10 @@ class Bonus extends Controller
             // dd($notes);
            if($search <> null && $request->reset!="Reset"){
             $notes = $notes->where(function($q) use($search){
-              $q->Where('rname', 'LIKE', '%' . $search . '%')
+              $q->Where('remarks', 'LIKE', '%' . $search . '%')
               ->orWhere('ttime', 'LIKE', '%' . $search . '%')
               ->orWhere('level', 'LIKE', '%' . $search . '%')
+              ->orWhere('orderId', 'LIKE', '%' . $search . '%')
               ->orWhere('amt', 'LIKE', '%' . $search . '%')
               ->orWhere('comm', 'LIKE', '%' . $search . '%');
             });

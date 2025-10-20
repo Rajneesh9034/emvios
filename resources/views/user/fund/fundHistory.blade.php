@@ -179,7 +179,7 @@
                 <!-- Input -->
                 <form action="{{route('user.fundHistory')}}" method="GET">
                     <div>
-                        <input type="text" style="border: 1px solid gray ;"
+                        <input type="text" name="search"  value="{{ @$search }}"   style="border: 1px solid gray ;"
                             placeholder="Type to filter..."
                             class="border border-gray-300 rounded-md py-2 px-2   "
                             id="filter-input" />

@@ -44,6 +44,10 @@ Route::get('/transactionReport', [App\Http\Controllers\Cron::class, 'transaction
 Route::any('logout', [App\Http\Controllers\Login::class, 'logout'])->name('logout');
 Route::post('login', [App\Http\Controllers\Login::class, 'login'])->name('login');
 Route::get('forgot-password', [App\Http\Controllers\Login::class, 'forgot_password'])->name('forgot-password');
+
+Route::get('recovery-password', [App\Http\Controllers\Login::class, 'recovery_password'])->name('recovery-password');
+Route::post('/password-recovery-send', [App\Http\Controllers\Login::class, 'sendRecoveryEmail'])->name('password-recovery-send');
+
 Route::any('forgot_submit', [App\Http\Controllers\Login::class, 'forgot_password_submit'])->name('forgot_submit');
 Route::any('submitResetPassword', [App\Http\Controllers\Login::class, 'submitResetPassword'])->name('submitResetPassword');
 Route::any('verifyCode', [App\Http\Controllers\Login::class, 'verifyCode'])->name('verifyCode');

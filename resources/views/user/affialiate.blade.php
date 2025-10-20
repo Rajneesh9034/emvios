@@ -325,7 +325,7 @@
                                         <div
                                             class="flex justify-center items-center flex-grow flex-shrink py-[8px] px-[16px] w-full">
                                             <p
-                                                class="  text-[10px] flex-grow flex-shrink  text-[#7b7b7b]">https://www.emvios.net/registration/rameshk036</p>
+                                                class="  text-[10px] flex-grow flex-shrink  text-[#7b7b7b]"><input type="text"  id="myInput"  value="{{ $referralLink }}" readonly style="width:100%;"></p>
                                         </div>
                                         <div
                                             class="flex justify-center cursor-pointer flex-grow-0 flex-shrink-0 items-center self-stretch px-[16px] border-l border-r border-solid border-[#cecece]"><img
@@ -466,5 +466,7 @@
                 title="chat widget"></iframe>
             <div id="chat-bubble"></div>
         </div>
+
+        
     </body>
 </html>

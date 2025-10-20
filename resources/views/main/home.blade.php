@@ -10,7 +10,7 @@
                             class="section_section_inner__yN108"><button
                                 class="button_body__D7XnJ"
                                 style="background-color: rgb(228, 250, 252); color: rgb(0, 178, 200);">Welcome
-                                to Emvios</button>
+                                to Stakia</button>
                             <div
                                 class="page_info__mMC44">
                                 <h1
@@ -75,7 +75,7 @@
                             </div>
                             <p>Free
                                 up time for important things. Entrust your
-                                capital management to Emvios.</p><a
+                                capital management to Stakia.</p><a
                                 href="/en/registration"><button
                                     class="underline-button_body__JNXIx">
                                     <div
@@ -172,7 +172,7 @@
                                     Us</h3>
                                 <p
                                     class="typography_text__M0uXO">At
-                                    Emvios, we are dedicated to providing
+                                    Stakia, we are dedicated to providing
                                     secure, innovative, and user-friendly
                                     investment solutions to help you achieve
                                     your financial goals. Our high-yield
@@ -279,7 +279,7 @@
                                         Trading</h3>
                                     <p
                                         class="typography_text__M0uXO">Earn
-                                        passive income with Emvios automatic
+                                        passive income with Stakia automatic
                                         trading software. Leverage
                                         time-tested, ready-made high-yield
                                         strategies for optimal
@@ -383,7 +383,7 @@
                         <p
                             class="typography_text__M0uXO">Help your
                             audience learn more about crypto and give them
-                            the opportunity to earn more with Emvios
+                            the opportunity to earn more with Stakia
                             solutions!</p>
                     </div>
                     <div
@@ -439,7 +439,7 @@
                                     class="typography_text__M0uXO">Earn
                                     lifetime commissions on every activated
                                     product from
-                                    Emvios.</p>
+                                    Stakia.</p>
                             </div>
                         </div>
                     </div>
@@ -453,14 +453,14 @@
                             posts</h2>
                         <p
                             class="typography_text__M0uXO">Learn more about
-                            how Emvios works and stay up to date with the
+                            how Stakia works and stay up to date with the
                             latest cryptocurrency news.</p>
                     </div>
                     <div
                         class="page_posts__body__vuK3Q">
                         <div
                             class="page_card__VK51U  cursor-pointer"><img
-                                alt="Discover Smarter Crypto Investing with Emvios"
+                                alt="Discover Smarter Crypto Investing with Stakia"
                                 loading="lazy" width="500" height="500"
                                 decoding="async" data-nimg="1"
                                 class="page_post__image__gfGTm"
@@ -470,11 +470,11 @@
                             <p
                                 class="page_posts__text__roIxL">Discover
                                 Smarter Crypto Investing with
-                                Emvios</p>
+                                Stakia</p>
                         </div>
                         <div
                             class="page_card__VK51U  cursor-pointer"><img
-                                alt="Emvios Security" loading="lazy"
+                                alt="Stakia Security" loading="lazy"
                                 width="500" height="500" decoding="async"
                                 data-nimg="1"
                                 class="page_post__image__gfGTm"
@@ -482,7 +482,7 @@
                                 src="{{ asset('') }}main/assets/_next/image?url=http%3A%2F%2Fimages.ctfassets.net%2Fj0ne4m05wteo%2F3k1sU26SSQ59rBMrV7eCac%2Fd80b50faf30b121b415fc5fa477acfb6%2Faug_172.png&amp;w=1080&amp;q=75"
                                 style="color: transparent;">
                             <p
-                                class="page_posts__text__roIxL">Emvios
+                                class="page_posts__text__roIxL">Stakia
                                 Security</p>
                         </div>
                         <div
