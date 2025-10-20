@@ -154,8 +154,6 @@ public function fundHistory(Request $request)
 }
 
 
-
-
 public function index(Request $request)
 {
     $userInfo = auth()->user();

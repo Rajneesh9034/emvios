@@ -279,7 +279,7 @@
                     </a>
                     <a id="tour-referrals" target="_self"
                         class="sidebar_tab__XxMVJ" data-state="closed"
-                        href="{{ route('user.affialiate') }}">
+                        href="{{ route('user.level-team') }}">
                         <img alt="icon" loading="lazy" width="24"
                             height="25" decoding="async" data-nimg="1"
                             style="color:transparent"
@@ -389,9 +389,32 @@
                                         </div>
                                         <div data-state="closed" id="radix-«rg»" hidden="" role="region" aria-labelledby="radix-«rf»" data-orientation="vertical" class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down" style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"></div>
                                     </div>
-                                    <a class="header_auth_box__KuP7o" href="{{ route('user.fundHistory') }}"><img alt="icon" loading="lazy" width="24" height="24" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/statistics_aush.3b35cbc8.svg" style="color: transparent;"><span class="header_auth_text__dCMGD">Statistics</span></a><a class="header_auth_box__KuP7o" href="{{ route('user.affialiate') }}"><img alt="icon" loading="lazy" width="24" height="24" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/affiliate.069e1aaf.svg" style="color: transparent;"><span class="header_auth_text__dCMGD">Affiliate Program</span></a>
-                                    <a class="header_auth_box__KuP7o" href="{{route('user.profile')}}"><img alt="icon" loading="lazy" width="24" height="24" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/help_center.ba18b5e1.svg" style="color: transparent;"><span class="header_auth_text__dCMGD">Profile</span></a>
-                                    <a class="header_auth_box__KuP7o" href="{{route('logout')}}"><img alt="icon" loading="lazy" width="24" height="24" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/help_center.ba18b5e1.svg" style="color: transparent;"><span class="header_auth_text__dCMGD">Logout</span></a>
+                                    <a class="header_auth_box__KuP7o"
+                                        href="/en/statistics/all"><img
+                                            alt="icon" loading="lazy"
+                                            width="24" height="24"
+                                            decoding="async" data-nimg="1"
+                                            style="color:transparent"
+                                            src="{{ asset('') }}upnl/_next/static/media/statistics_aush.3b35cbc8.svg"><span
+                                            class="header_auth_text__dCMGD">Statistics</span></a><a
+                                        class="header_auth_box__KuP7o"
+                                        href="/en/affiliate"><img alt="icon"
+                                            loading="lazy" width="24"
+                                            height="24" decoding="async"
+                                            data-nimg="1"
+                                            style="color:transparent"
+                                            src="{{ asset('') }}upnl/_next/static/media/affiliate.069e1aaf.svg"><span
+                                            class="header_auth_text__dCMGD">Affiliate
+                                            Program</span></a><a
+                                        class="header_auth_box__KuP7o"
+                                        href="/en/helpcenter/what-is-emvios"><img
+                                            alt="icon" loading="lazy"
+                                            width="24" height="24"
+                                            decoding="async" data-nimg="1"
+                                            style="color:transparent"
+                                            src="{{ asset('') }}upnl/_next/static/media/help_center.ba18b5e1.svg"><span
+                                            class="header_auth_text__dCMGD">Help
+                                            Hub</span></a>
                                 </div>
                             </div>
                             <div class="header_auth_nav_mobile__icons__A_qcZ">
