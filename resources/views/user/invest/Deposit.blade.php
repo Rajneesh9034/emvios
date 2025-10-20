@@ -319,7 +319,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div
+                                            <!-- <div
                                                 class="automatictrading_currency__1bI5U">
                                                 <h5
                                                     class="flex justify-between text-[16px] font-[400] translate-y-[10px]">Currency
@@ -473,7 +473,7 @@
                                                             data-state="closed">?</span>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <form
                                             class="flex flex-col gap-[24px] flex-grow" form="investment-form"  id="cashSection" action="{{ route('user.deposit2') }}" method="post">
@@ -503,6 +503,11 @@
                                                                     class="all_tooltip_span__PapjN"
                                                                     data-state="closed">?</span></span><span id="info-amount">
                                                                100 - 500</span></div>
+                                                               <div
+                                                            class="strategy_calc__aOM6k"><span>Available Balance<span
+                                                                    class="all_tooltip_span__PapjN"
+                                                                    data-state="closed">?</span></span><span>
+                                                               {{ $balance }}</span></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -511,26 +516,52 @@
             Enter Investment Amount
         </label>
 
-        <div class="relative">
+        <div class="flex flex-col gap-2 w-full">
            
-            <input 
-                type="number"
-                name="amount"
-                id="investmentAmount"
-                class="pl-8 pr-4 py-2 w-full border border-gray-300 rounded-xl 
-                       focus:border-blue-500 focus:ring-2 focus:ring-blue-400 
-                       transition duration-150 outline-none text-gray-800 text-base"
-                placeholder="Enter amount (e.g. 100)"
-                min="100"
-                max="500"
-                required
-            />
+           <input 
+    type="number"
+    name="amount"
+    id="investmentAmount"
+    style="border: 2px solid #00b2c8; border-radius: 6px; outline: none;"
+    class="pl-8 pr-4 py-2 w-full rounded-xl 
+           focus:ring-2 focus:ring-[#00b2c8]
+           transition duration-150 text-gray-800 text-base"
+    placeholder="Enter amount (e.g. 100)"
+    min="100"
+    max="500"
+    required
+/>
+
         </div>
 
-        <small class="text-gray-500 text-xs italic">
-            Allowed range: 100 - 500
-        </small>
+        <div class="text-gray-500 text-xs italic strategy_active__7Shf9 " >
+            Allowed range: <span id="info-amount2">100 - 500</span>
+                                                                </div>
     </div>
+
+    <div class="flex flex-col gap-2">
+    <label for="userName" class="text-sm font-semibold text-gray-700">
+        Enter Username
+    </label>
+
+    <div class="relative">
+        <input 
+            type="text"
+    name="username"
+    id="username"
+    style="border: 2px solid #00b2c8; border-radius: 6px; outline: none;"
+    class="pl-8 pr-4 py-2 w-full rounded-xl 
+           focus:ring-2 focus:ring-[#00b2c8]
+           transition duration-150 text-gray-800 text-base"
+    placeholder="Enter Username"
+   
+    required
+        />
+    </div>
+
+   
+</div>
+
                                             <div class=" hidden">
                                                 <div><input type="hidden"
                                                         name="cf-turnstile-response"
@@ -538,7 +569,7 @@
                                                         value="0.zASrVlKqB0nj14uzJwlSbIWRva0C2iJjd1Zbh1Mp6qM7ZzbMvkKCdQOI4WnTgUYnCZn7o18l02npzqhFxoCk3J9p4xDX4mPDSLk9nMtdMF7MwAjUZGyNZM5hU_nUz_Y2SD84H1nZzEg_AmgnyE6pIvpFrN5DdV2Goo9h_8o9xbazqFB5Vuw1anOL5svEbYPM_MgEt8GLFUYpwN-oIPikTZgL367J9a0Uq0FDQx5_7oh2mcIeG73EplR1nPf-WprdMd4k49GzDOPYmhPTBpWdHPsmOk7yg2JiETlYXZ3285a-z7sX3QQDf3qrGL-9ZxklC3IBXrxF7jAOvIW46_lleq3VfCR_7_sQTpysBLl9O2k3HyPJDgZMIPjGgG8W_KFW40NCB6YPOujifa6ccsSrGVXnJpHU967IBxsBf3wvKjGZgyDr78hxRMsaPdvn70k9q6p1v3S25-44Ezli7n5EMqdN-QdEIF6VtPgw7UXXgBPBlJbWm9CRCT9wVUmzqOp31Mu8yEL4j1QEcCE90UI9C857TEhPQfcXRe1Hy0mfs79TjENoJGpJ8ar8MHn6SGkKBushD1fvUX6DdH8WmYR5mtdg4KR3mnzWBsBzZqRlHi82NUwXIt5rFaXficDAWaA4KZgHvZQot4hm4GrCLJjJrW3LW1OFAiVHtTmo5YwDHnl-MNVfMeyZqML6pyJWfGg4RvHP3e7EVBB83JaUOeN1hIxUQ9FOYUl09oFJgUZQubwK6eH6JZzMzC1pM99Xc0kPs2iRu8IpNueefywKsj1ZTcpd4ezG6R2q-JaQ5bZwzxgEWeoj8i9nDG7_TMLoAMBDjUVmZgQcLb99F03gKiyNzZy1IE5C3Zl44xGmvTP4ARdY_R4VVLhdQi0Puv7MKT05q2xBHuEKztJew7A5V2ARQTBp_PKWx2_ay4_Fl7HBcXVIeZupj4diarl8pPTmH_6l.n7E9uPCb5vpLRBh6rMQqcQ.87f752dc2b76160ea680a1b7df9cfe33042eb1a3604505ffdc26b699d3b530c9"></div>
                                             </div>
                                             <div
-                                                class="automatictrading_button__6bjPy">
+                                                class="automatictrading_button__6bjPy pt-4">
                                                 <button type="submit"
                                                     class="button_blue_body__xatTr">
                                                     <p>Activate</p>
@@ -567,15 +598,38 @@
         <!-- QR Code Section -->
          <div class="flex flex-col items-center gap-3">
             <!-- 🔹 Network Selector -->
-            <select id="network-select" class="border rounded-md px-3 py-2 text-sm">
+            <!-- <select id="network-select" class="border rounded-md px-3 py-2 text-sm">
                 <option value="BSC" selected>BSC</option>
                 <option value="Tron">TRX</option>
-            </select>
+            </select> -->
 
             <!-- 🔹 QR Code Box -->
-             <div class="p-2 border rounded-md flex justify-center items-center">
-                <img id="qrImage" src="" alt="QR Code" width="150" height="150" class="rounded-md" />
-            </div>
+          <div class="p-2 border rounded-md flex flex-col items-center gap-2">
+    <!-- 🔹 QR Code -->
+    <img id="qrImage" src="{{ $qr_code }}" alt="QR Code" width="150" height="150" class="rounded-md" />
+
+    <!-- 🔹 Address Input with Copy Icon -->
+    <div class="relative w-48">
+        <input 
+            type="text" 
+            id="walletAddress" 
+            value="{{ $data['address_in'] ?? '' }}" 
+            readonly 
+            class="border rounded-md px-3 py-2 w-full text-sm pr-8 text-center"
+        />
+        <button 
+            type="button" 
+            onclick="copyAddress()" 
+            class="absolute right-1 top-1/2 transform -translate-y-1/2 p-1 text-gray-500 hover:text-[#00b2c8] transition"
+        >
+            <!-- Small Copy Icon SVG -->
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3h8v4m-4 4v6m-4-6h8m-6 0h.01M6 21h12a2 2 0 002-2V7a2 2 0 00-2-2h-3.5a1.5 1.5 0 01-3 0H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+        </button>
+    </div>
+</div>
+
         </div>
     </div>
 
@@ -590,7 +644,7 @@
                                                         value="0.zASrVlKqB0nj14uzJwlSbIWRva0C2iJjd1Zbh1Mp6qM7ZzbMvkKCdQOI4WnTgUYnCZn7o18l02npzqhFxoCk3J9p4xDX4mPDSLk9nMtdMF7MwAjUZGyNZM5hU_nUz_Y2SD84H1nZzEg_AmgnyE6pIvpFrN5DdV2Goo9h_8o9xbazqFB5Vuw1anOL5svEbYPM_MgEt8GLFUYpwN-oIPikTZgL367J9a0Uq0FDQx5_7oh2mcIeG73EplR1nPf-WprdMd4k49GzDOPYmhPTBpWdHPsmOk7yg2JiETlYXZ3285a-z7sX3QQDf3qrGL-9ZxklC3IBXrxF7jAOvIW46_lleq3VfCR_7_sQTpysBLl9O2k3HyPJDgZMIPjGgG8W_KFW40NCB6YPOujifa6ccsSrGVXnJpHU967IBxsBf3wvKjGZgyDr78hxRMsaPdvn70k9q6p1v3S25-44Ezli7n5EMqdN-QdEIF6VtPgw7UXXgBPBlJbWm9CRCT9wVUmzqOp31Mu8yEL4j1QEcCE90UI9C857TEhPQfcXRe1Hy0mfs79TjENoJGpJ8ar8MHn6SGkKBushD1fvUX6DdH8WmYR5mtdg4KR3mnzWBsBzZqRlHi82NUwXIt5rFaXficDAWaA4KZgHvZQot4hm4GrCLJjJrW3LW1OFAiVHtTmo5YwDHnl-MNVfMeyZqML6pyJWfGg4RvHP3e7EVBB83JaUOeN1hIxUQ9FOYUl09oFJgUZQubwK6eH6JZzMzC1pM99Xc0kPs2iRu8IpNueefywKsj1ZTcpd4ezG6R2q-JaQ5bZwzxgEWeoj8i9nDG7_TMLoAMBDjUVmZgQcLb99F03gKiyNzZy1IE5C3Zl44xGmvTP4ARdY_R4VVLhdQi0Puv7MKT05q2xBHuEKztJew7A5V2ARQTBp_PKWx2_ay4_Fl7HBcXVIeZupj4diarl8pPTmH_6l.n7E9uPCb5vpLRBh6rMQqcQ.87f752dc2b76160ea680a1b7df9cfe33042eb1a3604505ffdc26b699d3b530c9"></div>
                                             </div>
                                             <div
-                                                class="automatictrading_button__6bjPy">
+                                                class="automatictrading_button__6bjPy pt-4">
                                                 <button type="submit"
                                                     class="button_blue_body__xatTr">
                                                     <p>Activate</p>
@@ -600,7 +654,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div data-orientation="vertical">
+                            <!-- <div data-orientation="vertical">
                                 <div data-state="open"
                                     data-orientation="vertical"
                                     class="accordion_item">
@@ -1557,7 +1611,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </main>
                 </div>
@@ -1599,6 +1653,7 @@
    
     const infoProfit1 = document.getElementById('info-profit1');
     const infoAmount1 = document.getElementById('info-amount1');
+    const infoAmount2 = document.getElementById('info-amount2');
      plans.forEach(plan => {
         plan.addEventListener('click', () => {
             // Remove active class from all
@@ -1613,6 +1668,7 @@
             infoAmount.textContent = plan.dataset.amount;
             
             infoName1.textContent = plan.dataset.name;
+            infoAmount2.textContent = plan.dataset.amount;
            
             infoProfit1.textContent = plan.dataset.profit;
             infoAmount1.textContent = plan.dataset.amount;
@@ -1648,7 +1704,7 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-<script>
+<!-- <script>
     console.log("hi");
 document.addEventListener("DOMContentLoaded", function() {
     const networkSelect = document.getElementById("network-select");
@@ -1695,7 +1751,19 @@ document.addEventListener("DOMContentLoaded", function() {
     networkSelect.addEventListener("change", function() {
         fetchNetworkData(this.value);
     });
-});
+}); -->
+<!-- </script> -->
+
+<script>
+function copyAddress() {
+    const addressInput = document.getElementById('walletAddress');
+    addressInput.select();
+    addressInput.setSelectionRange(0, 99999); // mobile support
+
+    navigator.clipboard.writeText(addressInput.value)
+        .then(() => alert('Address copied to clipboard!'))
+        .catch(err => console.error('Failed to copy:', err));
+}
 </script>
 
 
