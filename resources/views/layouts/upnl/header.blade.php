@@ -290,7 +290,7 @@
                                 Program</p>
                         </div>
                     </a>
-                    <a target="_blank" class="sidebar_tab__XxMVJ"
+                    <!-- <a target="_blank" class="sidebar_tab__XxMVJ"
                         data-state="closed"
                         href="/en/helpcenter/what-is-emvios">
                         <img alt="icon" loading="lazy" width="24"
@@ -302,7 +302,7 @@
                                 class="text-[13px] text-center uppercase">Help
                                 Hub</p>
                         </div>
-                    </a>
+                    </a> -->
                 </div>
             </div>
             <div class="flex-1">
@@ -405,7 +405,8 @@
                                             style="color:transparent"
                                             src="{{ asset('') }}upnl/_next/static/media/affiliate.069e1aaf.svg"><span
                                             class="header_auth_text__dCMGD">Affiliate
-                                            Program</span></a><a
+                                            Program</span></a>
+                                            <!-- <a
                                         class="header_auth_box__KuP7o"
                                         href="/en/helpcenter/what-is-emvios"><img
                                             alt="icon" loading="lazy"
@@ -414,7 +415,7 @@
                                             style="color:transparent"
                                             src="{{ asset('') }}upnl/_next/static/media/help_center.ba18b5e1.svg"><span
                                             class="header_auth_text__dCMGD">Help
-                                            Hub</span></a>
+                                            Hub</span></a> -->
                                 </div>
                             </div>
                             <div class="header_auth_nav_mobile__icons__A_qcZ">

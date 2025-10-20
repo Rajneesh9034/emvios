@@ -59,7 +59,7 @@
                         Turnover</p>
                 </div>
                 <p class="   font-medium  text-[18px]">
-                    $<!-- --> <!-- -->{{$team_total_investment}}
+                    {{$team_total_investment}}
                 </p>
             </div>
             <div class="affiliate_stats__0_vLi bg-white">
@@ -75,7 +75,7 @@
                         Income</p>
                 </div>
                 <p class="   font-medium  text-[18px]">
-                    $<!-- --> <!-- -->  {{ number_format($level_income_total, 2) }}
+                    $<!-- --> <!-- --> {{ number_format($level_income_total, 2) }}
 
 
                 </p>
@@ -132,28 +132,28 @@
                         </p>
                         <p
                             class=" ml-[4px] text-[12px] font-semibold  ">
-                            ${{ number_format($user_total_investment, 2) }} 
+                            ${{ number_format($user_total_investment, 2) }}
                         </p>
                     </div>
                 </div>
                 <div class="affiliate_list__G_zC9">
-                               @forelse($top10_level_income as $level => $income)
-    <div class="flex flex-col justify-center items-center gap-[4px]">
-        <img alt="icon" loading="lazy"
-            width="24" height="25"
-            decoding="async" data-nimg="1"
-            style="color:transparent"
-            src="{{ asset('') }}upnl/_next/static/media/cup.c63b524d.svg">
-        <p class="text-[10px] font-[400] text-black leading-[1.5]">
-            Level {{ $level }}
-        </p>
-        <p class="text-[12px] text-black">
-            {{ number_format($income, 2) }} $
-        </p>
-    </div>
-@empty
-    <p class="text-center text-gray-500">No Level Income Data Found</p>
-@endforelse
+                    @forelse($top10_level_income as $level => $income)
+                    <div class="flex flex-col justify-center items-center gap-[4px]">
+                        <img alt="icon" loading="lazy"
+                            width="24" height="25"
+                            decoding="async" data-nimg="1"
+                            style="color:transparent"
+                            src="{{ asset('') }}upnl/_next/static/media/cup.c63b524d.svg">
+                        <p class="text-[10px] font-[400] text-black leading-[1.5]">
+                            Level {{ $level }}
+                        </p>
+                        <p class="text-[12px] text-black">
+                            {{ number_format($income, 2) }} $
+                        </p>
+                    </div>
+                    @empty
+                    <p class="text-center text-gray-500">No Level Income Data Found</p>
+                    @endforelse
 
                 </div>
                 <div
@@ -233,84 +233,84 @@
             Statistics</h2>
         <div class="affiliate_table__lSTWG">
             <div class="flex flex-col flex-grow">
-              <div class="overflow-x-auto min-h-[350px] bg-white">
-    <div class="relative w-full">
-        <table class="w-full caption-bottom text-sm">
+                <div class="overflow-x-auto min-h-[350px] bg-white">
+                    <div class="relative w-full">
+                        <table class="w-full caption-bottom text-sm">
 
-            <thead class="border-b border-solid border-[#d9d9d9] bg-[#f3fbfc]">
-                <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
-                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">Name</th>
-                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">User ID</th>
-                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">Email</th>
-                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">Level</th>
-                     <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">Sponsor</th>
+                            <thead class="border-b border-solid border-[#d9d9d9] bg-[#f3fbfc]">
+                                <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">Name</th>
+                                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">User ID</th>
+                                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">Email</th>
+                                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">Level</th>
+                                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">Sponsor</th>
 
-                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">
-                        <div class="flex justify-center items-center self-stretch gap-[16px]">
-                            <p>Status</p>
-                        </div>
-                    </th>
-                </tr>
-            </thead>
+                                    <th class="text-[12px] font-light text-center text-[#303030] h-[73px] px-[16px] align-middle">
+                                        <div class="flex justify-center items-center self-stretch gap-[16px]">
+                                            <p>Status</p>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
 
-           <tbody class="[&_tr:last-child]:border-0">
-    @if(count($direct_team) > 0)
-        @foreach ($direct_team as $value)
-            <tr class="border-b border-solid border-[#d9d9d9]">
-                <td class="text-center text-[13px] py-[12px]">{{ $value->name }}</td>
-                <td class="text-center text-[13px] py-[12px]">{{ $value->username }}</td>
-                <td class="text-center text-[13px] py-[12px]">{{ $value->email }}</td>
-                <td class="text-center text-[13px] py-[12px] text-[#00b2c8] font-semibold">
-                    {{ $value->level - Auth::user()->level }}
-                </td>
-                <td class="text-center text-[13px] py-[12px] font-bold text-[#303030]">
-                    {{ $value->sponsor_detail->username }}
-                </td>
-                <td class="text-center text-[13px] py-[12px] font-bold text-[#303030]">
-                    {{ $value->active_status }}
-                </td>
-            </tr>
-        @endforeach
-    @else
-        <tr>
-            <td colspan="6" class="text-center py-[20px] text-[#8a8a8a]">
-                No Available Data
-            </td>
-        </tr>
-    @endif
-</tbody>
+                            <tbody class="[&_tr:last-child]:border-0">
+                                @if(count($direct_team) > 0)
+                                @foreach ($direct_team as $value)
+                                <tr class="border-b border-solid border-[#d9d9d9]">
+                                    <td class="text-center text-[13px] py-[12px]">{{ $value->name }}</td>
+                                    <td class="text-center text-[13px] py-[12px]">{{ $value->username }}</td>
+                                    <td class="text-center text-[13px] py-[12px]">{{ $value->email }}</td>
+                                    <td class="text-center text-[13px] py-[12px] text-[#00b2c8] font-semibold">
+                                        {{ $value->level - Auth::user()->level }}
+                                    </td>
+                                    <td class="text-center text-[13px] py-[12px] font-bold text-[#303030]">
+                                        {{ $value->sponsor_detail->username }}
+                                    </td>
+                                    <td class="text-center text-[13px] py-[12px] font-bold text-[#303030]">
+                                        {{ $value->active_status }}
+                                    </td>
+                                </tr>
+                                @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="6" class="text-center py-[20px] text-[#8a8a8a]">
+                                        No Available Data
+                                    </td>
+                                </tr>
+                                @endif
+                            </tbody>
 
 
-        </table>
+                        </table>
 
-        @php
-            $currentPage = $direct_team->currentPage();
-            $lastPage = $direct_team->lastPage();
-        @endphp
-    </div>
-</div>
+                        @php
+                        $currentPage = $direct_team->currentPage();
+                        $lastPage = $direct_team->lastPage();
+                        @endphp
+                    </div>
+                </div>
 
-{{-- ✅ Pagination Section --}}
-<div class="affiliate_buttons_border__5Cqzo mt-auto flex justify-between">
-    {{-- Prev Button --}}
-    @if ($currentPage > 1)
-        <a href="{{ $direct_team->previousPageUrl() }}" class="button_border_body__yeuoF">Prev</a>
-    @else
-        <button disabled class="button_border_body__yeuoF opacity-50 cursor-not-allowed">Prev</button>
-    @endif
+                {{-- ✅ Pagination Section --}}
+                <div class="affiliate_buttons_border__5Cqzo mt-auto flex justify-between">
+                    {{-- Prev Button --}}
+                    @if ($currentPage > 1)
+                    <a href="{{ $direct_team->previousPageUrl() }}" class="button_border_body__yeuoF">Prev</a>
+                    @else
+                    <button disabled class="button_border_body__yeuoF opacity-50 cursor-not-allowed">Prev</button>
+                    @endif
 
-    {{-- Page Info --}}
-    <span class="text-sm text-gray-700 font-medium">
-        Page {{ $currentPage }} of {{ $lastPage }}
-    </span>
+                    {{-- Page Info --}}
+                    <span class="text-sm text-gray-700 font-medium">
+                        Page {{ $currentPage }} of {{ $lastPage }}
+                    </span>
 
-    {{-- Next Button --}}
-    @if ($currentPage < $lastPage)
-        <a href="{{ $direct_team->nextPageUrl() }}" class="button_border_body__yeuoF">Next</a>
-    @else
-        <button disabled class="button_border_body__yeuoF opacity-50 cursor-not-allowed">Next</button>
-    @endif
-</div>
+                    {{-- Next Button --}}
+                    @if ($currentPage < $lastPage)
+                        <a href="{{ $direct_team->nextPageUrl() }}" class="button_border_body__yeuoF">Next</a>
+                        @else
+                        <button disabled class="button_border_body__yeuoF opacity-50 cursor-not-allowed">Next</button>
+                        @endif
+                </div>
 
             </div>
 
