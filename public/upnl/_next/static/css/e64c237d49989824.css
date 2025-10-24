@@ -1,9 +1,9 @@
-@font-face {
+/* @font-face {
     font-family: Inter;
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(/_next/static/media/ba9851c3c22cd980-s.woff2) format("woff2");
+    src: url(upnl/_next/static/media/ba9851c3c22cd980-s.woff2) format("woff2");
     unicode-range: u+0460-052f, u+1c80-1c8a, u+20b4, u+2de0-2dff, u+a640-a69f, u+fe2e-fe2f
 }
 
@@ -12,7 +12,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(/_next/static/media/21350d82a1f187e9-s.woff2) format("woff2");
+    src: url(upnl/_next/static/media/21350d82a1f187e9-s.woff2) format("woff2");
     unicode-range: u+0301, u+0400-045f, u+0490-0491, u+04b0-04b1, u+2116
 }
 
@@ -273,7 +273,7 @@
     font-display: swap;
     font-weight: 900;
     font-style: normal
-}
+} */
 
 @font-face {
     font-family: sofiaPro Fallback;

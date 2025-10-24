@@ -150,20 +150,21 @@ class Bonus extends Controller
 
     }
 
-
-    public function activitiesBonus(Request $request)
+    public function Bonus(Request $request)
     {
        $user=Auth::user();
 
           $limit = $request->limit ? $request->limit : paginationLimit();
             $status = $request->status ? $request->status : null;
             $search = $request->search ? $request->search : null;
-            $notes = Income::where('user_id',$user->id)->where('remarks','Activities Bonus')->orderBy('id', 'DESC');
+            $notes = Income::where('user_id',$user->id)->orderBy('id', 'DESC');
+            // dd($notes);
            if($search <> null && $request->reset!="Reset"){
             $notes = $notes->where(function($q) use($search){
-              $q->Where('rname', 'LIKE', '%' . $search . '%')
+              $q->Where('remarks', 'LIKE', '%' . $search . '%')
               ->orWhere('ttime', 'LIKE', '%' . $search . '%')
               ->orWhere('level', 'LIKE', '%' . $search . '%')
+              ->orWhere('orderId', 'LIKE', '%' . $search . '%')
               ->orWhere('amt', 'LIKE', '%' . $search . '%')
               ->orWhere('comm', 'LIKE', '%' . $search . '%');
             });
@@ -180,6 +181,35 @@ class Bonus extends Controller
 
 
     }
+    // public function activitiesBonus(Request $request)
+    // {
+    //    $user=Auth::user();
+
+    //       $limit = $request->limit ? $request->limit : paginationLimit();
+    //         $status = $request->status ? $request->status : null;
+    //         $search = $request->search ? $request->search : null;
+    //         $notes = Income::where('user_id',$user->id)->where('remarks','Activities Bonus')->orderBy('id', 'DESC');
+    //        if($search <> null && $request->reset!="Reset"){
+    //         $notes = $notes->where(function($q) use($search){
+    //           $q->Where('rname', 'LIKE', '%' . $search . '%')
+    //           ->orWhere('ttime', 'LIKE', '%' . $search . '%')
+    //           ->orWhere('level', 'LIKE', '%' . $search . '%')
+    //           ->orWhere('amt', 'LIKE', '%' . $search . '%')
+    //           ->orWhere('comm', 'LIKE', '%' . $search . '%');
+    //         });
+
+    //   }
+    //         $notes = $notes->paginate($limit)
+    //             ->appends([
+    //                 'limit' => $limit
+    //             ]);
+    //     $this->data['level_income'] =$notes;
+    //     $this->data['search'] =$search;
+    //     $this->data['page'] = 'user.bonus.activitiesBonus';
+    //     return $this->dashboard_layout();
+
+
+    // }
 
 
     public function gap_margin_bonus(Request $request)

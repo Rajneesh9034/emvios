@@ -21,7 +21,7 @@
                                 <p
                                     class="typography_text__M0uXO">Synergy
                                     of Comprehensive long-term strategies
-                                    from Emvios and the best cryptocurrency
+                                    from Stakia and the best cryptocurrency
                                     bots with high returns</p>
                             </div><a
                                 href="registration.html"><button
@@ -97,10 +97,10 @@
                         class="typography_body__M5DEr typography_h2__axwib">
                         <h2
                             class="typography_title___zbQm">No need to
-                            search for bots manually, use Emvios
+                            search for bots manually, use Stakia
                             packages</h2>
                         <p
-                            class="typography_text__M0uXO">Emvios developers
+                            class="typography_text__M0uXO">Stakia developers
                             have created ready-made solutions, copying the
                             best bots on the market, and connected them
                             together to packages to obtain maximum

@@ -51,7 +51,7 @@ class WithdrawRequest extends Controller
                 "payment" => "required|in:1,2",
                 "wallet" => "required",
             ]);
-
+            // dd($validation);
             if ($validation->fails()) {
                 Log::info($validation->getMessageBag()->first());
 
@@ -65,14 +65,14 @@ class WithdrawRequest extends Controller
             $balance = Auth::user()->stakingBalance();
             
             // dd($request->currency);
-            if ($request->currency == "USDT_BSC") {
+            if ($request->currency == "BSC") {
                 $account = $user->usdtBep20;
             } else {
                 $account = $user->usdtTrc20;
             }
 
             if ($balance >= $request->amount) {
-                if ($request->payment == 2 && $user->auto_withdrawal==1) {
+                if ($request->payment == 2 ) {
                     
                     
                   
@@ -95,7 +95,7 @@ class WithdrawRequest extends Controller
                             "Withdraw Request Already Exist !",
                         ]);
                     } else {
-                        if ($request->currency == "USDT_BSC") {
+                        if ($request->currency == "BSC") {
                             $paymentMode = "USDT_BSC";
                         } else {
                             $paymentMode = "USDT_TRX";
@@ -263,6 +263,7 @@ class WithdrawRequest extends Controller
                 $q->Where("wdate", "LIKE", "%" . $search . "%")
                     ->orWhere("amount", "LIKE", "%" . $search . "%")
                     ->orWhere("status", "LIKE", "%" . $search . "%")
+                    ->orWhere("orderId", "LIKE", "%" . $search . "%")
                     ->orWhere("txn_id", "LIKE", "%" . $search . "%");
             });
         }

@@ -32,8 +32,8 @@
                          <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                               <td class=""
                                   style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size:32px; vertical-align: top; color: #fff; font-weight: 500; text-align: center; display: block; border-radius: 3px 3px 0 0; background-color: #e8e8e8; margin: 0;text-shadow: 2px 2px #0100c9;font-weight: 700;text-shadow: 3px 1px 0px #c78283;font-size: 40px;margin-top: -40px;"
-                                  align="center" bgcolor="#71b6f9" valign="top">
-                                <p> <img style="width: 200px;height: 100px;" src="https://ia801205.us.archive.org/23/items/logo_20240120/logo.png" alt=""> </p>
+                                  align="center" bgcolor="#00b2c8" valign="top">
+                                <!-- <p> <img style="width: 200px;height: 100px;" src="{{ asset('') }}main/assets/_next/logo/stakia.png" alt=""> </p> -->
                               </td>
                           </tr>
                         <tr
@@ -50,7 +50,7 @@
                                             valign="top">
                                             Dear <strong
                                                 style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-                                                {{ $view_message['name'] }}</strong>
+                                              {{ $view_message['name'] }}  </strong>
                                         </td>
                                     </tr>
                                     <tr
@@ -83,9 +83,10 @@
                                             style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;"
                                             valign="top">
                                             <br>
-                                            <a href="#" class="btn-primary"
-                                                style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; color: #FFF; text-decoration: none; line-height: 2em; font-weight: bold; text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background-color: #ed8e7b; margin: 0; border-color: #ed8e7b; border-style: solid; border-width: 8px 16px;">Recovery
-                                                code: {{ $view_message['code'] }} </a>
+<a href="{{ $view_message['reset_link'] }}" class="btn-primary"
+   style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; color: #FFF; text-decoration: none; line-height: 2em; font-weight: bold; text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background-color: #00b2c8; margin: 0; border-color: #00b2c8; border-style: solid; border-width: 8px 16px;">
+   🔐 Reset Your Password
+</a>
                                         </td>
                                     </tr>
                                     

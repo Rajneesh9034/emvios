@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Bank;
 use App\Models\UserLogin;
 use App\Models\PasswordReset;
+use Illuminate\Validation\Rules\Password;
+
 use Auth;
 use Log;
 use Redirect;
@@ -246,11 +248,20 @@ public function BankDetail()
 public function change_password_post(Request $request)
 {
     try {
-        $request->validate([
-            'old_password' => 'required',
-            'password' => 'required|confirmed',
-        ]);
-
+      
+    $request->validate([
+        'old_password' => ['required'],
+        'password' => [
+            'required',
+            'confirmed',
+            Password::min(6)                 // ✅ Min 6 characters
+                ->mixedCase()               // ✅ Upper & lower case
+                ->letters()                 // ✅ At least one letter
+                ->numbers()                 // ✅ At least one number
+                ->symbols()                 // ✅ At least one special character
+                ->uncompromised(),          // ✅ Reject common leaked passwords
+        ],
+    ]);
         $user = Auth::user();
 
         // Optional: Debug

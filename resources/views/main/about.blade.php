@@ -16,7 +16,7 @@
                         <div class="section_section_inner__yN108"><button style="background-color:#E4FAFC;color:#00B2C8"
                                 class="button_body__D7XnJ">About Us</button>
                             <div class="typography_body__M5DEr typography_h1___Y9O1">
-                                <h1 class="typography_title___zbQm">Get to Know About Emvios</h1>
+                                <h1 class="typography_title___zbQm">Get to Know About Stakia</h1>
                                 <p class="typography_text__M0uXO">We are dedicated to providing investors with secure,
                                     innovative, and user-friendly investment solutions that empower them to achieve
                                     their financial goals.</p>
@@ -55,10 +55,10 @@
                     </div>
                 </div>
                 <div class="flex sm:flex-row flex-col  gap-[36px] _container"><a class="about_button__k6vAF"
-                        href="../pdf/presentation/emvios-presentation-en.pdf" target="_blank"><button type="submit"
+                        href="../pdf/presentation/Stakia-presentation-en.pdf" target="_blank"><button type="submit"
                             class="button_blue_body__xatTr">
                             <p>Read Presentation</p>
-                        </button></a><a class="about_button__k6vAF" href="../pdf/whitepaper/Whitepaper-Emvios-en.pdf"
+                        </button></a><a class="about_button__k6vAF" href="../pdf/whitepaper/Whitepaper-Stakia-en.pdf"
                         target="_blank"><button type="submit" class="button_blue_body__xatTr">
                             <p>Whitepaper</p>
                         </button></a></div>
@@ -114,7 +114,7 @@
                                         src="{{ asset('') }}main/assets/_next/static/media/list.8e56fd6b.svg" /><a>No KYC required</a></p>
                                 <div class="accordion-content">
                                     <div class="accordion-inner">
-                                        <p>Maintain complete anonymity. Emvios works on smart contracts, which allows
+                                        <p>Maintain complete anonymity. Stakia works on smart contracts, which allows
                                             you to invest without KYC</p>
                                     </div>
                                 </div>
@@ -297,7 +297,7 @@
                     <div class="max-w-[363px] mx-auto">
                         <div class="typography_body__M5DEr typography_h2__axwib">
                             <h2 class="typography_title___zbQm">Roadmap</h2>
-                            <p class="typography_text__M0uXO">Explore all the stages of the Emvios formation and its
+                            <p class="typography_text__M0uXO">Explore all the stages of the Stakia formation and its
                                 upcoming plans</p>
                         </div>
                     </div>
@@ -312,7 +312,7 @@
                             <div class="flex items-center gap-[6px]"><img alt="icon" loading="lazy" width="21"
                                     height="21" decoding="async" data-nimg="1" style="color:transparent"
                                     src="{{ asset('') }}main/assets/_next/static/media/change_green.805bac21.svg" />
-                                <p class="text-black text-nowrap">Inception of the Emvios Ecosystem concept.</p>
+                                <p class="text-black text-nowrap">Inception of the Stakia Ecosystem concept.</p>
                             </div>
                             <div class="flex items-center gap-[6px]"><img alt="icon" loading="lazy" width="21"
                                     height="21" decoding="async" data-nimg="1" style="color:transparent"
@@ -342,7 +342,7 @@
                                     height="21" decoding="async" data-nimg="1" style="color:transparent"
                                     src="{{ asset('') }}main/assets/_next/static/media/change_green.805bac21.svg" />
                                 <p class="text-black text-nowrap">Setting up API gateways and connecting crypto wallets
-                                    to Emvios software.</p>
+                                    to Stakia software.</p>
                             </div>
                             <div class="flex items-center gap-[6px]"><img alt="icon" loading="lazy" width="21"
                                     height="21" decoding="async" data-nimg="1" style="color:transparent"
@@ -369,7 +369,7 @@
                             <div class="flex items-center gap-[6px]"><img alt="icon" loading="lazy" width="21"
                                     height="21" decoding="async" data-nimg="1" style="color:transparent"
                                     src="{{ asset('') }}main/assets/_next/static/media/change_green.805bac21.svg" />
-                                <p class="text-black text-nowrap">Official public launch of the Emvios platform
+                                <p class="text-black text-nowrap">Official public launch of the Stakia platform
                                     internationally.</p>
                             </div>
                             <div class="flex items-center gap-[6px]"><img alt="icon" loading="lazy" width="21"
@@ -382,7 +382,7 @@
                                     height="21" decoding="async" data-nimg="1" style="color:transparent"
                                     src="{{ asset('') }}main/assets/_next/static/media/change_green.805bac21.svg" />
                                 <p class="text-black text-nowrap">Onboarding of users and provision of educational
-                                    resources. Expanding the international Emvios community.</p>
+                                    resources. Expanding the international Stakia community.</p>
                             </div>
                             <div class="flex items-center gap-[6px]"><img alt="icon" loading="lazy" width="21"
                                     height="21" decoding="async" data-nimg="1" style="color:transparent"
@@ -394,7 +394,7 @@
                                     height="21" decoding="async" data-nimg="1" style="color:transparent"
                                     src="{{ asset('') }}main/assets/_next/static/media/change_orange.a294ad72.svg" />
                                 <p class="text-black text-nowrap">Expansion of the headquarters of specialists in the
-                                    field of artificial intelligence to refine the Emvios Crosschain trading strategy.
+                                    field of artificial intelligence to refine the Stakia Crosschain trading strategy.
                                 </p>
                             </div>
                             <div class="flex items-center gap-[6px]"><img alt="icon" loading="lazy" width="21"
@@ -429,7 +429,7 @@
                                     height="21" decoding="async" data-nimg="1" style="color:transparent"
                                     src="{{ asset('') }}main/assets/_next/static/media/change_orange.a294ad72.svg" />
                                 <p class="text-black text-nowrap">Monitoring the market and opportunities in the field
-                                    of artificial intelligence, improving the Emvios Crosschain product and
+                                    of artificial intelligence, improving the Stakia Crosschain product and
                                     implementation in partner companies</p>
                             </div>
                             <div class="flex items-center gap-[6px]"><img alt="icon" loading="lazy" width="21"
@@ -441,7 +441,7 @@
                             <div class="flex items-center gap-[6px]"><img alt="icon" loading="lazy" width="21"
                                     height="21" decoding="async" data-nimg="1" style="color:transparent"
                                     src="{{ asset('') }}main/assets/_next/static/media/change_orange.a294ad72.svg" />
-                                <p class="text-black text-nowrap">Expanding the Emvios ecosystem with new products,
+                                <p class="text-black text-nowrap">Expanding the Stakia ecosystem with new products,
                                     services and partners.</p>
                             </div>
                             <div class="flex items-center gap-[6px]"><img alt="icon" loading="lazy" width="21"
@@ -454,7 +454,7 @@
                                     height="21" decoding="async" data-nimg="1" style="color:transparent"
                                     src="{{ asset('') }}main/assets/_next/static/media/change_orange.a294ad72.svg" />
                                 <p class="text-black text-nowrap">Regulatory approvals in the countries of the European
-                                    Union for the implementation of Emvios Debit cards. Introduction of fiat
+                                    Union for the implementation of Stakia Debit cards. Introduction of fiat
                                     transactions within the platform</p>
                             </div>
                             <div class="flex items-center gap-[6px]"><img alt="icon" loading="lazy" width="21"
@@ -561,14 +561,14 @@
                                 decoding="async" data-nimg="1" style="color:transparent;object-fit:cover"
                                 srcSet="{{ asset('') }}main/assets/_next/office-5.png 1x, {{ asset('') }}main/assets/_next/office-5.png 2x"
                                 src="{{ asset('') }}main/assets/_next/office-5.png" /></div>
-                        <div class="about_collage_img__RWXhK"> <img alt="office" loading="lazy" width="500" height="500"
+                        <!-- <div class="about_collage_img__RWXhK"> <img alt="office" loading="lazy" width="500" height="500"
                                 decoding="async" data-nimg="1" style="color:transparent;object-fit:cover"
                                 srcSet="{{ asset('') }}main/assets/_next/office-2.png 1x, {{ asset('') }}main/assets/_next/office-2.png 2x"
                                 src="{{ asset('') }}main/assets/_next/office-2.png" /></div>
                         <div class="about_collage_img__RWXhK"> <img alt="office" loading="lazy" width="500" height="500"
                                 decoding="async" data-nimg="1" style="color:transparent;object-fit:cover"
                                 srcSet="{{ asset('') }}main/assets/_next/office-3.png 1x, {{ asset('') }}main/assets/_next/office-3.png 2x"
-                                src="{{ asset('') }}main/assets/_next/office-3.png" /></div>
+                                src="{{ asset('') }}main/assets/_next/office-3.png" /></div> -->
                     </div>
                 </div>
                 <div class="_container" style="max-width:1200px">
@@ -576,22 +576,22 @@
                         <div class="flex flex-col flex-1 justify-center gap-[16px]">
                             <p class="  text-[32px]  font-[400]">Legal information</p>
                             <p class="text-[18px]   ">Explore certificates, documents and audits from our partners
-                                proving the Emvios&#x27;s commitment to legality, transparency and efficiency</p>
+                                proving the Stakia&#x27;s commitment to legality, transparency and efficiency</p>
                         </div>
                         <div class="about_pdf__u86U5"><a target="_blank"
-                                href="../pdf/SOC2_Type_II_Audit_Emvios_Limited.pdf"
+                                href="../pdf/SOC2_Type_II_Audit_Stakia_Limited.pdf"
                                 class="flex  items-center flex-shrink-0   relative gap-[12px] px-[14px] py-[16px] rounded-[6px]  border border-solid border-[#cecece]"
                                 style="box-shadow:0px 0px 4.300000190734863px 0 rgba(0,0,0,0.1)"><img alt="icon"
                                     loading="lazy" width="27" height="32" decoding="async" data-nimg="1"
                                     style="color:transparent" src="{{ asset('') }}main/assets/_next/static/media/document_pdf.190f2d27.svg" />
                                 <p class="  text-[18px]   text-black">SOC2 Type II Audit</p>
-                            </a><a target="_blank" href="../pdf/ISO27001_Certification_Emvios_Limited.pdf"
+                            </a><a target="_blank" href="../pdf/ISO27001_Certification_Stakia_Limited.pdf"
                                 class="flex  items-center flex-shrink-0   relative gap-[12px] px-[14px] py-[16px] rounded-[6px]  border border-solid border-[#cecece]"
                                 style="box-shadow:0px 0px 4.300000190734863px 0 rgba(0,0,0,0.1)"><img alt="icon"
                                     loading="lazy" width="27" height="32" decoding="async" data-nimg="1"
                                     style="color:transparent" src="{{ asset('') }}main/assets/_next/static/media/document_pdf.190f2d27.svg" />
                                 <p class="  text-[18px]   text-black">ISO27001 Certification</p>
-                            </a><a target="_blank" href="../pdf/Certificate_of_incorporation_Emvios_Limited.pdf"
+                            </a><a target="_blank" href="../pdf/Certificate_of_incorporation_Stakia_Limited.pdf"
                                 class="flex  items-center flex-shrink-0   relative gap-[12px] px-[14px] py-[16px] rounded-[6px]  border border-solid border-[#cecece]"
                                 style="box-shadow:0px 0px 4.300000190734863px 0 rgba(0,0,0,0.1)"><img alt="icon"
                                     loading="lazy" width="27" height="32" decoding="async" data-nimg="1"
@@ -653,7 +653,7 @@
                             src="{{ asset('') }}main/assets/_next/blue1.png" />
                         <div
                             class="absolute z-10 top-0 left-0 w-full h-full flex justify-center items-center flex-col text-center gap-[48px]">
-                            <h3 class="font-normal text-[32px]">Join Emvios today!</h3>
+                            <h3 class="font-normal text-[32px]">Join Stakia today!</h3>
                             <p class="font-normal text-[24px]">Earn crypto around the clock with high-tech solutions</p>
                             <a class="font-normal text-xl flex items-center last:justify-center rounded py-0 px-[48px] h-[62px] bg-[#E4FAFC] text-black w-fit mx-auto hover:"
                                 href="registration.html">Sign Up</a>
@@ -667,7 +667,7 @@
                     <div class="trustpilot-widget my-10" data-locale="en-GB" data-template-id="56278e9abfbbba0bdcd568bc"
                         data-businessunit-id="68b7f084bc94b86a86ac7158" data-style-height="52px" data-style-width="100%"
                         data-token="03919f92-b6bb-4f5f-90ef-2fb8b86d283f"><a
-                            href="https://uk.trustpilot.com/review/emvios.net" target="_blank"
+                            href="https://uk.trustpilot.com/review/Stakia.net" target="_blank"
                             rel="noopener">Trustpilot</a></div><img alt="img" loading="lazy" width="1063" height="635"
                         decoding="async" data-nimg="1" style="color:transparent"
                         src="{{ asset('') }}main/assets/_next/static/media/map.f71d6840.svg" />
@@ -677,7 +677,7 @@
                         <div class="section_section_inner__yN108">
                             <div class="typography_body__M5DEr typography_h3__rNW9t">
                                 <h3 class="typography_title___zbQm">Secure &amp; Protected Investment Platform</h3>
-                                <p class="typography_text__M0uXO">Explore how Emvios implements top-tier security
+                                <p class="typography_text__M0uXO">Explore how Stakia implements top-tier security
                                     measures to safeguard your funds and personal information.</p>
                             </div><a href="security.html"><button class="underline-button_body__JNXIx">
                                     <div class="underline-button_circle__hshhT"><img alt="icon" loading="lazy"

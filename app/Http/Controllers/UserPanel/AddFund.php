@@ -131,8 +131,9 @@ public function fundHistory(Request $request)
     $notes = BuyFund::where('user_id',$user->id);
     if($search <> null && $request->reset!="Reset"){
     $notes = $notes->where(function($q) use($search){
-        $q->Where('user_id_fk', 'LIKE', '%' . $search . '%')
+        $q->Where('bdate', 'LIKE', '%' . $search . '%')
         ->orWhere('txn_no', 'LIKE', '%' . $search . '%')
+        ->orWhere('orderId', 'LIKE', '%' . $search . '%')
         ->orWhere('status', 'LIKE', '%' . $search . '%')
         ->orWhere('type', 'LIKE', '%' . $search . '%')
         ->orWhere('amount', 'LIKE', '%' . $search . '%');
@@ -151,8 +152,6 @@ public function fundHistory(Request $request)
     return $this->dashboard_layout();
 
 }
-
-
 
 
 public function index(Request $request)

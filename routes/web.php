@@ -44,6 +44,10 @@ Route::get('/transactionReport', [App\Http\Controllers\Cron::class, 'transaction
 Route::any('logout', [App\Http\Controllers\Login::class, 'logout'])->name('logout');
 Route::post('login', [App\Http\Controllers\Login::class, 'login'])->name('login');
 Route::get('forgot-password', [App\Http\Controllers\Login::class, 'forgot_password'])->name('forgot-password');
+
+Route::get('recovery-password', [App\Http\Controllers\Login::class, 'recovery_password'])->name('recovery-password');
+Route::post('/password-recovery-send', [App\Http\Controllers\Login::class, 'sendRecoveryEmail'])->name('password-recovery-send');
+
 Route::any('forgot_submit', [App\Http\Controllers\Login::class, 'forgot_password_submit'])->name('forgot_submit');
 Route::any('submitResetPassword', [App\Http\Controllers\Login::class, 'submitResetPassword'])->name('submitResetPassword');
 Route::any('verifyCode', [App\Http\Controllers\Login::class, 'verifyCode'])->name('verifyCode');
@@ -131,6 +135,7 @@ Route::any('/confirmDeposit_new', [App\Http\Controllers\UserPanel\Invest::class,
 Route::post('/Deposit2', [App\Http\Controllers\UserPanel\Invest::class, 'deposit2'])->name('user.deposit2');
 Route::get('/DepositHistory', [App\Http\Controllers\UserPanel\Invest::class, 'invest_list'])->name('user.DepositHistory');
 // withdraw
+
 Route::get('/debitReport', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'debitReport'])->name('user.debitReport');
 Route::get('/Withdraw', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'index'])->name('user.Withdraw');
 Route::get('/withdraw_request', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'withdraw_request'])->name('user.withdraw_request');
@@ -155,8 +160,9 @@ Route::any('/UsrBinaryReport',[App\Http\Controllers\UserPanel\BinaryReport::clas
 
 //bonus
 Route::get('/level-income', [App\Http\Controllers\UserPanel\Bonus::class, 'index'])->name('user.level-income');
-Route::get('/all-income', [App\Http\Controllers\UserPanel\Bonus::class, 'all_incomes'])->name('user.all-income');
-Route::get('/matching-bonus', [App\Http\Controllers\UserPanel\Bonus::class, 'cashback_income'])->name('user.matching-bonus');
+// Route::get('/all-income', [App\Http\Controllers\UserPanel\Bonus::class, 'all_incomes'])->name('user.all-income');
+// Route::get('/all-income', [App\Http\Controllers\UserPanel\Bonus::class, 'all_incomes'])->name('user.all-income');
+Route::get('/bonus', [App\Http\Controllers\UserPanel\Bonus::class, 'Bonus'])->name('user.bonus');
 Route::get('/reward-bonus', [App\Http\Controllers\UserPanel\Bonus::class, 'reward_income'])->name('user.reward-bonus');
 Route::get('/roi-bonus', [App\Http\Controllers\UserPanel\Bonus::class, 'roi_income'])->name('user.roi-bonus');
 Route::get('/dailyIncentive', [App\Http\Controllers\UserPanel\Bonus::class, 'dailyIncentive'])->name('user.dailyIncentive');
