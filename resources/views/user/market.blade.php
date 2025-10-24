@@ -73,7 +73,7 @@
   );
   </script>
 </div>
-<!-- TradingView Widget END -->  
+<!-- TradingViews Widget END -->  
 
                 </div>
             </div>
