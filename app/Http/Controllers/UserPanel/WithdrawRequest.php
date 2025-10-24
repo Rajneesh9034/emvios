@@ -14,6 +14,7 @@ use App\Models\CoinpaymentTransaction;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
 use Log;
 use Redirect;
 use Hash;
@@ -63,7 +64,7 @@ class WithdrawRequest extends Controller
             $user = Auth::user();
             $password = $request->transaction_password;
             $balance = Auth::user()->stakingBalance();
-            
+
             // dd($request->currency);
             if ($request->currency == "BSC") {
                 $account = $user->usdtBep20;
@@ -72,20 +73,19 @@ class WithdrawRequest extends Controller
             }
 
             if ($balance >= $request->amount) {
-                if ($request->payment == 2 ) {
-                    
-                    
-                  
-                    if($user->active_status=="Inactive")
-                    {
+                if ($request->payment == 2) {
+
+
+
+                    if ($user->active_status == "Inactive") {
                         return Redirect::back()->withErrors([
                             "Due to a settlement issue, your account has been deactivated. Please reactivate it by topping up your account. Otherwise, all your income and withdrawals will be put on hold",
-                        ]); 
+                        ]);
                     }
-                     
-                        
-                        
-                        
+
+
+
+
                     $user_detail = Withdraw::where("user_id", $user->id)
                         ->where("status", "Pending")
                         ->first();
@@ -100,21 +100,21 @@ class WithdrawRequest extends Controller
                         } else {
                             $paymentMode = "USDT_TRX";
                         }
-                        
-                        
+
+
                         $invoice = substr(str_shuffle("0123456789"), 0, 7);
                         if (!empty($account)) {
                             $data = [
                                 "txn_id" => md5(time() . rand()),
                                 "user_id" => $user->id,
-                                'orderId'=>$invoice,
+                                'orderId' => $invoice,
                                 "user_id_fk" => $user->username,
                                 "amount" => $request->amount,
                                 "account" => $account,
                                 "payment_mode" => $paymentMode,
                                 "status" => "Pending",
-                                'netAmt' =>$request->amount-$request->amount*10/100,
-                                'charge' =>$request->amount*10/100,
+                                'netAmt' => $request->amount - $request->amount * 10 / 100,
+                                'charge' => $request->amount * 10 / 100,
                                 "walletType" => $request->payment,
                                 "wdate" => Date("Y-m-d"),
                             ];
@@ -122,15 +122,15 @@ class WithdrawRequest extends Controller
 
                             $withdraw_id = $payment["id"];
 
-                            $netAmt =$request->amount-($request->amount * 10)/100;
-                            $apiURL ="https://plisio.net/api/v1/operations/withdraw";
+                            $netAmt = $request->amount - ($request->amount * 10) / 100;
+                            $apiURL = "https://plisio.net/api/v1/operations/withdraw";
                             $postInput = [
                                 "currency" => $paymentMode,
                                 "amount" => $netAmt,
                                 "type" => "cash_out",
                                 "to" => $account,
                                 "api_key" =>
-                                    "_sCJaOONwTnmkMPZJXyubjqoOwsx7d6I2_7JMCHelakspOSzDZJW4OaAXO5yLOIO",
+                                "_sCJaOONwTnmkMPZJXyubjqoOwsx7d6I2_7JMCHelakspOSzDZJW4OaAXO5yLOIO",
                             ];
 
                             $headers = [
@@ -176,8 +176,8 @@ class WithdrawRequest extends Controller
                         } else {
                             return Redirect::back()->withErrors([
                                 "Please Update Your " .
-                                $request->paymentMode .
-                                " Payment address",
+                                    $request->paymentMode .
+                                    " Payment address",
                             ]);
                         }
                     }
@@ -201,13 +201,13 @@ class WithdrawRequest extends Controller
                             $data = [
                                 "txn_id" => md5(time() . rand()),
                                 "user_id" => $user->id,
-                                'orderId'=>$invoice,
+                                'orderId' => $invoice,
                                 "user_id_fk" => $user->username,
                                 "amount" => $request->amount,
                                 "account" => $account,
                                 "payment_mode" => $paymentMode,
-                                'netAmt' =>$request->amount-$request->amount*5/100,
-                                'charge' =>$request->amount*5/100,
+                                'netAmt' => $request->amount - $request->amount * 5 / 100,
+                                'charge' => $request->amount * 5 / 100,
                                 "status" => "Approved",
                                 "walletType" => 1,
                                 "wdate" => Date("Y-m-d"),
@@ -225,8 +225,8 @@ class WithdrawRequest extends Controller
                         } else {
                             return Redirect::back()->withErrors([
                                 "Please Update Your " .
-                                $request->paymentMode .
-                                " Payment address",
+                                    $request->paymentMode .
+                                    " Payment address",
                             ]);
                         }
                     }
@@ -254,6 +254,9 @@ class WithdrawRequest extends Controller
         $limit = $request->limit ? $request->limit : paginationLimit();
         $status = $request->status ? $request->status : null;
         $search = $request->search ? $request->search : null;
+        $startDate = $request->start_date ?? null;
+        $endDate = $request->end_date ?? null;
+
         $notes = Withdraw::where("user_id", $user->id)->orderBy(
             "wdate",
             "DESC"
@@ -267,8 +270,20 @@ class WithdrawRequest extends Controller
                     ->orWhere("txn_id", "LIKE", "%" . $search . "%");
             });
         }
-
-        $notes = $notes->paginate($limit)->appends(["limit" => $limit]);
+        // 📅 Date range filter
+        if (!empty($startDate) && !empty($endDate)) {
+            $notes->whereBetween(DB::raw('DATE(wdate)'), [$startDate, $endDate]);
+        } elseif (!empty($startDate)) {
+            $notes->whereDate(DB::raw('DATE(wdate)'), '>=', $startDate);
+        } elseif (!empty($endDate)) {
+            $notes->whereDate(DB::raw('DATE(wdate)'), '<=', $endDate);
+        }
+        $notes = $notes->paginate($limit)->appends([
+            "limit" => $limit,
+            'search' => $search,
+            'start_date' => $startDate,
+            'end_date' => $endDate,
+        ]);
 
         $this->data["search"] = $search;
         $this->data["withdraw_report"] = $notes;

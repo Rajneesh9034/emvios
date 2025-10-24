@@ -385,7 +385,10 @@ class Team extends Controller
     $limit = $request->limit ? $request->limit : paginationLimit();
     $status = $request->status ?? null;
     $search = $request->search ?? null;
+    $level = $request->level; // dropdown value
 
+
+ 
     // Use whereIn directly (clean & efficient)
     $notesQuery = User::whereIn('id', $all_ids)
       ->orderBy('id', 'DESC');
@@ -396,11 +399,15 @@ class Team extends Controller
           ->orWhere('username', 'LIKE', '%' . $search . '%')
           ->orWhere('email', 'LIKE', '%' . $search . '%')
           ->orWhere('phone', 'LIKE', '%' . $search . '%')
+          ->orWhere('level', 'LIKE', '%' . $search . '%')
           ->orWhere('jdate', 'LIKE', '%' . $search . '%')
           ->orWhere('active_status', 'LIKE', '%' . $search . '%');
       });
     }
-
+    // ✅ Level filter — matches users.level exactly
+    if (!empty($level)) {
+        $notesQuery->where('level', $level);
+    }
     $notes = $notesQuery->paginate($limit)
       ->appends(['limit' => $limit]);
 

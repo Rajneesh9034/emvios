@@ -1,4 +1,91 @@
 <main>
+    <style>
+        .reset {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #a9abad;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .my-accordion {
+            width: 100%;
+            margin: 0 5px 5px 5px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .my-accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgb(0 178 200);
+            color: #fff;
+            padding: 12px 16px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .my-accordion-arrow {
+            transition: transform 0.5s ease;
+        }
+
+        .my-accordion-header.active .my-accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        .my-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 16px;
+            background: #fff;
+            border-top: 1px solid #ccc;
+        }
+
+        .my-accordion-content.show {
+            max-height: 500px;
+            padding: 16px;
+        }
+
+        .my-filter-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .my-filter-form input,
+        .my-filter-form select {
+            flex: 1;
+            padding: 8px 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .my-filter-form button {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .my-apply-btn {
+            background-color: rgb(0 178 200);
+            color: #fff;
+        }
+
+        .my-reset-btn {
+            background-color: #6c757d;
+            color: #fff;
+        }
+    </style>
+
+
     <div class="main_auth _container"
         style="max-width:1200px">
         <div class="breadcrumbAuth_breadcrumb__Log0f">
@@ -203,18 +290,24 @@
                 <div class="affiliate_copy__g3p7Q">
                     <div
                         class="flex justify-center items-center flex-grow flex-shrink py-[8px] px-[16px] w-full">
-                        <p
-                            class="  text-[10px] flex-grow flex-shrink  text-[#7b7b7b]">https://www.emvios.net/registration/rameshk036</p>
+                        <p id="referralInput"
+                            class="  text-[10px] flex-grow flex-shrink  text-[#7b7b7b]">{{route('register')}}/?ref={{ Auth::user()->username }}</p>
                     </div>
                     <div
-                        class="flex justify-center cursor-pointer flex-grow-0 flex-shrink-0 items-center self-stretch px-[16px] border-l border-r border-solid border-[#cecece]"><img
-                            alt="copy" loading="lazy"
-                            width="24" height="24"
-                            decoding="async" data-nimg="1"
-                            class="flex-grow-0 basis-[24px] flex-shrink-0"
-                            style="color:transparent"
-                            src="{{ asset('') }}upnl/_next/static/media/copy.5437ca74.svg"></div>
-                    <div
+                        class="flex justify-center cursor-pointer flex-grow-0 flex-shrink-0 items-center self-stretch px-[16px] border-l border-r border-solid border-[#cecece]">
+                        </button>
+                        <button type="submit" id="copyBtn">
+
+                            <img
+                                alt="copy" loading="lazy"
+                                width="24" height="24"
+                                decoding="async" data-nimg="1"
+                                class="flex-grow-0 basis-[24px] flex-shrink-0"
+                                style="color:transparent"
+                                src="{{ asset('') }}upnl/_next/static/media/copy.5437ca74.svg">
+                        </button>
+                    </div>
+                    <!-- <div
                         class="flex flex-grow-0 cursor-pointer flex-shrink-0 justify-center items-center self-stretch px-[16px]"
                         type="button" aria-haspopup="dialog"
                         aria-expanded="false"
@@ -225,12 +318,70 @@
                             data-nimg="1"
                             class="flex-grow-0 basis-[24px] flex-shrink-0"
                             src="{{ asset('') }}upnl/_next/static/media/scanner.20b02b84.svg"
-                            style="color: transparent;"></div>
+                            style="color: transparent;"></div> -->
                 </div>
             </div>
         </div>
         <h2 class="affiliate_title__rWL6F">Referral
             Statistics</h2>
+
+
+        <div class="my-accordion">
+            <div class="my-accordion-header" onclick="toggleMyAccordion(this)">
+                <span class="my-accordion-title"
+                    style="display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 500; color: #fff;">
+
+                    <!-- Filter Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        width="18" height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        style="margin-top: 1px;">
+                        <path d="M22 3H2l7.5 9.5V21l5.5-3.5V12.5L22 3z" />
+                    </svg>
+
+                    <span>Filters</span>
+                </span>
+
+                <span class="my-accordion-arrow">▼</span>
+            </div>
+
+            <div class="my-accordion-content">
+                <form class="my-filter-form" method="GET" action="{{ route('user.level-team') }}">
+                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search..." style="height: 40px; padding: 6px 8px; font-size: 12px; border: 1px solid #ccc; border-radius: 4px;" />
+
+                    <select name="level" style="height: 40px; padding: 6px 8px; font-size: 12px; border: 1px solid #ccc; border-radius: 4px;">
+                        <option value="">All Levels</option>
+                        <option value="1" {{ request('level') == 1 ? 'selected' : '' }}>Level 1</option>
+                        <option value="2" {{ request('level') == 2 ? 'selected' : '' }}>Level 2</option>
+                        <option value="3" {{ request('level') == 3 ? 'selected' : '' }}>Level 3</option>
+
+                    </select>
+
+                    <select name="limit" style="height: 40px; padding: 6px 8px; font-size: 12px; border: 1px solid #ccc; border-radius: 4px;">
+                        <option value="10" {{ request('limit') == 10 ? 'selected' : '' }}>10</option>
+                        <option value="25" {{ request('limit') == 25 ? 'selected' : '' }}>25</option>
+                        <option value="50" {{ request('limit') == 50 ? 'selected' : '' }}>50</option>
+                        <option value="100" {{ request('limit') == 100 ? 'selected' : '' }}>100</option>
+                    </select>
+
+                    <button type="submit" class="my-apply-btn">Apply</button>
+                    <a href="{{ route('user.level-team') }}" class="reset">Reset</a>
+
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+
         <div class="affiliate_table__lSTWG">
             <div class="flex flex-col flex-grow">
                 <div class="overflow-x-auto min-h-[350px] bg-white">
@@ -345,5 +496,26 @@
     <div id="chat-bubble"></div>
 </div>
 </body>
+<script>
+    function toggleMyAccordion(header) {
+        header.classList.toggle("active");
+        const content = header.nextElementSibling;
+        content.classList.toggle("show");
+    }
+</script>
+<script>
+    const copyBtn = document.getElementById('copyBtn');
+    const referralInput = document.getElementById('referralInput');
+
+    copyBtn.addEventListener('click', () => {
+        // Copy text
+        navigator.clipboard.writeText(referralInput.innerText).then(() => {
+            iziToast.success({
+                message: "Referral link copied!",
+                position: "topRight"
+            });
+        }).catch(err => iziToast.error("Copy failed", err));
+    });
+</script>
 
 </html>

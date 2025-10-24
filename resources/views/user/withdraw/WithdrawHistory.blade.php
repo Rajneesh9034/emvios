@@ -1,66 +1,149 @@
-
-
 <main>
-      <style>
-                /* Pagination block alignment */
-                .pagination-block {
-                    display: flex;
-                    justify-content: flex-end;
-                    margin-top: 16px;
-                }
+    <style>
+        /* Pagination block alignment */
+        .pagination-block {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 16px;
+        }
 
-                /* Pagination container */
-                .pagination {
-                    display: flex;
-                    gap: 6px;
-                    overflow-x: auto;
-                    padding: 4px;
-                }
+        /* Pagination container */
+        .pagination {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding: 4px;
+        }
 
-                /* Pagination link style */
-                .pagination .page-link {
-                    display: inline-block;
-                    padding: 6px 12px;
-                    border-radius: 6px;
-                    border: 1px solid #e6e6e6;
-                    background-color: #f3fbfc;
-                    color: #333;
-                    font-size: 13px;
-                    text-decoration: none;
-                    transition: all 0.2s ease-in-out;
-                }
+        /* Pagination link style */
+        .pagination .page-link {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #e6e6e6;
+            background-color: #f3fbfc;
+            color: #333;
+            font-size: 13px;
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+        }
 
-                /* Hover effect */
-                .pagination .page-link:hover {
-                    background-color: #d6f4f8;
-                    border-color: #bde8ee;
-                    color: #111;
-                }
+        /* Hover effect */
+        .pagination .page-link:hover {
+            background-color: #d6f4f8;
+            border-color: #bde8ee;
+            color: #111;
+        }
 
-                /* Active page style */
-                .pagination .active .page-link {
-                    background-color: rgb(0 178 200);
-                    border-color: rgb(0 178 200);
-                    color: white;
-                    font-weight: 600;
-                }
+        /* Active page style */
+        .pagination .active .page-link {
+            background-color: rgb(0 178 200);
+            border-color: rgb(0 178 200);
+            color: white;
+            font-weight: 600;
+        }
 
-                /* Disabled buttons */
-                .pagination .disabled .page-link {
-                    opacity: 0.5;
-                    cursor: not-allowed;
-                }
+        /* Disabled buttons */
+        .pagination .disabled .page-link {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
 
-                /* Responsive scroll */
-                .pagination::-webkit-scrollbar {
-                    height: 6px;
-                }
+        /* Responsive scroll */
+        .pagination::-webkit-scrollbar {
+            height: 6px;
+        }
 
-                .pagination::-webkit-scrollbar-thumb {
-                    background: #ddd;
-                    border-radius: 3px;
-                }
-            </style>
+        .pagination::-webkit-scrollbar-thumb {
+            background: #ddd;
+            border-radius: 3px;
+        }
+    </style>
+    <style>
+        .reset {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #a9abad;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .my-accordion {
+            width: 100%;
+            margin: 5px 0px 5px 0px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .my-accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgb(0 178 200);
+            color: #fff;
+            padding: 12px 16px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .my-accordion-arrow {
+            transition: transform 0.5s ease;
+        }
+
+        .my-accordion-header.active .my-accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        .my-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 16px;
+            background: #fff;
+            border-top: 1px solid #ccc;
+        }
+
+        .my-accordion-content.show {
+            max-height: 500px;
+            padding: 16px;
+        }
+
+        .my-filter-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .my-filter-form input,
+        .my-filter-form select {
+            flex: 1;
+            padding: 8px 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .my-filter-form button {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .my-apply-btn {
+            background-color: rgb(0 178 200);
+            color: #fff;
+        }
+
+        .my-reset-btn {
+            background-color: #6c757d;
+            color: #fff;
+        }
+    </style>
     <div class="main_auth _container"
         style="max-width: 1200px;">
         <div class="breadcrumbAuth_breadcrumb__Log0f">
@@ -127,71 +210,65 @@
                 </ol>
             </nav>
         </div>
-      
+
 
 
         <div class="self-stretch">
-             <div class="flex justify-end border  h-[40px] ">
-                <a class="statistics_plan__DBm_J statistics_active__Rws_8" id="filter-toggle">
-                    Filter
-                </a>
+            <div class="my-accordion">
+                <div class="my-accordion-header" onclick="toggleMyAccordion(this)">
+                    <span class="my-accordion-title"
+                        style="display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 500; color: #fff;">
+
+                        <!-- Filter Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            width="18" height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.6"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                            style="margin-top: 1px;">
+                            <path d="M22 3H2l7.5 9.5V21l5.5-3.5V12.5L22 3z" />
+                        </svg>
+
+                        <span>Filters</span>
+                    </span>
+
+                    <span class="my-accordion-arrow">▼</span>
+                </div>
+
+                <div class="my-accordion-content">
+                    <form class="my-filter-form" method="GET" action="{{ route('user.Withdraw-History') }}">
+                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Search..."style="height: 40px; padding: 6px 8px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;" />
+
+                        <input type="date" name="start_date" value="{{ request('start_date') }}"style="height: 40px; padding: 6px 8px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;">
+                        <input type="date" name="end_date" value="{{ request('end_date') }}" style="height: 40px; padding: 6px 8px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;">
+
+                        <select name="limit"style="height: 40px; padding: 6px 8px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;">
+                            <option value="10" {{ request('limit') == 10 ? 'selected' : '' }}>10</option>
+                            <option value="25" {{ request('limit') == 25 ? 'selected' : '' }}>25</option>
+                            <option value="50" {{ request('limit') == 50 ? 'selected' : '' }}>50</option>
+                            <option value="100" {{ request('limit') == 100 ? 'selected' : '' }}>100</option>
+                        </select>
+
+                        <button type="submit" class="my-apply-btn">Apply</button>
+                        <a href="{{ route('user.Withdraw-History') }}" class="reset">Reset</a>
+
+                    </form>
+                </div>
             </div>
 
-            <div id="filter-dropdown"
-                class="absolute right-0 mt-2  bg-white border border-gray-200 rounded-lg shadow-xl p-4 space-y-4 hidden z-50 transition-all duration-300">
-
-                <!-- Input -->
-                <form action="{{route('user.Withdraw-History')}}" method="GET">
-                    <div>
-                        <input type="text" name="search"  value="{{ @$search }}"   style="border: 1px solid gray ;"
-                            placeholder="Type to filter..."
-                            class="border border-gray-300 rounded-md py-2 px-2   "
-                            id="filter-input" />
-                    </div>
-
-                    <!-- Buttons: Apply & Reset -->
-                    <div class="flex justify-between gap-3 " style="margin-top:10px;">
-                        <!-- Apply Button -->
-                        <button type="submit"
-                            class="flex-1  text-black font-medium py-2 rounded-md hover:bg-blue-700 transition" style="background-color: rgb(0 178 200);">
-                            Apply
-                        </button>
-
-                        <!-- Reset Button (styled like a button, but is a link) -->
-                        <a href="{{ route('user.Withdraw-History') }}"
-                            class="flex-1 text-center bg-gray-200 text-gray-800 font-medium py-2 rounded-md hover:bg-gray-300 transition">
-                            Reset
-                        </a>
-                    </div>
-
-
-                </form>
-            </div>
-
-            <script>
-                const toggle = document.getElementById('filter-toggle');
-                const dropdown = document.getElementById('filter-dropdown');
-
-                toggle.addEventListener('click', () => {
-                    dropdown.classList.toggle('hidden');
-                });
-
-                // Optional: close dropdown when clicked outside
-                document.addEventListener('click', (e) => {
-                    if (!toggle.contains(e.target) && !dropdown.contains(e.target)) {
-                        dropdown.classList.add('hidden');
-                    }
-                });
-            </script>
             <div class="w-full rounded-[6px] border border-solid border-[#e6e6e6] overflow-x-auto">
-                  <div
-            class="flex overflow-hidden border border-solid rounded-[6px] border-[#e6e6e6]  h-[40px]">
-            <!-- <a class="statistics_plan__DBm_J " href="javascript:void(0)">All</a> -->
-            <a class="statistics_plan__DBm_J " href="{{route('user.fundHistory')}}">Fundings</a>
-            <a class="statistics_plan__DBm_J " href="{{route('user.DepositHistory')}}">Investment</a>
-            <a class="statistics_plan__DBm_J statistics_active__Rws_8" href="{{route('user.Withdraw-History')}}">Withdraw</a>
-            <a class="statistics_plan__DBm_J " href="{{route('user.bonus')}}">Bonuses</a>
-        </div>
+                <div
+                    class="flex overflow-hidden border border-solid rounded-[6px] border-[#e6e6e6]  h-[40px]">
+                    <!-- <a class="statistics_plan__DBm_J " href="javascript:void(0)">All</a> -->
+                    <a class="statistics_plan__DBm_J " href="{{route('user.fundHistory')}}">Fundings</a>
+                    <a class="statistics_plan__DBm_J " href="{{route('user.DepositHistory')}}">Investment</a>
+                    <a class="statistics_plan__DBm_J statistics_active__Rws_8" href="{{route('user.Withdraw-History')}}">Withdraw</a>
+                    <a class="statistics_plan__DBm_J " href="{{route('user.bonus')}}">Bonuses</a>
+                </div>
                 <table class="min-w-full border-collapse text-[12px]">
                     <thead>
                         <tr class="bg-[#f3fbfc] border-b border-[#e6e6e6] text-left">
@@ -213,7 +290,7 @@
                             <td class="px-[32px] py-[24px]">{{ $value->txn_id ?? '-' }}</td>
                             <td class="px-[32px] py-[24px]">{{ $value->status ?? '-' }}</td>
 
-                            
+
                         </tr>
                         @empty
                         <tr>
@@ -224,16 +301,18 @@
                         @endforelse
                     </tbody>
 
-               
+
                 </table>
-                
+
             </div>
-          
-     <div class="pagination-block mt-[16px]">
-                        <div class="pagination" style="overflow-x: auto;">
-                            {{ $withdraw_report->withQueryString()->links() }}
-                        </div>
-                    </div>
+
+            <div class="pagination-block mt-[16px]">
+                <div class="pagination" style="overflow-x: auto;">
+                    {{ $withdraw_report->withQueryString()->links() }}
+                </div>
+            </div>
+
+
         </div>
 
     </div>
@@ -250,6 +329,12 @@
 
 
 </body>
+<script>
+    function toggleMyAccordion(header) {
+        header.classList.toggle("active");
+        const content = header.nextElementSibling;
+        content.classList.toggle("show");
+    }
+</script>
 
 </html>
-
