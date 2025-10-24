@@ -59,6 +59,13 @@ class User extends Authenticatable
     return $balance;
     } 
 
+      public function principleBalance()
+    {
+    $balance = (Auth::user()->investment->sum('amount'));
+    return $balance;
+    } 
+    
+
     //  public function FundBalance()
     // {
     // $balance = (Auth::user()->buy_fundAmt->sum('amount'))-(Auth::user()->cashInvest());
