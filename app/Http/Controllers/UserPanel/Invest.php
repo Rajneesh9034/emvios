@@ -226,8 +226,6 @@ public function affialiate()
     try {
       $validation =  Validator::make($request->all(), [
         'amount' => 'required|numeric|min:10',
-        'currency' => 'required',
-        'payment' => 'required',
         'username' => 'required|exists:users,username'
       ]);
 
@@ -267,90 +265,23 @@ public function affialiate()
 
 
 
-      if ($request->payment == "crypto") {
-
-
 
         $amountTotal = $request->amount;
         $amount = $request->amount;
 
-        $paymentMode = $request->currency;
-
-
-
-        $invoice = substr(str_shuffle("0123456789"), 0, 7);
-        $apiURL = 'https://plisio.net/api/v1/invoices/new';
-        $postInput = [
-          'source_currency' => 'USD',
-          'source_amount' => $amountTotal,
-          'order_number' => $invoice,
-          'currency' => $paymentMode,
-          'email' => $userDetail->email,
-          'order_name' => $userDetail->username,
-          'callback_url' => 'https://sparkglobal.live/dynamicupicallback?json=true',
-          'api_key' => '_sCJaOONwTnmkMPZJXyubjqoOwsx7d6I2_7JMCHelakspOSzDZJW4OaAXO5yLOIO',
-        ];
-
-        $headers = [
-          'Content-Type' => 'application/json'
-        ];
-
-        $response = Http::withHeaders($headers)->get($apiURL, $postInput);
-
-        $statusCode = $response->status();
-        $resultAarray = json_decode($response->getBody(), true);
-
-
-        if ($resultAarray['status'] == "success") {
-
-          $data = [
-            'plan' => $plan,
-            'orderId' => $invoice,
-            'transaction_id' => $resultAarray['data']['txn_id'],
-            'user_id' => $userDetail->id,
-            'user_id_fk' => $userDetail->username,
-            'amount' => $amountTotal,
-            'token' => $amountTotal / tokenPrice(),
-            'payment_mode' => $paymentMode,
-            'status' => 'Pending',
-            'sdate' => Date("Y-m-d"),
-            'active_from' => $user->username,
-          ];
-          $payment =  Investment::insert($data);
-
-          $this->data['walletAddress'] = $resultAarray['data']['wallet_hash'];
-          $this->data['paymentMode'] = $paymentMode;
-          $this->data['transaction_id'] = $resultAarray['data']['txn_id'];
-          $this->data['qr_code'] = $resultAarray['data']['qr_code'];
-          $this->data['orderId'] = $invoice;
-          $this->data['amount'] = $amount;
-          $this->data['invoice_total_sum'] = $resultAarray['data']['invoice_total_sum'];
-          $this->data['page'] = 'user.invest.confirmDeposit';
-          return $this->dashboard_layout();
-        } else {
-          return Redirect::back()->withErrors(array('try again'));
-        }
-
-
-        # code...
-      } else {
-
-        $amountTotal = $request->amount;
-        $amount = $request->amount;
-
-        $paymentMode = $request->currency;
+        
         $invoice = substr(str_shuffle("0123456789"), 0, 7);
 
 
 
-        $this->data['paymentMode'] = $paymentMode;
+        // $this->data['paymentMode'] = $paymentMode;
         $this->data['orderId'] = $invoice;
         $this->data['amount'] = $amount;
-        $this->data['payment'] = $request->payment;
+       
         $this->data['username'] = $request->username;
         $this->data['page'] = 'user.invest.confirm-deposit';
         return $this->dashboard_layout();
-      }
+     
     } catch (\Exception $e) {
       Log::info('error here');
       Log::info($e->getMessage());
@@ -505,9 +436,9 @@ public function affialiate()
     try {
       $validation =  Validator::make($request->all(), [
         'amount' => 'required',
-        'paymentMode' => 'required',
+        
         'orderId' => 'required',
-        'payment' => 'required',
+        
         'username' => 'required|exists:users,username'
       ]);
       // 
@@ -562,7 +493,7 @@ public function affialiate()
           'working_amt' => $working_amt,
           'cash_amt' => $cash_amt,
           'token' => $request->amount / tokenPrice(),
-          'payment_mode' => $request->paymentMode,
+          'payment_mode' => 'USDT',
           'status' => 'Active',
           'sdate' => Date("Y-m-d"),
           'active_from' => $user->username,
