@@ -118,14 +118,14 @@
                             <p class="withdrawal_title__0EcCq">USDT Withdrawal</p>
                             <div class="withdrawal_list__DCNgj">
                                 <div class="flex items-center gap-[16px] px-[16px] py-[8px]">
-                                      <input type="radio" name="payment" value="1" class="mb-[8px]">
+  <input type="radio" name="payment" value="1" class="custom-radio mb-[8px]">
         
         <p class="text-[14px] mt-[4px]">Swap USDT Wallet</p>
                                 </div>
                                 <div class="flex items-center gap-[16px] px-[16px] py-[8px]">
-                                            <input type="radio" name="payment" value="2" class="mb-[8px]">
+  <input type="radio" name="payment" value="2" class="custom-radio mb-[8px]">
         
-        <p class="text-[14px] mt-[4px]">Sweep Wallet</p>
+        <p class="text-[14px] mt-[4px]">Swap Wallet</p>
 
                                 </div>
                                
@@ -140,7 +140,7 @@
                                         <p class="self-stretch text-[14px]">Withdrawal amount USD</p>
                                         <div class="flex self-stretch">
                                             <div class="flex justify-between items-center self-stretch flex-grow px-[16px] py-[8px] rounded-tl-md rounded-bl-md bg-neutral-50 border-t-[1px] border-solid border-r-0 border-b-[1px] border-l-[1px] border-[#cecece]">
-                                                <input class="text-[14px] bg-transparent w-full" type="text" name="amount" placeholder="Enter amount in USD">
+                                                <input class="text-[14px] bg-transparent w-full" type="text" name="amount" placeholder="Enter amount in USD" >
                                                 <p class="text-[14px] cursor-pointer">MAX</p>
                                             </div>
                                             <div class="flex flex-col items-center self-stretch gap-[8px] px-[16px] py-[8px] rounded-tr-md rounded-br-md bg-[#00b2c8]">
@@ -151,15 +151,25 @@
                                 </div>
 
                                 <!-- ✅ Wallet address -->
-                                <div class="flex flex-col self-stretch gap-[16px]">
-                                    <div class="flex justify-between items-center self-stretch">
-                                        <p class="text-[14px]">Wallet Address</p>
-                                        <!-- <p class="text-[14px] cursor-pointer underline text-[#00b2c8]">Last used address</p> -->
-                                    </div>
-                                    <div class="flex flex-col justify-center min-h-[40px] items-center self-stretch gap-[8px] px-[16px] py-[8px] rounded-[6px] bg-neutral-50 border-[1px] border-solid border-[#cecece]">
-                                        <input class="text-[14px] text-[#8a8181] bg-transparent w-full" name="wallet" placeholder="Enter wallet address for withdrawal (only USDT)" type="text">
-                                    </div>
-                                </div>
+                                <!-- ✅ Wallet Address Input -->
+<div class="flex flex-col self-stretch gap-[16px]">
+    <div class="flex justify-between items-center self-stretch">
+        <p class="text-[14px]">Wallet Address</p>
+    </div>
+    <div class="flex flex-col justify-center min-h-[40px] items-center self-stretch gap-[8px] px-[16px] py-[8px] rounded-[6px] bg-neutral-50 border-[1px] border-solid border-[#cecece]">
+        <input id="walletAddress" 
+               class="text-[14px] text-[#8a8181] bg-transparent w-full" 
+               name="wallet" 
+               placeholder="Enter wallet address for withdrawal (only USDT)" 
+               type="text" 
+               value="">
+    </div>
+</div>
+
+<!-- Hidden data from backend -->
+<input type="hidden" id="bscAddress" value="{{ $usdtbep20 }}">
+<input type="hidden" id="tronAddress" value="{{ $usdttrc20 }}">
+
                             </div>
                         </div>
 
@@ -184,34 +194,83 @@
     <ol tabindex="-1" class="fixed top-0 left-1/2 transform -translate-x-1/2 z-[100] flex max-h-screen w-full flex-col p-4 md:max-w-[420px]"></ol>
 </div>
 
+<style>
+/* Hide the default radio */
+.custom-radio {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #00b2c8; /* sky blue border */
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
+/* Inner filled circle (when checked) */
+.custom-radio:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  background: #00b2c8;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Optional hover effect */
+.custom-radio:hover {
+  box-shadow: 0 0 0 3px rgba(0, 178, 200, 0.2);
+}
+</style>
 </body>
 <script>
-                        document.addEventListener("DOMContentLoaded", function() {
-                            const btn = document.getElementById("networkDropdownBtn");
-                            const dropdown = document.getElementById("networkDropdown");
-                            const arrow = document.getElementById("dropdownArrow");
-                            const items = dropdown.querySelectorAll("li");
-                            const selected = document.getElementById("selectedNetwork");
+    document.addEventListener("DOMContentLoaded", function() {
+    const btn = document.getElementById("networkDropdownBtn");
+    const dropdown = document.getElementById("networkDropdown");
+    const arrow = document.getElementById("dropdownArrow");
+    const items = dropdown.querySelectorAll("li");
+    const selected = document.getElementById("selectedNetwork");
+    const walletInput = document.getElementById("walletAddress");
 
-                            btn.addEventListener("click", (e) => {
-                                e.stopPropagation(); // prevent closing immediately
-                                dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-                                arrow.classList.toggle("open");
-                            });
+    // hidden input values
+    const bscAddress = document.getElementById("bscAddress").value;
+    const tronAddress = document.getElementById("tronAddress").value;
 
-                            items.forEach(item => {
-                                item.addEventListener("click", () => {
-                                    selected.textContent = item.textContent;
-                                    dropdown.style.display = "none";
-                                    arrow.classList.remove("open");
-                                });
-                            });
+    // Default load BSC
+    walletInput.value = bscAddress;
 
-                            document.addEventListener("click", () => {
-                                dropdown.style.display = "none";
-                                arrow.classList.remove("open");
-                            });
-                        });
+    btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        arrow.classList.toggle("open");
+    });
+
+    items.forEach(item => {
+        item.addEventListener("click", () => {
+            const selectedNetwork = item.getAttribute("data-value");
+            selected.textContent = selectedNetwork;
+            dropdown.style.display = "none";
+            arrow.classList.remove("open");
+
+            // ✅ Fetch address according to selected network
+            if (selectedNetwork === "BSC") {
+                walletInput.value = bscAddress;
+            } else if (selectedNetwork === "Tron") {
+                walletInput.value = tronAddress;
+            }
+        });
+    });
+
+    document.addEventListener("click", () => {
+        dropdown.style.display = "none";
+        arrow.classList.remove("open");
+    });
+});
+
                     </script>
+                    
 </html>

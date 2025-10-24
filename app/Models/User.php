@@ -153,7 +153,8 @@ class User extends Authenticatable
           
     public function reward_bonus()
     {
-        return $this->hasMany('App\Models\Income','user_id','id')->where('remarks','Reward Profit');
+                return $this->hasMany('App\Models\Income','user_id','id')->where('remarks','Reward Profit');
+
     } 
 
     public function booster_bonus()
