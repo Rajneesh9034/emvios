@@ -120,59 +120,68 @@ class WithdrawRequest extends Controller
                             ];
                             $payment = Withdraw::Create($data);
 
-                            $withdraw_id = $payment["id"];
+                            // $withdraw_id = $payment["id"];
 
-                            $netAmt =$request->amount-($request->amount * 10)/100;
-                            $apiURL ="https://plisio.net/api/v1/operations/withdraw";
-                            $postInput = [
-                                "currency" => $paymentMode,
-                                "amount" => $netAmt,
-                                "type" => "cash_out",
-                                "to" => $account,
-                                "api_key" =>
-                                    "_sCJaOONwTnmkMPZJXyubjqoOwsx7d6I2_7JMCHelakspOSzDZJW4OaAXO5yLOIO",
-                            ];
+                            // $netAmt =$request->amount-($request->amount * 10)/100;
+                            // $apiURL ="https://plisio.net/api/v1/operations/withdraw";
+                            // $postInput = [
+                            //     "currency" => $paymentMode,
+                            //     "amount" => $netAmt,
+                            //     "type" => "cash_out",
+                            //     "to" => $account,
+                            //     "api_key" =>
+                            //         "_sCJaOONwTnmkMPZJXyubjqoOwsx7d6I2_7JMCHelakspOSzDZJW4OaAXO5yLOIO",
+                            // ];
 
-                            $headers = [
-                                "Content-Type" => "application/json",
-                            ];
+                            // $headers = [
+                            //     "Content-Type" => "application/json",
+                            // ];
 
-                            $response = Http::withHeaders($headers)->get(
-                                $apiURL,
-                                $postInput
-                            );
+                            // $response = Http::withHeaders($headers)->get(
+                            //     $apiURL,
+                            //     $postInput
+                            // );
 
-                            $statusCode = $response->status();
-                            $responseBody = json_decode(
-                                $response->getBody(),
-                                true
-                            );
-                            // print_r($paymentMode);
-                            // dd($responseBody);
+                            // $statusCode = $response->status();
+                            // $responseBody = json_decode(
+                            //     $response->getBody(),
+                            //     true
+                            // );
+                            // // print_r($paymentMode);
+                            // // dd($responseBody);
 
-                            if ($responseBody["status"] == "success") {
-                                Withdraw::where("id", $withdraw_id)->update([
-                                    "status" => "Approved",
-                                    "txn_id" => $responseBody["data"]["txn_id"],
-                                ]);
+                            // if ($responseBody["status"] == "success") {
+                            //     Withdraw::where("id", $withdraw_id)->update([
+                            //         "status" => "Approved",
+                            //         "txn_id" => $responseBody["data"]["txn_id"],
+                            //     ]);
 
-                                $notify[] = [
+                            //     $notify[] = [
+                            //         "success",
+                            //         "Withdraw Request Submited successfully",
+                            //     ];
+
+                            //     return redirect()
+                            //         ->back()
+                            //         ->with("withdralId", $withdraw_id)
+                            //         ->withNotify($notify);
+                            // } else {
+                            //     Withdraw::where("id", $withdraw_id)->update([
+                            //         "status" => "Failed",
+                            //     ]);
+                            //     return Redirect::back()->withErrors([
+                            //         "Our platform is currently undergoing scheduled maintenance to ensure optimal performance and system stability",
+                            //     ]);
+                            // }
+                                  $notify[] = [
                                     "success",
                                     "Withdraw Request Submited successfully",
                                 ];
 
                                 return redirect()
                                     ->back()
-                                    ->with("withdralId", $withdraw_id)
+                                    
                                     ->withNotify($notify);
-                            } else {
-                                Withdraw::where("id", $withdraw_id)->update([
-                                    "status" => "Failed",
-                                ]);
-                                return Redirect::back()->withErrors([
-                                    "Our platform is currently undergoing scheduled maintenance to ensure optimal performance and system stability",
-                                ]);
-                            }
                         } else {
                             return Redirect::back()->withErrors([
                                 "Please Update Your " .
@@ -191,7 +200,7 @@ class WithdrawRequest extends Controller
                             "Withdraw Request Already Exist !",
                         ]);
                     } else {
-                        if ($request->currency == "USDT.BEP20") {
+                        if ($request->currency == "BSC") {
                             $paymentMode = "USDT_BSC";
                         } else {
                             $paymentMode = "USDT_TRX";
@@ -300,9 +309,15 @@ class WithdrawRequest extends Controller
         return $this->dashboard_layout();
     }
 
-    public function withdraw_request()
-    {
-        $this->data["page"] = "user.withdraw.withdraw_request";
-        return $this->dashboard_layout();
-    }
+   public function withdraw_request()
+{
+    $user = auth()->user();
+
+    $this->data["page"] = "user.withdraw.withdraw_request";
+    $this->data["usdtbep20"] = $user->usdtBep20;
+    $this->data["usdttrc20"] = $user->usdtTrc20;
+
+    return $this->dashboard_layout();
+}
+
 }

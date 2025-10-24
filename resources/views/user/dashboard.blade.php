@@ -9,25 +9,25 @@
                     <div class="dashboard_counter__HAxjg">
                         <div class="diagram_auth_stats__ulx7W">
                             <div class="flex  items-center     gap-[16px]"><img alt="icon" loading="lazy" width="24" height="25" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/invested.d3a751a8.svg" style="color: transparent;">
-                                <p class="  text-[14px] font-[400]  uppercase text-[#828282]">Level Bonus</p>
+                                <p class="  text-[14px] font-[400]  uppercase text-[#828282]">Working Wallet</p>
                             </div>
-                            <p class="   font-[400]  ">{{ currency() }}{{ number_format($level_income_total, 2) }}</p>
+                            <p class="   font-[400]  ">{{ currency() }}{{ number_format(Auth::user()->workingIncome->sum('amount'), 2) }}</p>
                         </div>
                     </div>
                     <div class="dashboard_counter__HAxjg">
                         <div class="diagram_auth_stats__ulx7W">
                             <div class="flex  items-center     gap-[16px]"><img alt="icon" loading="lazy" width="24" height="25" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/invested.d3a751a8.svg" style="color: transparent;">
-                                <p class="  text-[14px] font-[400]  uppercase text-[#828282]">Total Active Team</p>
+                                <p class="  text-[14px] font-[400]  uppercase text-[#828282]">Withdraw Wallet</p>
                             </div>
-                            <p class="   font-[400]  ">{{$total_team}}</p>
+                            <p class="   font-[400]  ">{{ currency() }}{{ number_format(Auth::user()->stakingBalance(), 2) }}</p>
                         </div>
                     </div>
                     <div class="dashboard_counter__HAxjg">
                         <div class="diagram_auth_stats__ulx7W">
                             <div class="flex  items-center     gap-[16px]"><img alt="icon" loading="lazy" width="24" height="25" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/invested.d3a751a8.svg" style="color: transparent;">
-                                <p class="  text-[14px] font-[400]  uppercase text-[#828282]">Inactive Team</p>
+                                <p class="  text-[14px] font-[400]  uppercase text-[#828282]">Cash Wallet</p>
                             </div>
-                            <p class="   font-[400]  ">{{$total_teams }}</p>
+                            <p class="   font-[400]  ">{{currency()}}{{$total_teams }}</p>
                         </div>
                     </div>
                 </div>
@@ -77,9 +77,9 @@
                         </div>
                         <div class="diagram_auth_stats__ulx7W">
                             <div class="flex  items-center     gap-[8px]"><img alt="icon" loading="lazy" width="24" height="25" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/earned.57067797.svg" style="color: transparent;">
-                                <p class="text-[14px] font-[400]  uppercase text-[#828282]">Earned</p>
+                                <p class="text-[14px] font-[400]  uppercase text-[#828282]">Algorithmic Profit</p>
                             </div>
-                            <p class="   font-[400]  ">$ 0</p>
+                            <p class="   font-[400]  ">{{ currency() }}{{ number_format(Auth::user()->stakingIncome->sum('amount'), 2) }}</p>
                         </div>
                     </div>
                 </div>
@@ -114,40 +114,26 @@
             </div>
             <div class="flex flex-col gap-[24px] ">
                 <div class="hidden lg:flex flex-col relative overflow-hidden p-[24px] rounded-[6px] border-2 border-solid border-[#e4fafc] gap-[16px] bg-white w-full md:w-[282px] ">
-                    <div class="absolute top-0 right-0"><svg width="282" height="219" viewBox="0 0 282 219" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path opacity="0.0788889" d="M764.287 102.236L504.237 -79.1842L464.441 182.709L-46.1854 -112.02" stroke="#00B2C8"></path>
-                            <path opacity="0.157778" d="M718.898 88.9758L487.881 -71.7701L452.368 160.507L-1.28403 -100.587" stroke="#00B2C8"></path>
-                            <path opacity="0.236667" d="M673.508 75.7159L471.525 -64.356L440.295 138.306L43.6175 -89.1529" stroke="#00B2C8"></path>
-                            <path opacity="0.315556" d="M628.115 62.4552L455.165 -56.9425L428.218 116.104L88.5151 -77.7198" stroke="#00B2C8"></path>
-                            <path opacity="0.394444" d="M582.728 49.1983L438.81 -49.5253L416.147 93.9055L133.418 -66.2831" stroke="#00B2C8"></path>
-                            <path opacity="0.473333" d="M537.335 35.9371L422.45 -42.1124L404.07 71.7029L178.316 -54.8507" stroke="#00B2C8"></path>
-                            <path opacity="0.552222" d="M491.944 22.6747L406.092 -34.7008L391.995 49.499L223.216 -43.4195" stroke="#00B2C8"></path>
-                            <path opacity="0.631111" d="M446.557 9.41626L389.738 -27.2851L379.924 27.2991L268.119 -31.9842" stroke="#00B2C8"></path>
-                        </svg></div>
-                    <p class="text-[14px] font-[400]  uppercase text-[#828282]">Need help?</p>
-                    <p class=" text-[12px]   ">Visit our Help Center or start our Site Guide to get started with Emvios.</p>
-                    <div class="flex gap-[8px]">
-                        <div class="dashboard_help__Pfe41"><svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg" class=" flex-shrink-0 w-4 h-4" preserveAspectRatio="xMidYMid meet">
-                                <path d="M17 1.60345V15.3966C17 16.0034 16.5034 16.5 15.8966 16.5H2.10345C1.49655 16.5 1 16.0034 1 15.3966V1.60345C1 0.996552 1.49655 0.5 2.10345 0.5H15.8966C16.5034 0.5 17 0.996552 17 1.60345Z" stroke="#303030" stroke-width="0.8" stroke-miterlimit="10"></path>
-                                <path d="M8.99894 9.93421V8.94111C9.77135 8.94111 10.4334 8.27904 10.4334 7.50663C10.4334 6.73421 9.77135 6.07214 8.99894 6.07214C8.22652 6.07214 7.56445 6.73421 7.56445 7.50663" stroke="#00B2C8" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M9.00046 11.5345C9.27472 11.5345 9.49701 11.3122 9.49701 11.038C9.49701 10.7637 9.27472 10.5414 9.00046 10.5414C8.72625 10.5414 8.50391 10.7637 8.50391 11.038C8.50391 11.3122 8.72625 11.5345 9.00046 11.5345Z" fill="#00B2C8"></path>
-                                <path d="M8.99919 13.7414C11.8939 13.7414 14.2406 11.3948 14.2406 8.50005C14.2406 5.60532 11.8939 3.25867 8.99919 3.25867C6.10446 3.25867 3.75781 5.60532 3.75781 8.50005C3.75781 11.3948 6.10446 13.7414 8.99919 13.7414Z" stroke="#303030" stroke-width="0.8" stroke-miterlimit="10"></path>
-                            </svg><a class="flex justify-center items-center gap-[4px]" href="/en/helpcenter/what-is-emvios">
-                                <p class=" text-[12px] ">Help Hub</p>
-                            </a></div>
-                        <div class="dashboard_start__idFtL"><svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" class=" flex-shrink-0 w-[20px] h-5 relative" preserveAspectRatio="xMidYMid meet">
-                                <path d="M15.4127 17.9976H9.05859V19.5861H15.4127V17.9976Z" stroke="black" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M9.74609 5.3042V2.18011" stroke="#00B2C8" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round"></path>
-                                <path d="M7.63497 1.41376C5.91511 2.21325 4.72266 3.95626 4.72266 5.97778C4.72266 8.48569 6.55797 10.565 8.95873 10.9458M11.871 1.41376C13.5909 2.21325 14.7834 3.95626 14.7834 5.97778C14.7834 7.89388 13.7121 9.55973 12.1358 10.4091" stroke="#00B2C8" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round"></path>
-                                <path d="M8.52589 3.58453C7.53018 4.02577 6.83984 4.98773 6.83984 6.10342C6.83984 7.37418 7.73551 8.44556 8.95789 8.77513M10.9784 3.58453C11.9741 4.02577 12.6645 4.98773 12.6645 6.10342C12.6645 7.32813 11.8326 8.36761 10.678 8.73637" stroke="#00B2C8" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round"></path>
-                                <path d="M9.05839 12.6498L8.84658 12.2261C8.63482 11.8555 8.15825 11.6967 7.78758 11.9614C7.41692 12.1732 7.25806 12.6498 7.46987 13.0204C7.46987 13.0204 9.11154 15.4785 9.11135 15.8268C9.11116 16.1752 9.05839 12.6498 9.05839 12.6498Z" stroke="black" stroke-width="0.8" stroke-miterlimit="10"></path>
-                                <path d="M14.6185 11.1139C14.1949 11.1139 13.8242 11.4846 13.8242 11.9082V11.3787C13.8242 10.9551 13.4535 10.5844 13.0299 10.5844C12.6063 10.5844 12.2357 10.9551 12.2357 11.3787V10.8492C12.2357 10.6373 12.1827 10.4785 12.0239 10.3197C11.865 10.1608 11.6532 10.0549 11.4414 10.0549C11.0178 10.0549 10.6472 10.4256 10.6472 10.8492V7.67211C10.6472 7.24849 10.2765 6.87787 9.85288 6.87787C9.42926 6.87787 9.05859 7.24849 9.05859 7.67211V15.35C9.05859 15.8265 9.37631 16.1972 9.79993 16.3561C10.0117 16.462 10.1706 16.6738 10.1176 16.8856V17.9975H14.3537V16.8326C14.3537 16.6208 14.4596 16.409 14.6714 16.3031C15.095 16.1442 15.3598 15.7736 15.4127 15.35V11.9082C15.4127 11.4846 15.0421 11.1139 14.6185 11.1139Z" stroke="black" stroke-width="0.8" stroke-miterlimit="10"></path>
-                                <path d="M10.6484 10.8492V12.4377" stroke="black" stroke-width="0.8" stroke-miterlimit="10"></path>
-                                <path d="M12.2363 11.3789V12.4379" stroke="black" stroke-width="0.8" stroke-miterlimit="10"></path>
-                                <path d="M13.8242 11.9081V12.4376" stroke="black" stroke-width="0.8" stroke-miterlimit="10"></path>
-                            </svg>
-                            <p class=" text-[12px]">Start Guide</p>
+                     <div class="diagram_auth_statistics__8JXhL">
+                        <div class="diagram_auth_stats__ulx7W">
+                            <div class="flex  items-center     gap-[16px]"><img alt="icon" loading="lazy" width="24" height="25" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/invested.d3a751a8.svg" style="color: transparent;">
+                                <p class="  text-[14px] font-[400]  uppercase text-[#828282]">Farmin Profit</p>
+                            </div>
+                            <p class="   font-[400]  ">{{ currency() }}{{ number_format(Auth::user()->leadership_bonus->sum('amount'), 2) }}</p>
                         </div>
+                        <div class="diagram_auth_stats__ulx7W">
+                            <div class="flex  items-center     gap-[8px]"><img alt="icon" loading="lazy" width="24" height="25" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/withdrawn.e239ce07.svg" style="color: transparent;">
+                                <p class="text-[14px] font-[400]  uppercase text-[#828282]">Reward Profit</p>
+                            </div>
+                            <p class="   font-[400]  ">{{ currency() }}{{ number_format(Auth::user()->reward_bonus->sum('amount'), 2) }}</p>
+                        </div>
+                        <div class="diagram_auth_stats__ulx7W">
+                            <div class="flex  items-center     gap-[8px]"><img alt="icon" loading="lazy" width="24" height="25" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/balance.4798a9c9.svg" style="color: transparent;">
+                                <p class="text-[14px] font-[400]  uppercase text-[#828282]">Partners</p>
+                            </div>
+                            <p class="   font-[400]  ">{{$total_teams}}</p>
+                        </div>
+                       
                     </div>
                 </div>
                 <div class="p-[24px] flex flex-col gap-[16px] rounded-[6px] bg-white border border-[#e6e6e6] border-solid">
