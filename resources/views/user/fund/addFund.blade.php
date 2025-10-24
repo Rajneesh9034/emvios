@@ -195,19 +195,21 @@
 
 
 
-                    <div class="replenishment_copy__IV88w">
-                        <div
-                            class="flex justify-center items-center flex-grow min-h-[45px]  gap-[8px] px-[16px] py-[8px] rounded-tl-md rounded-bl-md bg-neutral-50 border-[1px] border-solid border-[#cecece] w-full">
-<p id="walletAddress">{{ $data['address_in'] ?? '' }}</p>
+              <div class="replenishment_copy__IV88w">
+    <div
+        class="flex justify-center items-center flex-grow min-h-[45px] gap-[8px] px-[16px] py-[8px] rounded-tl-md rounded-bl-md bg-neutral-50 border-[1px] border-solid border-[#cecece] w-full">
+        <p id="walletAddress">{{ $data['address_in'] ?? '' }}</p>
+    </div>
+    <div class="replenishment_button_blue__vFzO3">
+        <button type="button" onclick="copyAddress()" class="button_blue_body__xatTr">
+            <p>COPY</p>
+        </button>
+    </div>
+</div>
 
-                        </div>
-                        <div
-                            class="replenishment_button_blue__vFzO3"><button
-                                type="submit"
-                                class="button_blue_body__xatTr">
-                                <p>COPY</p>
-                            </button></div>
-                    </div>
+
+
+
                     <div
                         class="flex  items-center self-stretch gap-[32px] p-[16px] rounded-md  border border-solid border-[#e6e6e6]">
                         <ul class="replenishment_ul__AwbL9">
@@ -362,4 +364,40 @@ document.addEventListener("DOMContentLoaded", function() {
                             });
                         });
                     </script>
+          <script>
+function copyAddress() {
+    const address = document.getElementById("walletAddress").innerText.trim();
+
+    if (!address) return;
+
+    navigator.clipboard.writeText(address).then(() => {
+        // ✅ Laravel notify style message dikhane ke liye ek temporary div banate hain
+        showNotifyMessage("Address copied successfully!");
+    }).catch(() => {
+        showNotifyMessage("Failed to copy address!", "error");
+    });
+}
+
+// ✅ Ye function aapke partials.notify ke design ke according message show karega
+function showNotifyMessage(message, type = "success") {
+    // Agar pehle koi notify div hai to usse hata do
+    const oldMsg = document.getElementById("notify-message");
+    if (oldMsg) oldMsg.remove();
+
+    // Naya div banao
+    const notifyDiv = document.createElement("div");
+    notifyDiv.id = "notify-message";
+    notifyDiv.className = `alert alert-${type} fixed top-5 right-5 z-50 px-4 py-2 rounded-md shadow-md`;
+    notifyDiv.innerText = message;
+
+    // Page me add karo
+    document.body.appendChild(notifyDiv);
+
+    // 3 second me remove kar do
+    setTimeout(() => {
+        notifyDiv.remove();
+    }, 3000);
+}
+</script>
+
 </html>
