@@ -53,17 +53,17 @@ class User extends Authenticatable
     } 
 
 
-    // public function FundBalance()
-    // {
-    // $balance = (Auth::user()->buy_fundAmt->sum('amount')+Auth::user()->fundtranfered())-(Auth::user()->cashInvest()+Auth::user()->fundtranfer());
-    // return $balance;
-    // } 
-
-     public function FundBalance()
+    public function FundBalance()
     {
-    $balance = (Auth::user()->buy_fundAmt->sum('amount'))-(Auth::user()->cashInvest());
+    $balance = (Auth::user()->buy_fundAmt->sum('amount')+Auth::user()->fundtranfered())-(Auth::user()->cashInvest()+Auth::user()->fundtranfer());
     return $balance;
     } 
+
+    //  public function FundBalance()
+    // {
+    // $balance = (Auth::user()->buy_fundAmt->sum('amount'))-(Auth::user()->cashInvest());
+    // return $balance;
+    // } 
 
     public function buy_fundAmt(){
         return $this->hasMany('App\Models\BuyFund','user_id','id')->where('status','Approved');

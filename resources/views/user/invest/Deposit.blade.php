@@ -476,7 +476,7 @@
                                             </div> -->
                                         </div>
                                         <form
-                                            class="flex flex-col gap-[24px] flex-grow" form="investment-form"  id="cashSection" action="{{ route('user.deposit2') }}" method="post">
+                                            class="flex flex-col gap-[24px] flex-grow" form="investment-form"  id="cashSection" action="{{ route('user.confirm-deposit') }}" method="post">
                                              @csrf
                                             <div
                                                 class="automatictrading_profit__vlqE7" >
