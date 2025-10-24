@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
 use Log;
 use Redirect;
 use Hash;
@@ -68,7 +69,7 @@ class Invest extends Controller
 
     $balance = round(Auth::user()->FundBalance(), 2);
     $address = $data['address_in'] ?? '';
- $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($address);
+    $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($address);
 
     // ✅ Normal page load (HTML view)
     $this->data['data'] = $data;
@@ -88,8 +89,8 @@ class Invest extends Controller
   //   return $this->dashboard_layout();
   // }
 
-public function affialiate()
-{
+  public function affialiate()
+  {
     $user = Auth::user(); // Logged-in user
 
     $referralUsername = $user->username; // Assuming you have a 'username' column
@@ -99,7 +100,7 @@ public function affialiate()
     $this->data['page'] = 'user.affialiate';
 
     return $this->dashboard_layout();
-}
+  }
 
 
   public function deposit()
@@ -123,7 +124,7 @@ public function affialiate()
         'amount' => 'required|numeric|min:100',
         // 'paymentMode' => 'required',
         'username' => 'required|exists:users,username'
-      
+
       ]);
 
       if ($validation->fails()) {
@@ -141,13 +142,13 @@ public function affialiate()
       // $plan = "1";
 
       $user_detail = User::where('username', $request->username)->orderBy('id', 'desc')->limit(1)->first();
-     
+
       // $invest_check = Investment::where('user_id', $user_detail->id)->where('status', '!=', 'Decline')->orderBy('id', 'desc')->limit(1)->first();
       // $invoice = substr(str_shuffle("0123456789"), 0, 7);
       $joining_amt = $request->amount;
 
 
-       $balance = round(Auth::user()->FundBalance(), 2);
+      $balance = round(Auth::user()->FundBalance(), 2);
 
       // $last_package = ($invest_check) ? $invest_check->amount : 0;
 
@@ -162,46 +163,44 @@ public function affialiate()
 
 
 
-      
-
-        if ($balance >= $request->amount) {
-          // $nextCycle =Carbon::parse(Date("Y-m-d H:i:s"))->addDays(10)->format('Y-m-d H:i:s');
-                      $data = [
-            'orderId' => $invoice,
-            'plan' => 1,
-            'transaction_id' => md5(time() . rand()),
-            'user_id' => $user_detail->id,
-            'user_id_fk' => $user_detail->username,
-            'amount' => $request->amount,
-            'payment_mode' => 'USDT',
-            'status' => 'Active',
-            'sdate' => Date("Y-m-d"),
-           //  'next_date' =>$nextCycle,
-            'active_from' => $user->username,
-            'walletType' => 1,
-          ];
-          $payment =  Investment::insert($data);
-            $notify[] = ['success', 'user activation submitted successfully'];
-          return redirect()->route('user.invest')->withNotify($notify);
-         
 
 
+      if ($balance >= $request->amount) {
+        // $nextCycle =Carbon::parse(Date("Y-m-d H:i:s"))->addDays(10)->format('Y-m-d H:i:s');
+        $data = [
+          'orderId' => $invoice,
+          'plan' => 1,
+          'transaction_id' => md5(time() . rand()),
+          'user_id' => $user_detail->id,
+          'user_id_fk' => $user_detail->username,
+          'amount' => $request->amount,
+          'payment_mode' => 'USDT',
+          'status' => 'Active',
+          'sdate' => Date("Y-m-d"),
+          //  'next_date' =>$nextCycle,
+          'active_from' => $user->username,
+          'walletType' => 1,
+        ];
+        $payment =  Investment::insert($data);
+        $notify[] = ['success', 'user activation submitted successfully'];
+        return redirect()->route('user.invest')->withNotify($notify);
 
-          if ($user_detail->active_status == "Pending") {
-            $user_update = array('active_status' => 'Active', 'adate' => Date("Y-m-d H:i:s"), 'package' => $request->amount, 'rank' => 1);
-            User::where('id', $user_detail->id)->update($user_update);
-          } else {
-            $total = $user_detail->package + $request->amount;
-            $user_update = array('active_status' => 'Active', 'package' => $total);
-            User::where('id', $user_detail->id)->update($user_update);
-          }
 
-          add_direct_income($user_detail->id, $request->amount);
-        
+
+
+        if ($user_detail->active_status == "Pending") {
+          $user_update = array('active_status' => 'Active', 'adate' => Date("Y-m-d H:i:s"), 'package' => $request->amount, 'rank' => 1);
+          User::where('id', $user_detail->id)->update($user_update);
         } else {
-          return Redirect::back()->withErrors(['Insufficient balance in your account.']);
+          $total = $user_detail->package + $request->amount;
+          $user_update = array('active_status' => 'Active', 'package' => $total);
+          User::where('id', $user_detail->id)->update($user_update);
         }
-     
+
+        add_direct_income($user_detail->id, $request->amount);
+      } else {
+        return Redirect::back()->withErrors(['Insufficient balance in your account.']);
+      }
     } catch (\Exception $e) {
       Log::info('error here');
       Log::info($e->getMessage());
@@ -536,6 +535,9 @@ public function affialiate()
     $limit = $request->limit ? $request->limit : paginationLimit();
     $status = $request->status ? $request->status : null;
     $search = $request->search ? $request->search : null;
+    $startDate = $request->start_date ?? null;
+    $endDate = $request->end_date ?? null;
+
     $notes = Investment::where('user_id', $user->id);
     if ($search <> null && $request->reset != "Reset") {
       $notes = $notes->where(function ($q) use ($search) {
@@ -543,11 +545,23 @@ public function affialiate()
           ->orWhere('transaction_id', 'LIKE', '%' . $search . '%')
           ->orWhere('status', 'LIKE', '%' . $search . '%')
           ->orWhere('orderId', 'LIKE', '%' . $search . '%')
-          ->orWhere('amount', 'LIKE', '%' . $search . '%'); 
+          ->orWhere('amount', 'LIKE', '%' . $search . '%');
       });
     }
-
-    $notes = $notes->paginate($limit)->appends(['limit' => $limit]);
+    // 📅 Date range filter
+    if (!empty($startDate) && !empty($endDate)) {
+      $notes->whereBetween(DB::raw('DATE(sdate)'), [$startDate, $endDate]);
+    } elseif (!empty($startDate)) {
+      $notes->whereDate(DB::raw('DATE(sdate)'), '>=', $startDate);
+    } elseif (!empty($endDate)) {
+      $notes->whereDate(DB::raw('DATE(sdate)'), '<=', $endDate);
+    }
+    $notes = $notes->paginate($limit)->appends([
+      'limit' => $limit,
+      'search' => $search,
+      'start_date' => $startDate,
+      'end_date' => $endDate
+    ]);
 
     $this->data['search'] = $search;
     $this->data['deposit_list'] = $notes;
