@@ -105,7 +105,7 @@ class Invest extends Controller
     // dd("hiii");
     try {
       $validation =  Validator::make($request->all(), [
-        'amount' => 'required|numeric|min:160',
+        'amount' => 'required|numeric|min:100',
         // 'paymentMode' => 'required',
         'username' => 'required|exists:users,username'
       

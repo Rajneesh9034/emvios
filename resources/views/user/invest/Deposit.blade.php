@@ -527,8 +527,7 @@
            focus:ring-2 focus:ring-[#00b2c8]
            transition duration-150 text-gray-800 text-base"
     placeholder="Enter amount (e.g. 100)"
-    min="100"
-    max="500"
+    
     required
 />
 
