@@ -53,7 +53,7 @@
                 <div class="flex gap-[24px] flex-col md:flex-row">
                     <div class="flex flex-col gap-[24px] flex-1 relative">
                         <p class="text-[14px] font-[400] uppercase text-[#828282]">Balance Graph</p>
- <div style="background:#ffffff; color:#000; width:100%; height:100%; padding:32px; border-radius:18px; border:1px solid #0cc0df; box-shadow:0 6px 24px rgba(0,0,0,0.12); font-family:'Segoe UI', Tahoma, sans-serif;">
+ <div style="background:#ffffff; color:#000; width:100%; height:100%; padding:32px; border-radius:18px; border:1px solid #e6e6e6;  font-family:'Segoe UI', Tahoma, sans-serif;">
 
   <!-- Header -->
   <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
@@ -138,7 +138,7 @@
                     <div id="zscooProcess" class="quantify-execute mt-4"
                         style="display: block; width: 100%; max-width: 500px;">
                         <div class="process-box">
-                            <h3 style="font-size: 16px;">@lang('Helix Fund Run Panel Process') <span
+                            <h3 style="font-size: 16px;">@lang('Stakia Run Panel Process') <span
                                     class="spinner">⏳</span></h3>
                             <div id="stepsLog"></div>
                         </div>
@@ -163,12 +163,12 @@
                         }
 
                         .process-box {
-                            background: #fff;
+                            /* background: #fff; */
                             padding: 20px 25px;
                             border-radius: 10px;
                             font-family: 'Segoe UI', sans-serif;
                             max-width: 450px;
-                            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+                            /* box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15); */
                             margin: 30px auto;
                         }
 
@@ -202,7 +202,7 @@
                             }
 
                             const steps = [
-                                'Starting Helix Fund quantification',
+                                'Starting Stakia Fund quantification',
                                 'Start queuing...',
                                 'Start capturing various exchange market prices',
                                 `Start executing buy order ${coin} ${buyExchange}`,
@@ -469,6 +469,61 @@
         </div>
     </div>
 </main>
+
+  <!-- Popup Modal -->
+       <div id="resultModal" style="display:none; position: fixed; z-index: 9999; inset: 0; background-color: rgba(0, 0, 0, 0.7);">
+              <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                          background-color: #fff; color: #000; border-radius: 20px; padding: 30px; text-align: center; width: 90%; max-width: 400px;">
+                          
+                <!-- <button onclick="hideModal()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: white; font-size: 20px; cursor: pointer;">×</button> -->
+            
+                <div style="margin-bottom: 20px;">
+                  <div style="width: 80px; height: 80px; margin: 0 auto; background: #0cc0df; border-radius: 50%;
+                              display: flex; align-items: center; justify-content: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" viewBox="0 0 16 16">
+                      <path d="M13.485 1.893a.75.75 0 0 1 1.06 1.06L6.56 11.939 1.453 6.828a.75.75 0 0 1 1.06-1.06l3.932 3.931L13.485 1.893z" />
+                    </svg>
+                  </div>
+                </div>
+            
+                <h5 style="font-weight: bold; margin-bottom: 5px;">Strategy Complete</h5>
+                <p style="margin-bottom: 10px;">Congratulations To Get</p>
+                <h4 id="profitAmount" style="font-weight: bold; margin-bottom: 25px;">0.0000 USDT</h4>
+            
+               <div style="display: flex; justify-content: center; gap: 15px; cursor: pointer;">
+                  <!-- <a href="#" style="padding: 10px 20px; border: 2px solid #6e0daf; color: #6e0daf; text-decoration: none; border-radius: 5px;">View Order</a> -->
+                  <a  onclick="hideModal()" style="padding: 10px 20px; background-color: #0cc0df; color: white; text-decoration: none; border-radius: 5px;">Confirm</a>
+                </div>
+              </div>
+            </div>
+
+              <!-- Popup Modal -->
+       <div id="resultModal" style="display:none; position: fixed; z-index: 9999; inset: 0; background-color: rgba(0, 0, 0, 0.7);">
+              <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                          background-color: #fff; color: #000; border-radius: 20px; padding: 30px; text-align: center; width: 90%; max-width: 400px;">
+                          
+                <!-- <button onclick="hideModal()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: white; font-size: 20px; cursor: pointer;">×</button> -->
+            
+                <div style="margin-bottom: 20px;">
+                  <div style="width: 80px; height: 80px; margin: 0 auto; background: #0cc0df; border-radius: 50%;
+                              display: flex; align-items: center; justify-content: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" viewBox="0 0 16 16">
+                      <path d="M13.485 1.893a.75.75 0 0 1 1.06 1.06L6.56 11.939 1.453 6.828a.75.75 0 0 1 1.06-1.06l3.932 3.931L13.485 1.893z" />
+                    </svg>
+                  </div>
+                </div>
+            
+                <h5 style="font-weight: bold; margin-bottom: 5px;">Strategy Complete</h5>
+                <p style="margin-bottom: 10px;">Congratulations To Get</p>
+                <h4 id="profitAmount" style="font-weight: bold; margin-bottom: 25px;">0.0000 USDT</h4>
+            
+               <div style="display: flex; justify-content: center; gap: 15px; cursor: pointer;">
+                  <!-- <a href="#" style="padding: 10px 20px; border: 2px solid #6e0daf; color: #6e0daf; text-decoration: none; border-radius: 5px;">View Order</a> -->
+                  <a  onclick="hideModal()" style="padding: 10px 20px; background-color: #0cc0df; color: white; text-decoration: none; border-radius: 5px;">Confirm</a>
+                </div>
+              </div>
+            </div>
+
 </div>
 </div>
 </div>
@@ -557,5 +612,36 @@
         updateCountdown(); // initial call
         setInterval(updateCountdown, 1000); // update every second
     });
+</script>
+
+<script>
+
+     function hideModal() {
+    document.getElementById("resultModal").style.display = "none";
+     location.reload();
+  } 
+    function handlePopupCloseAndUpdate() {
+    // 1. Close the popup (adjust selector based on your popup structure)
+    document.getElementById("activationModel").style.display = "none";
+
+    // 2. Make AJAX call to update popup_check
+     // Send AJAX POST to update popup_check
+    fetch('/user/update-popup-check', {
+        method: 'POST', // <-- Ensure this is POST
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'), // Laravel CSRF
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ popup_check: true }) // This causes error only if method is GET
+    })
+    .then(response => response.json())
+    .then(data => {
+        // console.log('Popup check updated:', data);
+        // window.location.href = '/dashboard';
+    })
+    .catch(error => {
+        console.error('Error updating popup check:', error);
+    });
+}
 </script>
 </html>
