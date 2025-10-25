@@ -708,6 +708,50 @@
                                             </div>
                                         </a>
                                     </div>
+                                     <div
+                                        role="menuitem"
+                                        class="relative flex cursor-default select-none items-center rounded-sm text-sm outline-none transition-colors focus:bg-[#f3fbfc]  focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 self-stretch w-full"
+                                        tabindex="-1" data-orientation="vertical"
+                                        data-radix-collection-item>
+                                        <a
+                                            class="flex  items-center w-full self-stretch gap-[24px] px-[24px] py-[8px] rounded-[6px]"
+                                            href="{{route('user.wallets')}}"><svg width="35" height="36"
+                                                viewBox="0 0 35 36" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="flex-grow-0 flex-shrink-0 w-[35px] h-[35px] relative"
+                                                preserveAspectRatio="xMidYMid meet">
+                                                <path
+                                                    d="M17.5007 17.8C21.5277 17.8 24.7923 14.5354 24.7923 10.5083C24.7923 6.48125 21.5277 3.21666 17.5007 3.21666C13.4736 3.21666 10.209 6.48125 10.209 10.5083C10.209 14.5354 13.4736 17.8 17.5007 17.8Z"
+                                                    stroke="#292D32" stroke-width="1.5"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M28.0154 23.2542L22.8529 28.4167C22.6487 28.6209 22.4592 29 22.4154 29.2771L22.1383 31.2458C22.0362 31.9604 22.5321 32.4563 23.2467 32.3542L25.2154 32.0771C25.4925 32.0333 25.8863 31.8438 26.0758 31.6396L31.2383 26.4771C32.1279 25.5875 32.5508 24.5521 31.2383 23.2396C29.9404 21.9417 28.905 22.3646 28.0154 23.2542Z"
+                                                    stroke="#00B2C8" stroke-width="1.5"
+                                                    stroke-miterlimit="10"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M27.2715 23.9979C27.709 25.5729 28.9339 26.7979 30.5089 27.2354"
+                                                    stroke="#00B2C8" stroke-width="1.5"
+                                                    stroke-miterlimit="10"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M4.97266 32.3833C4.97266 26.7396 10.5873 22.175 17.4998 22.175C19.0164 22.175 20.4747 22.3937 21.831 22.8021"
+                                                    stroke="#292D32" stroke-width="1.5"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                            </svg>
+                                            <div
+                                                class="flex flex-col justify-center flex-grow">
+                                                <p
+                                                    class="text-[16px] text-black">Wallet Address</p>
+                                               
+                                            </div>
+                                        </a>
+                                    </div>
+                                    
                                     <div
                                         role="menuitem"
                                         class="relative flex cursor-default select-none items-center rounded-sm text-sm outline-none transition-colors focus:bg-[#f3fbfc]  focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 self-stretch w-full"
