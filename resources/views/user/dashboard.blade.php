@@ -35,19 +35,22 @@
                 <?php
 
                 $quantifiable_count = 2;
-                $vip = 0;
-                if ($balance >= 10) {
-                    
-                    $vip = 1;
-                }
-                if ($balance >= 200  && $userDirect >= 5) {
-                    
-                    $vip = 2;
-                }
-                if ($balance >= 400 && $userDirect >= 10) {
-                   
-                    $vip = 3;
-                }
+               $vip = 0;
+
+if ($balance >= 100 && $balance <= 500) {
+    $vip = 1;
+} elseif ($balance >= 501 && $balance <= 1000) {
+    $vip = 2;
+} elseif ($balance >= 1001 && $balance <= 5000) {
+    $vip = 3;
+} elseif ($balance >= 5001 && $balance <= 15000) {
+    $vip = 4;
+} elseif ($balance >= 15001 && $balance <= 50000) {
+    $vip = 5;
+} elseif ($balance >= 50001 ) {
+    $vip = 6;
+}
+
                 // dd($userDirect);
                 ?>
                 <div class="flex gap-[24px] flex-col md:flex-row">
@@ -324,37 +327,40 @@
                         </div>
                     </div>
                 </div>
-                <p class="text-[14px] font-[400]  uppercase text-[#828282]"> Investment Activation </p>
+              <!-- Section Title -->
+<p class="text-[18px] font-semibold text-[#00b2c8] uppercase tracking-wide mb-4">
+    Investment Activation
+</p>
 
+<!-- Card Container -->
+<div class="w-full bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
 
-                <div class="w-full bg-white rounded-xl shadow-md overflow-hidden">
-    <div class="bg-[#00b2c8] text-white text-sm font-semibold uppercase px-6 py-4">
-    </div>
+    <!-- Header -->
+  
 
     @if($income_data->isEmpty())
-        <p class="text-center text-gray-500 py-6">No Available Data</p>
+        <p class="text-center text-gray-500 py-8 text-[15px]">No Available Data</p>
     @else
-        <div class="overflow-x-auto">
-            <table class="min-w-full border-collapse">
-                <thead class="bg-[#f3fbfc] border-b border-gray-200">
-                    <tr>
-                        <th class="px-6 py-2 text-left text-[12px]  font-semibold text-gray-600 uppercase tracking-wider">S.No</th>
-                        <th class="px-6 py-2 text-left text-[12px] font-semibold text-gray-600 uppercase tracking-wider">Amount</th>
-                        <th class="px-6 py-2 text-left text-[12px] font-semibold text-gray-600 uppercase tracking-wider">Username</th>
-                        <th class="px-6 py-2 text-left text-[12px] font-semibold text-gray-600 uppercase tracking-wider">Created At</th>
-                        <th class="px-6 py-2 text-left text-[12px] font-semibold text-gray-600 uppercase tracking-wider">Remark</th>
+        <!-- Table Wrapper -->
+        <div class="overflow-x-auto p-4">
+            <table class="min-w-full border-collapse rounded-lg overflow-hidden">
+                <thead class="bg-[#f9fafb] border-b border-gray-200">
+                    <tr class="text-gray-600 text-[13px] uppercase">
+                        <th class="px-6 py-3 text-left font-semibold">S.No</th>
+                        <th class="px-6 py-3 text-left font-semibold">Amount</th>
+                        <th class="px-6 py-3 text-left font-semibold">Username</th>
+                        <th class="px-6 py-3 text-left font-semibold">Created At</th>
+                        <th class="px-6 py-3 text-left font-semibold">Remark</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-gray-200">
+                <tbody class="divide-y divide-gray-100">
                     @foreach($income_data as $index => $report)
-                        <tr class="hover:bg-[#f9f9f9] transition">
-                            <td class="px-6 py-3 text-[14px] text-gray-700">{{ $index + 1 }}</td>
-                            <td class="px-6 py-3 text-[14px] text-gray-700 font-medium">${{ number_format($report->comm, 2) }}</td>
-                            <td class="px-6 py-3 text-[14px] text-gray-700">{{ ($report->user_id_fk ?? '--') }}</td>
-                            <td class="px-6 py-3 text-[14px] text-gray-700">{{($report->ttime) }}</td>
-                            <td class="px-6 py-3 text-[14px] text-gray-700">
-                                {{ ucfirst($report->remarks) }}
-                            </td>
+                        <tr class="hover:bg-[#e9f9fb] transition-colors duration-200">
+                            <td class="px-6 py-3 text-[14px] text-gray-800 font-medium">{{ $index + 1 }}</td>
+                            <td class="px-6 py-3 text-[14px] text-gray-700 font-semibold text-[#00b2c8]">{{currency()}}{{ number_format($report->comm, 2) }}</td>
+                            <td class="px-6 py-3 text-[14px] text-gray-700">{{ $report->user_id_fk ?? '--' }}</td>
+                            <td class="px-6 py-3 text-[14px] text-gray-700">{{ $report->ttime }}</td>
+                            <td class="px-6 py-3 text-[14px] text-gray-700">{{ ucfirst($report->remarks) }}</td>
                         </tr>
                     @endforeach
                 </tbody>
