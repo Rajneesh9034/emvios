@@ -587,6 +587,8 @@
                         </div>
                     </div>
                 </div>
+
+                
                 <script>
                     function toggleSidebars() {
                         const sidebars = document.getElementById("mySidebars");
