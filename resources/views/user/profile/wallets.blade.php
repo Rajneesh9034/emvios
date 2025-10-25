@@ -141,26 +141,21 @@
 </div>
 
 <script>
-$(document).ready(function() {
-    // ✅ Show modal if session exists
-    @if(session('WalletCode'))
-        $('#walletVerificationModal').removeClass('hidden');
-        $('body').append('<div class="modal-backdrop fixed inset-0 bg-black bg-opacity-30 z-40"></div>');
-    @endif
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('walletVerificationModal');
+  const closeBtn = document.getElementById('closeWalletModal');
 
-    // ✅ Close modal when X button is clicked
-    $('#closeWalletModal').click(function() {
-        $('#walletVerificationModal').addClass('hidden'); // hide modal
-        $('.modal-backdrop').remove(); // remove black overlay
-    });
+  closeBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    document.querySelector('.modal-backdrop')?.remove();
+  });
 
-    // ✅ Optional: Close modal if clicked outside the modal box
-    $('#walletVerificationModal').click(function(e) {
-        if(e.target.id === 'walletVerificationModal') {
-            $(this).addClass('hidden');
-            $('.modal-backdrop').remove();
-        }
-    });
+  modal.addEventListener('click', (e) => {
+    if (e.target.id === 'walletVerificationModal') {
+      modal.classList.add('hidden');
+      document.querySelector('.modal-backdrop')?.remove();
+    }
+  });
 });
 </script>
 
