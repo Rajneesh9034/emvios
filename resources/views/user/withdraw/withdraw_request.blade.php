@@ -153,7 +153,7 @@
                                 <div class="withdrawal_ammount__EIZjs">
                                     <!-- ✅ Only USD input (now wider) -->
                                      <div class="withdrawal_select__custom flex flex-col max-w-[650px] flex-grow flex-shrink gap-[16px]">
-    <p class="self-stretch text-[14px]">Select Network</p>
+    <p class="self-stretch text-[14px]">Select Wallet</p>
 
     <div class="flex self-stretch">
         <!-- Left part: select box -->
@@ -170,7 +170,7 @@
         <!-- Right part: network icon or label -->
         <div
             class="flex flex-col items-center justify-center self-stretch gap-[8px] px-[16px] py-[8px] rounded-tr-md rounded-br-md bg-[#00b2c8]">
-            <p class="text-base uppercase text-white">NET</p>
+            <p class="text-base uppercase text-white">Wallet</p>
         </div>
     </div>
 </div>
