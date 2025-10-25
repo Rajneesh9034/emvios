@@ -31,29 +31,272 @@
                         </div>
                     </div>
                 </div>
+
+                <?php
+            
+            $quantifiable_count = 0;
+            $vip = 0;
+            if ($balance >= 10 ) {
+                $quantifiable_count = 2;
+                $vip = 1;
+            } 
+            if ($balance >= 200  && $userDirect >= 5) {
+                $quantifiable_count = 4;
+                $vip = 2;
+            } 
+            if ($balance >= 400 && $userDirect >= 10) {
+                $quantifiable_count = 6;
+                $vip = 3;
+            } 
+            // dd($userDirect);
+            ?>
                 <div class="flex gap-[24px] flex-col md:flex-row">
                     <div class="flex flex-col gap-[24px] flex-1 relative">
                         <p class="text-[14px] font-[400] uppercase text-[#828282]">Balance Graph</p>
-                        <div class="diagram_auth_main__bN9lp">
-                            <div class="flex justify-between">
-                                <div class="flex flex-col gap-[16px]">
-                                    <p class="text-[32px] font-[400]">$ 0</p>
-                                </div>
-                                <div class="cursor-pointer" data-state="closed"><img alt="icon" loading="lazy" width="24" height="24" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/mark.72686f6e.svg" style="color: transparent;"></div>
-                            </div>
-                            <div class="bg-[#ECECEC] h-[1px] w-full"></div>
-                            <div class="diagram_auth_buttons__cE2t"><button class="diagram_auth_button2hbFw diagram_auth_activeGcDbS">Week</button><button class="diagram_auth_button2hbFw">Month</button><button class="diagram_auth_button_2hbFw">All Time</button></div>
-                            <div class="">
-                             <div class="pl-6 pr-6 diagram_auth_chart_content__3EJ49">
-    <p class="diagram_auth_text__EIXRd">Your Income Statistics</p>
+ <div style="background:#ffffff; color:#000; width:100%; height:100%; padding:32px; border-radius:18px; border:1px solid #e6e6e6;  font-family:'Segoe UI', Tahoma, sans-serif;">
 
-    <div class="">
-        <div id="incomeChart" style="min-height: 300px;"></div>
-    </div>
+  <!-- Header -->
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+    <p style="letter-spacing:1px; color:#333; font-size:20px; font-weight:600; margin:0;">Trade Center</p>
+    <!-- <img src="{{ asset('') }}upnl/_next/static/media/mark.72686f6e.svg" alt="icon" width="28" height="28" style="filter:brightness(0) saturate(100%);"> -->
+  </div>
+
+  <!-- Title -->
+  <p style="font-size:38px; font-weight:800; background:linear-gradient(90deg,#0cc0df,#DA70D6,#32CD32); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin:0 0 28px 0;">
+   HF-{{ $vip }}
+  </p>
+      @php
+        $progress = $quantifiable_count > 0 ? ($todaysRoi / $quantifiable_count) * 100 : 0;
+     @endphp
+  <!-- Progress Bar -->
+  <div style="width:100%; background:#f2f2f2; height:16px; border-radius:10px; overflow:hidden; margin-bottom:28px;">
+    <div style="width: {{ $progress }}%; height:100%; background:linear-gradient(90deg,#0cc0df,#9370DB); transition:width 0.4s ease;"></div>
+  </div>
+
+  <!-- Stats -->
+  <div style="margin-bottom:32px;">
+    <p style="font-size:16px; color:#555; margin:0 0 6px 0;">Daily Assigned Trades:</p>
+    <p style="font-size:26px; font-weight:700; color:#000; margin:0;">{{ $todaysRoi }}/{{ $quantifiable_count }}</p>
+  </div>
+
+  <!-- Button -->
+ 
+                                                     @php
+                                use Carbon\Carbon;
+                            
+                                $lastTrade = Auth::user()->last_trade;
+                            
+                                // Set timezone to Asia/Kolkata
+                                $lastTradeDateTime = $lastTrade ? Carbon::parse($lastTrade)->timezone('Asia/Kolkata') : null;
+                                $currentDateTime = now('Asia/Kolkata');
+                            
+                                // Define 5:30 AM today in Asia/Kolkata timezone
+                                $today530AM = Carbon::createFromTime(5, 30, 0, 'Asia/Kolkata');
+                            
+                                // Check if current time is after or equal to 5:30 AM today
+                                $canTradeTimeReached = $currentDateTime->greaterThanOrEqualTo($today530AM);
+                            
+                                // Check if user has already traded today after 5:30 AM
+                                $hasTradedToday = $lastTradeDateTime 
+                                    && $lastTradeDateTime->isSameDay($currentDateTime) 
+                                    && $lastTradeDateTime->greaterThanOrEqualTo($today530AM);
+                            @endphp
+                            
+                            @if (!$hasTradedToday && $canTradeTimeReached && Auth::user()->active_status == "Active")
+                               
+
+                                 <a  href="{{ route('user.tradeOn') }}" style="width:100%; padding:16px; border:none; border-radius:35px; background: #0cc0df; color:#fff; font-size:17px; font-weight:600; border:1px solid #bbb; box-shadow:inset 0 0 8px rgba(0,0,0,0.08); transition:all 0.3s ease;">
+                                  Start Quantization
+                                 </a>
+                            @elseif (!isset($_GET['trade']))
+                                <a  style="width:100%; padding:16px; border:none; border-radius:35px; background: #daeaedff; color:#fff; font-size:17px; font-weight:600; cursor:not-allowed; border:1px solid #bbb; box-shadow:inset 0 0 8px rgba(0,0,0,0.08); transition:all 0.3s ease;">
+                                  Start Quantization
+                                 </a>
+                            @endif
+
+
+                    <?php
+                                $status = false;
+                                $trade = false;
+                                
+                                $u_id = Auth::user()->id;
+                                if (isset($_GET['trade'])) {
+                                    $trade = true;
+                                    $trade_row = \DB::table('contract')->where('user_id', $u_id)->where('c_status', 1)->orderBy('created_at', 'DESC')->first();
+                                    if (!$trade_row) {
+                                        $status = true;
+                                    }
+                                    if ($status == true) {
+                                        header('Location: dashboard?notrade');
+                                        exit();
+                                    }
+                                }
+                                
+                                ?>
+
+                    @if ($trade === true)
+                    <div id="zscooProcess" class="quantify-execute mt-4"
+                        style="display: block; width: 100%; max-width: 500px;">
+                        <div class="process-box">
+                            <h3 style="font-size: 16px;">@lang('Helix Fund Run Panel Process') <span
+                                    class="spinner">⏳</span></h3>
+                            <div id="stepsLog"></div>
+                        </div>
+                    </div>
+
+                    <style>
+                        .spinner {
+                            animation: spin 1s linear infinite;
+                            display: inline-block;
+                            font-size: 18px;
+                            margin-left: 5px;
+                        }
+
+                        @keyframes spin {
+                            0% {
+                                transform: rotate(0deg);
+                            }
+
+                            100% {
+                                transform: rotate(360deg);
+                            }
+                        }
+
+                        .process-box {
+                            background: #fff;
+                            padding: 20px 25px;
+                            border-radius: 10px;
+                            font-family: 'Segoe UI', sans-serif;
+                            max-width: 450px;
+                            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+                            margin: 30px auto;
+                        }
+
+                        #stepsLog p {
+                            margin: 8px 0;
+                            font-size: 14px;
+                            color: #000;
+                            line-height: 1.4;
+                        }
+
+                        .quantify-execute {
+                            margin-bottom: 80px;
+                        }
+
+                    </style>
+                      <script>
+                        document.addEventListener('DOMContentLoaded', async () => {
+                            const exchanges = ["BINANCE", "BITTREX", "KUCOIN", "HUOBI", "OKX"];
+                            const coin = "{{ $trade_row->c_name ?? 'SOL' }}";
+                            // Get random item from array
+                            function getRandomExchange() {
+                                return exchanges[Math.floor(Math.random() * exchanges.length)];
+                            }
+                            // Assign random exchanges
+                            const buyExchange = getRandomExchange();
+                            let sellExchange = getRandomExchange();
+
+                            // Ensure buy and sell are not the same
+                            while (sellExchange === buyExchange) {
+                                sellExchange = getRandomExchange();
+                            }
+
+                            const steps = [
+                                'Starting Helix Fund quantification',
+                                'Start queuing...',
+                                'Start capturing various exchange market prices',
+                                `Start executing buy order ${coin} ${buyExchange}`,
+                                `Start executing sell order ${coin} ${sellExchange}`,
+                                'Start allocating commissions',
+                                'The execution is completed and the commission distribution is successful'
+                            ];
+
+                            const stepsLog = document.getElementById('stepsLog');
+
+                            for (let i = 0; i < steps.length; i++) {
+                                await new Promise(resolve => setTimeout(resolve, 2000));
+                                const p = document.createElement('p');
+                                p.textContent = steps[i];
+                                stepsLog.appendChild(p);
+                            }
+
+                            setTimeout(() => {
+                                document.getElementById('zscooProcess').style.display = 'none';
+
+
+                            }, 4000);
+
+                            function closetrade() {
+                                
+                                  document.getElementById('zscooProcess').style.display = 'none';
+                                  
+                                fetch("{{ route('user.close-trade') }}").then(response => response
+                                        .json()) // Parse JSON response
+                                    .then(data => {
+                                        if (data.status) {
+                                         const profit = data.profit ?? "0.0000"; // fallback if no profit sent sent
+                                            console.log(data);
+                                            // Set the profit in the modal
+                                            document.getElementById("profitAmount").textContent =
+                                                `${profit} USDT`;
+
+                                            // Show modal and overlay
+
+                                            document.getElementById("resultModal").style.display = "block";
+
+
+
+                                         
+                                            // Add the 'show' class to trigger transitions/animations (like Bootstrap modals)
+
+                                            // Show execute button again
+                                            $('.quantify-execute').css('display', 'block');
+                                            
+                                            function hideModal() {
+                                                  document.getElementById("resultModal").style.display = "none";
+                                            }  
+
+
+                                        } else {
+                                            // exit
+                                            $('.team-income').css('display', 'none')
+                                        }
+                                        // setTimeout(pollServer, 500000);
+                                    })
+                                    .catch((error) => {
+                                        console.error("Error polling server:", {
+                                            message: error.message,
+                                            stack: error.stack,
+                                            response: error.response,
+                                        });
+                                        // Retry polling after a delay (e.g., every 5 seconds)
+                                        // 
+                                    });
+
+                            }
+                            setTimeout(closetrade, 4000);
+
+
+                        });
+
+                    </script>
+                    @endif
+
+
+
+
+
+
+
+
+
+                    {{-- loader --}}
+
+
+
 </div>
 
-                            </div>
-                        </div>
+
                     </div>
                     <div class="diagram_auth_statistics__8JXhL">
                         <p class="text-[14px] font-[400]  uppercase text-[#828282]">Statistics</p>
@@ -284,6 +527,35 @@
 
         var chart = new ApexCharts(document.querySelector("#incomeChart"), options);
         chart.render();
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const countdownEl = document.getElementById("countdown");
+        if (!countdownEl) return;
+
+        const startTime = new Date(countdownEl.dataset.start);
+        const endTime = new Date(startTime.getTime() + 7 * 24 * 60 * 60 * 1000);
+
+        function updateCountdown() {
+            const now = new Date();
+            const distance = endTime - now;
+
+            if (distance <= 0) {
+                countdownEl.innerText = "Expired";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownEl.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        updateCountdown(); // initial call
+        setInterval(updateCountdown, 1000); // update every second
     });
 </script>
 </html>

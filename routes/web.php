@@ -126,10 +126,10 @@ Route::get('/cancel-payment/{id}', [App\Http\Controllers\UserPanel\Invest::class
 Route::post('/fundActivation', [App\Http\Controllers\UserPanel\Invest::class, 'fundActivation'])->name('user.fundActivation');
 Route::any('/confirm-deposit', [App\Http\Controllers\UserPanel\Invest::class, 'confirmDeposit'])->name('user.confirm-deposit');
 Route::any('/confirmDeposit_new', [App\Http\Controllers\UserPanel\Invest::class, 'confirmDeposit_new'])->name('user.confirmDeposit_new');
-
+Route::get('/tradeOn', [App\Http\Controllers\UserPanel\Dashboard::class, 'tradeOn'])->name('user.tradeOn');
 Route::get('/affialiate', [App\Http\Controllers\UserPanel\Invest::class, 'affialiate'])->name('user.affialiate');
 Route::any('/confirmDeposit_new', [App\Http\Controllers\UserPanel\Invest::class, 'confirmDeposit_new'])->name('user.confirmDeposit_new');
-
+Route::get('/close-trade', [App\Http\Controllers\UserPanel\Dashboard::class, 'stop_trade'])->name('user.close-trade');
 // end invest
 
 Route::post('/Deposit2', [App\Http\Controllers\UserPanel\Invest::class, 'deposit2'])->name('user.deposit2');

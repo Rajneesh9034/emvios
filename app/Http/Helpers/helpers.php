@@ -27,7 +27,48 @@ function tokenPrice()
     return $general->tokenPrice;
 }
 
+function coinrates()
+{
+    // Use Laravel Cache (for 60 seconds)
+    $cached = cache()->get('coin_rates');
+    if ($cached) {
+        return $cached;
+    }
 
+    $url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether,binancecoin,cardano,solana,dogecoin,xrp,tron&vs_currencies=usd";
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    if (!$response) {
+        return ["error" => "Coin API request failed"];
+    }
+
+    $result = json_decode($response, true);
+    if (!is_array($result)) {
+        return ["error" => "Invalid Coin API response"];
+    }
+
+    $prices = [
+        "eth" => $result["ethereum"]["usd"] ?? "0",
+        "btc" => $result["bitcoin"]["usd"] ?? "0",
+        "bnb" => $result["binancecoin"]["usd"] ?? "0",
+        "usdt" => $result["tether"]["usd"] ?? "0",
+        "trx" => $result["tron"]["usd"] ?? "0",
+        "doge" => $result["dogecoin"]["usd"] ?? "0",
+        "sol" => $result["solana"]["usd"] ?? "0",
+        "xrp" => $result["xrp"]["usd"] ?? "0",
+        "car" => $result["cardano"]["usd"] ?? "0"
+    ];
+
+    // Cache for 60 seconds
+    cache()->put('coin_rates', $prices, 60);
+
+    return $prices;
+}
 function generalDetail()
 {
     $general = GeneralSetting::first();
@@ -338,6 +379,10 @@ $user_mid = $data->id;
 return true;
 }
 
+function isEven($number)
+{
+  return $number % 2 === 0;
+}
 
 function menuActive($routeName, $type = null)
 {

@@ -364,7 +364,7 @@
                                         <div>
                                             <h3 data-orientation="vertical" data-state="closed" class="flex">
                                                 <button type="button" aria-controls="radix-«re»" aria-expanded="false" data-state="closed" data-orientation="vertical" id="radix-«rd»" class="flex gap-[12px] justify-between px-[14px] flex-1 items-center py-[16px] font-medium transition-all [&amp;[data-state=open]&gt;svg]:rotate-180  pb-0 pt-0 pl-0 pr-0" data-radix-collection-item="">
-                                                    <div class="header_auth_box__KuP7o"><img alt="icon" loading="lazy" width="24" height="24" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/wallets.00ebfa6e.svg" style="color: transparent;"><a href="{{ route('user.AddFund') }}" class="header_auth_text__dCMGD" >Wallets</a>
+                                                    <div class="header_auth_box__KuP7o"><img alt="icon" loading="lazy" width="24" height="24" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/wallets.00ebfa6e.svg" style="color: transparent;"><a href="{{ route('user.AddFund') }}" class="header_auth_text__dCMGD" >Top-up</a>
                                                 
                                                 </div>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down h-4 w-4 shrink-0 transition-transform duration-200">
