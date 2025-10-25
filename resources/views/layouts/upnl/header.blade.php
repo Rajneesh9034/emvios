@@ -415,7 +415,7 @@
                             src="{{ asset('') }}upnl/_next/static/media/wallets.00ebfa6e.svg">
                         <div>
                             <p
-                                class="text-[13px] text-center uppercase">Investments</p>
+                                class="text-[13px] text-center uppercase">Deposit</p>
                         </div>
                     </a>
 
