@@ -50,6 +50,11 @@ class Dashboard extends Controller
 
         $transaction_data = Income::where('user_id',$user->id)->orderBy('id', 'desc')->take(10)->get();
          $total_teams=User::whereIn('id',(!empty($tolteam)?$tolteam:array()))->count();
+        $income_data = Income::where('user_id', $user->id)
+    ->where('remarks', 'Order Revenue')
+    ->orderBy('created_at', 'desc')
+    ->take(10)
+    ->get();
 
          $total_team=User::whereIn('id',(!empty($tolteam)?$tolteam:array()))->where('active_status','Active')->count();
          $totalBusiness=Investment::whereIn('user_id',(!empty($tolteam)?$tolteam:array()))->where('status','Active')->sum('amount');
@@ -68,6 +73,7 @@ class Dashboard extends Controller
         $this->data['total_teams'] =$total_teams;
     $this->data['level_income_total'] = $level_income_total;
 
+        $this->data['income_data'] = $income_data;
         $this->data['deposit_report'] =$deposit_report;
         $this->data['user_direct'] =$user_direct;
         $total = $personal_deposit*200/100;
@@ -383,21 +389,8 @@ if ($latest->isEmpty()) {
          
         //  dd($userDirect);
          $todaysRoi = \DB::table('contract')->where('user_id',$user->id)->where('ttime',date('Y-m-d'))->count();
-         $quantifiable_count = 0;
-         if ($balance>=10) 
-         {
-             $quantifiable_count = 2;
-         }
-         if ($balance>=200 && $userDirect>=5) 
-         {
-             $quantifiable_count = 4;
-         }
-         if (($balance>=400 )&& $userDirect>=10) 
-         {
-             $quantifiable_count = 6;
-         }else{
-          $quantifiable_count = 2;
-         }
+         $quantifiable_count = 2;
+        
 
       
          
@@ -461,22 +454,31 @@ if ($latest->isEmpty()) {
           $userID=$user->id;
            $u_str = round($user->principleBalance(),3);
            
-           if($u_str>510)
-           {
-              $u_str = 510;
-           }
+          //  if($u_str>510)
+          //  {
+          //     $u_str = 510;
+          //  }
            
         
            $idx = 1;
-          if($u_str >= 10 ) {
-          $idx = 1;
-             } 
-            if ($u_str >= 200   && $userDirect>=5) {
-              $idx = 2;
-            }
-            if (($u_str >= 400 )   && $userDirect>=10) {
-             $idx = 3;
-           }
+          if ($u_str >= 100 && $u_str <= 500) {
+    $idx = 1; // Starter package
+}
+elseif ($u_str >= 501 && $u_str <= 1000) {
+    $idx = 2; // Basic package
+}
+elseif ($u_str >= 1001 && $u_str <= 5000) {
+    $idx = 3; // Growth package
+}
+elseif ($u_str >= 5001 && $u_str <= 15000) {
+    $idx = 4; // Premium package
+}
+elseif ($u_str >= 15001 && $u_str <= 50000) {
+    $idx = 5; // Elite package
+}
+elseif ($u_str >= 50001 ) {
+    $idx = 6; // VIP/Diamond package
+}
         
              // Trading Section Starts
         
@@ -619,21 +621,30 @@ if ($latest->isEmpty()) {
       
         $userID=$user->id;
          $u_str = round($user->principleBalance(),3);
-         if($u_str>510)
-           {
-              $u_str = 510;
-           }
+        //  if($u_str>510)
+        //    {
+        //       $u_str = 510;
+        //    }
            
          $idx = 1;
-        if($u_str >= 10 ) {
-          $idx = 1;
-         } 
-        if ($u_str >= 200   && $userDirect>=5) {
-          $idx = 2;
-        }
-        if (($u_str >= 400 )   && $userDirect>=10) {
-         $idx = 3;
-       }
+          if ($u_str >= 100 && $u_str <= 500) {
+    $idx = 1; // Starter package
+}
+elseif ($u_str >= 501 && $u_str <= 1000) {
+    $idx = 2; // Basic package
+}
+elseif ($u_str >= 1001 && $u_str <= 5000) {
+    $idx = 3; // Growth package
+}
+elseif ($u_str >= 5001 && $u_str <= 15000) {
+    $idx = 4; // Premium package
+}
+elseif ($u_str >= 15001 && $u_str <= 50000) {
+    $idx = 5; // Elite package
+}
+elseif ($u_str >= 50001 ) {
+    $idx = 6; // VIP/Diamond package
+}
        
       
            // Trading Section Starts
@@ -777,21 +788,30 @@ if ($latest->isEmpty()) {
       
         $userID=$user->id;
          $u_str = round($user->principleBalance(),3);
-          if($u_str>510)
-           {
-              $u_str = 510;
-           }
+          // if($u_str>510)
+          //  {
+          //     $u_str = 510;
+          //  }
       
          $idx = 1;
-         if($u_str >= 10 ) {
-          $idx = 1;
-         } 
-        if ($u_str >= 200   && $userDirect>=5) {
-          $idx = 2;
-        }
-        if (($u_str >= 400 )   && $userDirect>=10) {
-         $idx = 3;
-       }
+           if ($u_str >= 100 && $u_str <= 500) {
+    $idx = 1; // Starter package
+}
+elseif ($u_str >= 501 && $u_str <= 1000) {
+    $idx = 2; // Basic package
+}
+elseif ($u_str >= 1001 && $u_str <= 5000) {
+    $idx = 3; // Growth package
+}
+elseif ($u_str >= 5001 && $u_str <= 15000) {
+    $idx = 4; // Premium package
+}
+elseif ($u_str >= 15001 && $u_str <= 50000) {
+    $idx = 5; // Elite package
+}
+elseif ($u_str >= 50001 ) {
+    $idx = 6; // VIP/Diamond package
+}
        
       
            // Trading Section Starts

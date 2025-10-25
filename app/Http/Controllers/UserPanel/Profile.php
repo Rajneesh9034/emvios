@@ -173,13 +173,13 @@ public function BankDetail()
             $password->created_at = \Carbon\Carbon::now();
             $password->save();
 
-               sendEmail($user->email, 'Your One-Time Password', [
-                'name' => $user->name,
-                'code' => $code,
-                'purpose' => 'Receiver Payment wallet',
-                'viewpage' => 'one_time_password',
+            //    sendEmail($user->email, 'Your One-Time Password', [
+            //     'name' => $user->name,
+            //     'code' => $code,
+            //     'purpose' => 'Receiver Payment wallet',
+            //     'viewpage' => 'one_time_password',
 
-             ]);
+            //  ]);
              $userID = $user->id;
             session()->put('usdtTrc20',$request->usdtTrc20);
             session()->put('usdtBep20',$request->usdtBep20);
@@ -216,13 +216,12 @@ public function BankDetail()
      
          $usdtTrc20 = session()->get('usdtTrc20');
          $usdtBep20 = session()->get('usdtBep20');
-            
            
-          if(empty($user->usdtTrc20) )
+          if(!empty($user->usdtTrc20) )
           {
           $user->usdtTrc20=$usdtTrc20;
           }
-          if(empty($user->usdtBep20) )
+          if(!empty($user->usdtBep20) )
           {  
              $user->usdtBep20=$usdtBep20;
           }
