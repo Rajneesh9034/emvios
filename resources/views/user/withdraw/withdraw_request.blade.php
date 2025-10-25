@@ -108,8 +108,7 @@
                 </div>
 
             </div>
-            <form action="{{ route('user.Withdraw-Request') }}" method="POST"    class="w-full max-w-[700px] mx-auto bg-white rounded-[12px] shadow-md p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col gap-6">
-
+            <form action="{{ route('user.Withdraw-Request') }}" method="POST">
                 @csrf
                 <input type="hidden" name="currency" id="networkInput" value="{{ $selectedNetwork ?? 'BSC' }}">
 
@@ -117,7 +116,23 @@
                     <div class="withdrawal_body__kspWM">
                         <div class="flex flex-col gap-[24px] w-full">
                             <p class="withdrawal_title__0EcCq">USDT Withdrawal</p>
-                            <div class="withdrawal_list__DCNgj">
+                             <div class="withdrawal_list__DCNgj">
+                                            <div class="flex items-center gap-[16px] px-[16px] py-[8px]">
+                                                <div class="withdrawal_circle__IXHVa withdrawal_blue__uZwHD">1</div>
+                                                <p class="min-w-[55px]  text-[14px] text-start ">Place an Order</p>
+                                            </div>
+                                            <div class="withdrawal_line____U3D bg-[#00b2c8]"></div>
+                                            <div class="flex items-center gap-[16px] px-[16px] py-[8px]">
+                                                <div class="withdrawal_circle__IXHVa">2</div>
+                                                <p class="  text-[14px] text-center ">Confirmation</p>
+                                            </div>
+                                            <div class="withdrawal_line____U3D bg-[#a1aebe]"></div>
+                                            <div class="flex items-center gap-[16px] px-[16px] py-[8px]">
+                                                <div class="withdrawal_circle__IXHVa">3</div>
+                                                <p class="  text-[14px] text-center ">Processing</p>
+                                            </div>
+                                        </div>
+                            <!-- <div class="withdrawal_list__DCNgj">
                                 <div class="flex items-center gap-[16px] px-[16px] py-[8px]">
                                     <input type="radio" name="payment" value="1" class="custom-radio mb-[8px]">
 
@@ -130,15 +145,39 @@
 
                                 </div>
 
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="flex self-stretch gap-[20px]">
                             <div class="flex flex-col flex-grow gap-[22px]">
                                 <div class="withdrawal_ammount__EIZjs">
                                     <!-- ✅ Only USD input (now wider) -->
+                                     <div class="withdrawal_select__custom flex flex-col max-w-[650px] flex-grow flex-shrink gap-[16px]">
+    <p class="self-stretch text-[14px]">Select Network</p>
+
+    <div class="flex self-stretch">
+        <!-- Left part: select box -->
+        <div
+            class="flex justify-between items-center self-stretch flex-grow px-[16px] py-[8px] rounded-tl-md rounded-bl-md bg-neutral-50 border-t-[1px] border-solid border-r-0 border-b-[1px] border-l-[1px] border-[#cecece]">
+            <select name="payment" id="networkSelect"
+                class="text-[14px] bg-transparent w-full outline-none appearance-none cursor-pointer">
+                <option value="">-- Select Wallet --</option>
+                <option value="1">Swap USDT Wallet</option>
+                <option value="2">Swap Wallet</option>
+            </select>
+        </div>
+
+        <!-- Right part: network icon or label -->
+        <div
+            class="flex flex-col items-center justify-center self-stretch gap-[8px] px-[16px] py-[8px] rounded-tr-md rounded-br-md bg-[#00b2c8]">
+            <p class="text-base uppercase text-white">NET</p>
+        </div>
+    </div>
+</div>
+
                                     <div class="flex flex-col max-w-[650px] flex-grow flex-shrink gap-[16px]">
                                         <p class="self-stretch text-[14px]">Withdrawal amount USD</p>
+                                        
                                         <div class="flex self-stretch">
                                             <div class="flex justify-between items-center self-stretch flex-grow px-[16px] py-[8px] rounded-tl-md rounded-bl-md bg-neutral-50 border-t-[1px] border-solid border-r-0 border-b-[1px] border-l-[1px] border-[#cecece]">
                                                 <input class="text-[14px] bg-transparent w-full" type="text" name="amount" placeholder="Enter amount in USD">
@@ -178,7 +217,7 @@
 
                         <div class="withdrawal_buttons__vgBBe">
                             <button type="submit" class="button_blue_body__xatTr">
-                                <p>Next</p>
+                                <p>Submit</p>
                             </button>
                         </div>
                     </div>
