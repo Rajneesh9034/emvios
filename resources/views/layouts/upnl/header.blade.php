@@ -221,7 +221,7 @@
             <div class="bg"
                 style="z-index: -100; opacity: 0; background: transparent;"></div>
             <div class="sidebar_wrapper__XEcoX">
-                <div class="sidebar_body__J1dsq">
+                <div class="sidebar_body__J1dsq ">
                     <a class="mb-[10px]" href="{{ route('user.dashboard') }}"><img alt="logo"
                             loading="lazy" width="200" height="200"
                             decoding="async" data-nimg="1"
@@ -239,20 +239,10 @@
                                 class="text-[13px] text-center uppercase">Dashboard</p>
                         </div>
                     </a>
-                    <a id="tour-wallets" target="_self"
-                        class="sidebar_tab__XxMVJ" data-state="closed"
-                        href="{{ route('user.AddFund') }}">
-                        <img alt="icon" loading="lazy" width="24"
-                            height="25" decoding="async" data-nimg="1"
-                            style="color:transparent"
-                            src="{{ asset('') }}upnl/_next/static/media/wallets.00ebfa6e.svg">
-                        <div>
-                            <p
-                                class="text-[13px] text-center uppercase">Wallets</p>
-                        </div>
-                    </a>
-                    <a id="tour-investments" target="_self"
-                        class="sidebar_tab__XxMVJ "
+
+
+                    <!-- <a id="tour-investments" target="_self"
+                        class="sidebar_tab__XxMVJ cals-item cals-dropdown"
                         /* sidebar_active__WMqVb */
                         data-state="closed"
                         href="{{ route('user.invest') }}">
@@ -264,7 +254,171 @@
                             <p
                                 class="text-[13px] text-center uppercase">Investments</p>
                         </div>
+
                     </a>
+
+
+                    <ul class="cals-submenu">
+                        <li class="cals-item">
+                            <a href="#">Profile</a>
+                        </li>
+
+                        <li class="cals-item">
+                            <a href="#">Logout</a>
+                        </li>
+                    </ul>
+
+                    <style>
+                        .cals-item {
+                            position: relative;
+                        }
+
+                        .cals-item a {
+                            display: block;
+                            padding: 10px;
+                            color: #fff;
+                            text-decoration: none;
+                        }
+
+                        /* Submenu */
+                        .cals-submenu {
+                            list-style: none;
+                            padding: 0;
+                            margin: 0;
+                            position: absolute;
+                            top: 0;
+                            left: 100%;
+                            /* submenu to right */
+                            min-width: 180px;
+                            background: #000;
+                            display: none;
+                            /* hidden by default */
+                        }
+
+                        .cals-submenu li a {
+                            padding: 10px;
+                            color: #fff;
+                        }
+
+                        /* Show submenu on hover */
+                        .cals-item.cals-dropdown:hover>.cals-submenu {
+                            display: block;
+                        }
+
+                        /* Hover effect */
+                        .cals-item a:hover {
+                            /* background: #333; */
+                        }
+                    </style> -->
+                    <!-- Parent wrapper for menu item and submenu -->
+                    <div class="cals-item cals-dropdown">
+                        <a id="tour-investments" target="_self"
+                            class="sidebar_tab__XxMVJ"
+                            data-state="closed"
+                            href="{{ route('user.invest') }}">
+                            <img alt="icon" loading="lazy" width="24"
+                                height="25" decoding="async" data-nimg="1"
+                                style="color:transparent"
+                                src="{{ asset('') }}upnl/_next/static/media/investments.39330b64.svg">
+                            <div>
+                                <p class="text-[13px] text-center uppercase">Top Up</p>
+                            </div>
+                        </a>
+
+                        <!-- Submenu -->
+                        <ul class="cals-submenu" style=" list-style: none;">
+                            <li class="cals-item" style="display: flex; align-items: center; gap: 8px; padding: 20px;">
+
+                                <img src="{{ asset('') }}upnl/_next/static/media/replenishment.54d6b95c.svg" alt="Icon" style="width: 24px; height: 24px;">
+                                <span><a href="{{route('user.AddFund')}}">Replenishment</a></span>
+
+                            </li>
+                            <li class="cals-item" style="display: flex; align-items: center; gap: 8px; padding: 20px;">
+
+                                <img src="{{ asset('') }}upnl/_next/static/media/withdrawal.3aa2694c.svg" alt="Icon" style="width: 24px; height: 24px;">
+                                <span> <a href="{{ route('user.withdraw_request') }}">Withdraw</a></span>
+
+
+                            </li>
+                        </ul>
+
+
+                    </div>
+
+                    <style>
+                        .cals-item {
+                            position: relative;
+                        }
+
+                        .cals-item a {
+                            display: flex;
+                            align-items: center;
+                            /* gap: -8px; */
+                            /* top: 10px; */
+                            /* padding: 10px 14px; */
+                            color: #000;
+                            text-decoration: none;
+                            white-space: nowrap;
+                            transition: background 0.2s;
+                        }
+
+                        .cals-dropdown {
+                            position: relative;
+                            overflow: visible !important;
+                            z-index: auto;
+                        }
+
+                        .cals-submenu {
+                            list-style: none;
+                            /* padding-bottom: 10px; */
+                            /* margin: 0; */
+                            /* bottom: 10; */
+                            position: fixed;
+                            /* ✅ changed from absolute → fixed */
+                            /* top: 1; */
+
+                            left: auto;
+                            background: #fff;
+                            border-radius: 8px;
+                            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); */
+                            display: none;
+                            min-width: 100px;
+                            z-index: 10;
+                            transform: translateY(10px);
+                        }
+
+                        /* Show submenu directly beside hovered item */
+                        .cals-dropdown:hover>.cals-submenu {
+                            display: block;
+                            transform: translate(58%);
+                        }
+
+                        .cals-submenu li a {
+                            display: block;
+                            /* padding: 10px 15px; */
+                            color: #000;
+                            background: #fff;
+                        }
+
+                        .cals-item a:hover {
+                            background: #ffffffff;
+                        }
+                    </style>
+
+
+                    <a id="tour-wallets" target="_self"
+                        class="sidebar_tab__XxMVJ" data-state="closed"
+                        href="{{ route('user.invest') }}">
+                        <img alt="icon" loading="lazy" width="24"
+                            height="25" decoding="async" data-nimg="1"
+                            style="color:transparent"
+                            src="{{ asset('') }}upnl/_next/static/media/wallets.00ebfa6e.svg">
+                        <div>
+                            <p
+                                class="text-[13px] text-center uppercase">Investments</p>
+                        </div>
+                    </a>
+
                     <a id="tour-statistics" target="_self"
                         class="sidebar_tab__XxMVJ" data-state="closed"
                         href="{{ route('user.fundHistory') }}">
@@ -513,7 +667,8 @@
                                         role="menuitem"
                                         class="relative flex cursor-default select-none items-center rounded-sm text-sm outline-none transition-colors focus:bg-[#f3fbfc]  focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 self-stretch w-full"
                                         tabindex="-1" data-orientation="vertical"
-                                        data-radix-collection-item><a
+                                        data-radix-collection-item>
+                                        <a
                                             class="flex  items-center w-full self-stretch gap-[24px] px-[24px] py-[8px] rounded-[6px]"
                                             href="{{route('user.profile')}}"><svg width="35" height="36"
                                                 viewBox="0 0 35 36" fill="none"
@@ -551,7 +706,8 @@
                                                     class="self-stretch text-[12px] ">Set up
                                                     your profile</p>
                                             </div>
-                                        </a></div>
+                                        </a>
+                                    </div>
                                     <div
                                         role="menuitem"
                                         class="relative flex cursor-default select-none items-center rounded-sm text-sm outline-none transition-colors focus:bg-[#f3fbfc]  focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 self-stretch w-full"
@@ -590,6 +746,11 @@
                                     </div>
                                 </div>
                             </div>
+
+
+
+
+
                         </div>
                     </div>
                 </div>
