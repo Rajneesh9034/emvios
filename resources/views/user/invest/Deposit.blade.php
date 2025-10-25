@@ -527,7 +527,8 @@
            focus:ring-2 focus:ring-[#00b2c8]
            transition duration-150 text-gray-800 text-base"
     placeholder="Enter amount (e.g. 100)"
-    
+    min="100"
+    max="500"
     required
 />
 
@@ -558,9 +559,36 @@
         />
     </div>
 
+    
+
    
 </div>
 
+<div class="flex flex-col gap-2">
+    <label for="userName" class="text-sm font-semibold text-gray-700">
+        Bot Price
+    </label>
+
+    <div class="relative">
+        <input 
+            type="text"
+    name="botPrice"
+    id="botPrice"
+      readonly
+    style="border: 2px solid #00b2c8; border-radius: 6px; outline: none;"
+    class="pl-8 pr-4 py-2 w-full rounded-xl 
+           focus:ring-2 focus:ring-[#00b2c8]
+           transition duration-150 text-gray-800 text-base"
+   
+ 
+   
+        />
+    </div>
+
+    
+
+   
+</div>
                                             <div class=" hidden">
                                                 <div><input type="hidden"
                                                         name="cf-turnstile-response"
@@ -1671,6 +1699,15 @@
            
             infoProfit1.textContent = plan.dataset.profit;
             infoAmount1.textContent = plan.dataset.amount;
+
+              const amountText = plan.dataset.amount.replace(/\$/g, '').trim(); // remove $
+    const [min, max] = amountText.split('-').map(v => v.trim());
+
+    // Apply to input
+    amountInput.min = min;
+    amountInput.max = max;
+
+    console.log(`✅ Min: ${min}, Max: ${max}`);
             console.log('check',plan.dataset);
         });
     });
@@ -1764,8 +1801,66 @@ function copyAddress() {
         .catch(err => console.error('Failed to copy:', err));
 }
 </script>
+<script>
+  const amountInput = document.getElementById('investmentAmount');
+const botPriceInput = document.getElementById('botPrice');
+
+amountInput.addEventListener('input', () => {
+  const amount = parseFloat(amountInput.value);
+
+  if (isNaN(amount)) {
+    botPriceInput.value = '';
+    return;
+  }
+
+  if (amount >= 100 && amount <= 5000) {
+    botPriceInput.value = 100;
+  } else if (amount >= 5001 && amount <= 50000) {
+    botPriceInput.value = 200;
+  } else if (amount >= 50001 && amount <= 150000) {
+    botPriceInput.value = 300;
+  } else {
+    botPriceInput.value = 'Out of range';
+  }
+});
+
+   
+</script>
+
+<script>
 
 
+    const plans = document.querySelectorAll('.strategy_plan__box__YfMaH');
+
+// Example input field to apply min/max
+const amountInput = document.getElementById('investmentAmount'); // your input
+
+// if (amountInput) {
+//     amountInput.min = 100;
+//     amountInput.max = 500;
+    
+//     console.log('Default min:', 100, 'Default max:', 500);
+// }
+
+plans.forEach(plan => {
+  plan.addEventListener('click', () => {
+    // Get the amount string, e.g. "$100-500"
+    const amountStr = plan.dataset.amount.replace(/\$/g, '').trim(); 
+    // Split into min and max
+    const [min, max] = amountStr.split('-').map(v => parseFloat(v.trim()));
+
+    // Set min/max to input
+    if (amountInput) {
+      amountInput.min = min;
+      amountInput.max = max;
+      
+    }
+
+    console.log('Selected plan:', plan.dataset.name);
+    console.log('Min:', min, 'Max:', max);
+  });
+});
+</script>
 
     </body>
 </html>

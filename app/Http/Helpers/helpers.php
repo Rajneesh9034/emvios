@@ -595,95 +595,90 @@ return true;
 }
 
 
-function add_direct_income($id,$amt)
+function add_direct_income($id, $amt)
 {
+    $data = User::where('id', $id)->first();
 
-  //$user_id =$this->session->userdata('user_id_session')
-$data = User::where('id',$id)->orderBy('id','desc')->first();
+    if (!$data) return false;
 
-$user_id = $data->username;
-$fullname=$data->name;
+    $user_mid = $data->id;
+    $rname = $data->username;
+    $fullname = $data->name;
 
-$rname = $data->username;
-$user_mid = $data->id;
+    $amount = $amt / 100;
 
+    $Sposnor_status = null;
+    $sp_status = "Pending";
+    $Sposnor_cnt = 0;
+    $lastPackage = 0;
+    $total_profit = 0;
+    $total_get = 0;
 
-      $cnt = 1;
+    $Sposnor_id = User::where('id', $user_mid)->first();
+    $sponsor = $Sposnor_id->sponsor ?? null;
 
-        $amount = $amt/100;
+    if (!empty($sponsor)) {
+        $Sposnor_status = User::where('id', $sponsor)->first();
+        $sp_status = $Sposnor_status->active_status;
+        $Sposnor_cnt = User::where('sponsor', $sponsor)
+                            ->where('active_status', 'Active')
+                            ->count('id');
 
-              $Sposnor_id = User::where('id',$user_mid)->orderBy('id','desc')->first();
-              $sponsor=$Sposnor_id->sponsor;
-              if (!empty($sponsor))
-               {
-                $Sposnor_status = User::where('id',$sponsor)->orderBy('id','desc')->first();
-                $sp_status=$Sposnor_status->active_status;
-                $Sposnor_cnt = User::where('sponsor',$sponsor)->where('active_status','Active')->count("id");
-                $lastPackage = \DB::table('investments')->where('user_id',$Sposnor_status->id)->where('status','Active')->sum("amount");
-                $total_profit = \DB::table('incomes')->where('user_id',$Sposnor_status->id)->sum("comm");
-                $total_get = $lastPackage*200/100;
-              }
-              else
-              {
-                $Sposnor_status =array();
-                $sp_status="Pending";
-                $Sposnor_cnt =0;
-                $total_profit =0;
-                $total_get =0;
-              }
-             $percent = 8;
+        $lastPackage = \DB::table('investments')
+                        ->where('user_id', $Sposnor_status->id)
+                        ->where('status', 'Active')
+                        ->sum('amount');
 
-             if($sp_status=="Active")
-               {
+        // Only sum 'direct income' for this sponsor
+        $total_profit = \DB::table('incomes')
+                        ->where('user_id', $Sposnor_status->id)
+                        ->where('remarks', 'Direct Income')
+                        ->sum('comm');
 
-                $pp = $amount*$percent;
+        $total_get = $lastPackage * 200 / 100;
+    }
 
-              }else
-              {
-                $pp=0;
-              }
+    $percent = 50;
 
-              $user_mid = @$Sposnor_status->id;
-              //echo $user_id;
-             //die;
-              $idate = date("Y-m-d");
+    // Only give Direct Income if Active and not already given
+    if ($sp_status == "Active") {
+        $pp = $amount * $percent;
 
-              $spid = @$Sposnor_status->id;
-        
-                 $max_income=$total_get;
-             $n_m_t = $max_income - $total_profit;
-           // dd($total_received);
-             if($pp >= $n_m_t)
-             {
-                 $pp = $n_m_t;
-             }  
-             
+        // Check if Direct Income already exists for this user and this investment
+        $existing = \DB::table('incomes')
+                        ->where('user_id', $Sposnor_status->id)
+                        ->where('remarks', 'Direct Income')
+                        ->where('amt', $amt)
+                        ->first();
 
-              $user_id_fk=$sponsor;
-              //print_r($user_id_fk);die;
-             // echo $cnt." ".$spid." ".$pp."<br>";
-              if($spid>0 && $pp>0){
-                 $data = [
-                'user_id' => $user_mid,
-                'user_id_fk' =>$Sposnor_status->username,
-                'amt' => $amt,
-                'comm' => $pp,
-                'remarks' => 'Direct Income',
-                'level' => $cnt,
-                'rname' => $rname,
-                'fullname' => $fullname,
-                'ttime' => Date("Y-m-d"),
+        if ($existing) {
+            // Already given, so skip
+            return false;
+        }
 
-            ];
-            $user_data =  Income::Create($data);
+        // Ensure pp does not exceed max
+        $n_m_t = $total_get - $total_profit;
+        if ($pp >= $n_m_t) {
+            $pp = $n_m_t;
+        }
 
+        if ($pp > 0) {
+            Income::create([
+                'user_id'    => $Sposnor_status->id,
+                'user_id_fk' => $Sposnor_status->username,
+                'amt'        => $amt,
+                'comm'       => $pp,
+                'remarks'    => 'Direct Income',
+                'level'      => 1,
+                'rname'      => $rname,
+                'fullname'   => $fullname,
+                'ttime'      => date("Y-m-d"),
+            ]);
+        }
+    }
 
-       }
-
-
-return true;
+    return true;
 }
-
 
 
 

@@ -468,6 +468,7 @@
             <input type="hidden" name="orderId" value="{{ $orderId }}">
            
             <input type="hidden" name="username" value="{{ $username }}">
+            <input type="hidden" name="botPrice" value="{{ $botPrice }}">
 
             <!-- Attention Notice -->
             <!-- <div class="attention-box">
@@ -542,23 +543,27 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        const minAmount = {{ $amount * 50 / 100 }};
-        const maxAmount = {{ $amount }};
-        const totalAmount = {{ $amount }};
+$(document).ready(function() {
+    const totalAmount = {{ $amount }};
+    const halfAmount = totalAmount * 0.5; // 50%
+    
+    $('#amount').on('change keyup', function() {
+        let val = parseFloat($(this).val());
 
-        $('#amount').on('change keyup', function() {
-            let val = parseFloat($(this).val());
-
-            if (!isNaN(val) && val >= minAmount && val <= maxAmount) {
-                $('.submit-btn').prop('disabled', false).css('cursor', 'pointer');
-                // Update working wallet remaining
-                $('input[name="working_wallet"]').val(totalAmount - val);
-            } else {
-                $('.submit-btn').prop('disabled', true).css('cursor', 'not-allowed');
-            }
-        });
+        // Check if value is exactly 50% or 100%
+        if (!isNaN(val) && (val === halfAmount || val === totalAmount)) {
+            $('.submit-btn').prop('disabled', false).css('cursor', 'pointer');
+            $('input[name="working_wallet"]').val(totalAmount - val);
+        } else {
+            $('.submit-btn').prop('disabled', true).css('cursor', 'not-allowed');
+            $('input[name="working_wallet"]').val(''); // clear remaining wallet
+        }
     });
+
+    // Optionally, set default value to 50% on page load
+    $('#amount').val(halfAmount);
+    $('input[name="working_wallet"]').val(totalAmount - halfAmount);
+});
 </script>
 
        

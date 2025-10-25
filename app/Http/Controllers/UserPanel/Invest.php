@@ -225,7 +225,8 @@ class Invest extends Controller
     try {
       $validation =  Validator::make($request->all(), [
         'amount' => 'required|numeric|min:10',
-        'username' => 'required|exists:users,username'
+        'username' => 'required|exists:users,username',
+        'botPrice' => 'required|numeric'
       ]);
 
 
@@ -278,6 +279,7 @@ class Invest extends Controller
         $this->data['amount'] = $amount;
        
         $this->data['username'] = $request->username;
+        $this->data['botPrice'] = $request->botPrice;
         $this->data['page'] = 'user.invest.confirm-deposit';
         return $this->dashboard_layout();
      
@@ -437,6 +439,7 @@ class Invest extends Controller
         'amount' => 'required',
         
         'orderId' => 'required',
+        'botPrice' => 'required|numeric',
         
         'username' => 'required|exists:users,username'
       ]);
@@ -479,6 +482,32 @@ class Invest extends Controller
       $spotBalance = round(Auth::user()->FundBalance(), 2);
 
 
+    $botPrice = $request->botPrice;
+
+// Check which amounts already have data
+$hasWorking = !empty($working_amt);
+$hasCash    = !empty($cash_amt);
+
+if ($hasWorking && $hasCash) {
+    // Both have data → split bot price equally
+    $halfBotPrice = $botPrice / 2;
+    $working_amt += $halfBotPrice;
+    $cash_amt    += $halfBotPrice;
+} elseif ($hasWorking) {
+    // Only working_amt has data → add full bot price
+    $working_amt += $botPrice;
+} elseif ($hasCash) {
+    // Only cash_amt has data → add full bot price
+    $cash_amt += $botPrice;
+} else {
+    // Both empty → divide equally by default
+    $halfBotPrice = $botPrice / 2;
+    $working_amt = $halfBotPrice;
+    $cash_amt    = $halfBotPrice;
+}
+
+
+
       if ($workingBalance >= $working_amt && $spotBalance >= $cash_amt) {
         $last_package = ($invest_check) ? $invest_check->amount : 0;
 
@@ -490,6 +519,7 @@ class Invest extends Controller
           'user_id_fk' => $user_detail->username,
           'amount' => $request->amount,
           'working_amt' => $working_amt,
+          'bot_price' => $request->botPrice,
           'cash_amt' => $cash_amt,
           'token' => $request->amount / tokenPrice(),
           'payment_mode' => 'USDT',
@@ -499,7 +529,7 @@ class Invest extends Controller
           'walletType' => 2,
         ];
         $payment =  Investment::insert($data);
-
+         add_direct_income($user_detail->id, $request->botPrice);
         if ($user_detail->active_status == "Pending") {
           $user_update = array('active_status' => 'Active', 'adate' => Date("Y-m-d H:i:s"), 'package' => $request->amount);
           User::where('id', $user_detail->id)->update($user_update);
