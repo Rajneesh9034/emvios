@@ -53,7 +53,7 @@
                 <div class="flex gap-[24px] flex-col md:flex-row">
                     <div class="flex flex-col gap-[24px] flex-1 relative">
                         <p class="text-[14px] font-[400] uppercase text-[#828282]">Balance Graph</p>
- <div style="background:#ffffff; color:#000; width:100%; height:100%; padding:32px; border-radius:18px; border:1px solid #0cc0df; box-shadow:0 6px 24px rgba(0,0,0,0.12); font-family:'Segoe UI', Tahoma, sans-serif;">
+ <div style="background:#ffffff; color:#000; width:100%; height:100%; padding:32px; border-radius:18px; border:1px solid #e6e6e6;  font-family:'Segoe UI', Tahoma, sans-serif;">
 
   <!-- Header -->
   <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
