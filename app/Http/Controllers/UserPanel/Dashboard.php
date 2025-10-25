@@ -50,6 +50,9 @@ class Dashboard extends Controller
 
         $transaction_data = Income::where('user_id',$user->id)->orderBy('id', 'desc')->take(10)->get();
          $total_teams=User::whereIn('id',(!empty($tolteam)?$tolteam:array()))->count();
+        $income_data = Income::where('user_id', $user->id)
+    ->where('remark', 'Order Revenue')
+    ->get();
 
          $total_team=User::whereIn('id',(!empty($tolteam)?$tolteam:array()))->where('active_status','Active')->count();
          $totalBusiness=Investment::whereIn('user_id',(!empty($tolteam)?$tolteam:array()))->where('status','Active')->sum('amount');
@@ -68,6 +71,7 @@ class Dashboard extends Controller
         $this->data['total_teams'] =$total_teams;
     $this->data['level_income_total'] = $level_income_total;
 
+        $this->data['income_data'] = $income_data;
         $this->data['deposit_report'] =$deposit_report;
         $this->data['user_direct'] =$user_direct;
         $total = $personal_deposit*200/100;
