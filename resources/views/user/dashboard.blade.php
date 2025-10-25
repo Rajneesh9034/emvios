@@ -27,25 +27,25 @@
                             <div class="flex  items-center     gap-[16px]"><img alt="icon" loading="lazy" width="24" height="25" decoding="async" data-nimg="1" src="{{ asset('') }}upnl/_next/static/media/invested.d3a751a8.svg" style="color: transparent;">
                                 <p class="  text-[14px] font-[400]  uppercase text-[#828282]">Cash Wallet</p>
                             </div>
-                            <p class="   font-[400]  ">{{currency()}}{{$total_teams }}</p>
+                            <p class="   font-[400]  ">{{ currency() }}{{ number_format(Auth::user()->stakingBalance(), 2) }}</p>
                         </div>
                     </div>
                 </div>
 
                 <?php
 
-                $quantifiable_count = 0;
+                $quantifiable_count = 2;
                 $vip = 0;
                 if ($balance >= 10) {
-                    $quantifiable_count = 2;
+                    
                     $vip = 1;
                 }
                 if ($balance >= 200  && $userDirect >= 5) {
-                    $quantifiable_count = 4;
+                    
                     $vip = 2;
                 }
                 if ($balance >= 400 && $userDirect >= 10) {
-                    $quantifiable_count = 6;
+                   
                     $vip = 3;
                 }
                 // dd($userDirect);
@@ -331,33 +331,29 @@
     <div class="bg-[#00b2c8] text-white text-sm font-semibold uppercase px-6 py-4">
     </div>
 
-    @if($deposit_report->isEmpty())
+    @if($income_data->isEmpty())
         <p class="text-center text-gray-500 py-6">No Available Data</p>
     @else
         <div class="overflow-x-auto">
             <table class="min-w-full border-collapse">
                 <thead class="bg-[#f3fbfc] border-b border-gray-200">
                     <tr>
-                        <th class="px-6 py-3 text-left text-[13px] font-semibold text-gray-600 uppercase tracking-wider">S.No</th>
-                        <th class="px-6 py-3 text-left text-[13px] font-semibold text-gray-600 uppercase tracking-wider">Amount</th>
-                        <th class="px-6 py-3 text-left text-[13px] font-semibold text-gray-600 uppercase tracking-wider">Payment Mode</th>
-                        <th class="px-6 py-3 text-left text-[13px] font-semibold text-gray-600 uppercase tracking-wider">Created At</th>
-                        <th class="px-6 py-3 text-left text-[13px] font-semibold text-gray-600 uppercase tracking-wider">Status</th>
+                        <th class="px-6 py-2 text-left text-[12px]  font-semibold text-gray-600 uppercase tracking-wider">S.No</th>
+                        <th class="px-6 py-2 text-left text-[12px] font-semibold text-gray-600 uppercase tracking-wider">Amount</th>
+                        <th class="px-6 py-2 text-left text-[12px] font-semibold text-gray-600 uppercase tracking-wider">Username</th>
+                        <th class="px-6 py-2 text-left text-[12px] font-semibold text-gray-600 uppercase tracking-wider">Created At</th>
+                        <th class="px-6 py-2 text-left text-[12px] font-semibold text-gray-600 uppercase tracking-wider">Remark</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
-                    @foreach($deposit_report as $index => $report)
+                    @foreach($income_data as $index => $report)
                         <tr class="hover:bg-[#f9f9f9] transition">
                             <td class="px-6 py-3 text-[14px] text-gray-700">{{ $index + 1 }}</td>
-                            <td class="px-6 py-3 text-[14px] text-gray-700 font-medium">${{ number_format($report->amount, 2) }}</td>
-                            <td class="px-6 py-3 text-[14px] text-gray-700">{{ ucfirst($report->payment_mode) }}</td>
-                            <td class="px-6 py-3 text-[14px] text-gray-700">{{ \Carbon\Carbon::parse($report->created_at)->format('d M, Y h:i A') }}</td>
-                            <td class="px-6 py-3 text-[14px] font-semibold 
-                                @if($report->status == 'Approved') text-green-600 
-                                @elseif($report->status == 'Pending') text-yellow-600 
-                                @else text-red-600 
-                                @endif">
-                                {{ ucfirst($report->status) }}
+                            <td class="px-6 py-3 text-[14px] text-gray-700 font-medium">${{ number_format($report->comm, 2) }}</td>
+                            <td class="px-6 py-3 text-[14px] text-gray-700">{{ ($report->user_id_fk ?? '--') }}</td>
+                            <td class="px-6 py-3 text-[14px] text-gray-700">{{($report->ttime) }}</td>
+                            <td class="px-6 py-3 text-[14px] text-gray-700">
+                                {{ ucfirst($report->remarks) }}
                             </td>
                         </tr>
                     @endforeach
@@ -393,7 +389,7 @@
 
                     </div>
                 </div>
-                <div class="p-[24px] flex flex-col gap-[16px] rounded-[6px] bg-white border border-[#e6e6e6] border-solid">
+                <!-- <div class="p-[24px] flex flex-col gap-[16px] rounded-[6px] bg-white border border-[#e6e6e6] border-solid">
                     <div class="dashboard_accordion__zeeVh">
                         <p class="text-[14px] font-[400]  uppercase text-[#828282]">Getting started</p>
                         <div class="h-0 relative">
@@ -467,7 +463,7 @@
                                 <path d="M9 -1.74846e-06L17.6603 15L0.339748 15L9 -1.74846e-06Z" fill="#919191"></path>
                             </svg></div>
                     </div>
-                </div>
+                </div> -->
                 <div class="flex flex-col border-solid gap-[24px] p-[24px] rounded-[6px] border border-[#e6e6e6] bg-white">
                     <p class="text-[14px] font-[400]  uppercase text-[#828282]">Affiliate rewards</p>
                     <div class="flex justify-between items-center gap-[16px]">
