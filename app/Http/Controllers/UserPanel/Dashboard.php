@@ -454,10 +454,10 @@ if ($latest->isEmpty()) {
           $userID=$user->id;
            $u_str = round($user->principleBalance(),3);
            
-           if($u_str>510)
-           {
-              $u_str = 510;
-           }
+          //  if($u_str>510)
+          //  {
+          //     $u_str = 510;
+          //  }
            
         
            $idx = 1;
@@ -621,10 +621,10 @@ elseif ($u_str >= 50001 ) {
       
         $userID=$user->id;
          $u_str = round($user->principleBalance(),3);
-         if($u_str>510)
-           {
-              $u_str = 510;
-           }
+        //  if($u_str>510)
+        //    {
+        //       $u_str = 510;
+        //    }
            
          $idx = 1;
           if ($u_str >= 100 && $u_str <= 500) {
@@ -788,10 +788,10 @@ elseif ($u_str >= 50001 ) {
       
         $userID=$user->id;
          $u_str = round($user->principleBalance(),3);
-          if($u_str>510)
-           {
-              $u_str = 510;
-           }
+          // if($u_str>510)
+          //  {
+          //     $u_str = 510;
+          //  }
       
          $idx = 1;
            if ($u_str >= 100 && $u_str <= 500) {

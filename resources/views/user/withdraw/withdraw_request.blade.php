@@ -43,7 +43,7 @@
                 </div>
                 <div class="flex flex-col relative">
                     <p class="text-[10px] uppercase text-[#605e5e]">Network</p>
-                   <style>
+                    <style>
                         /* Arrow rotation animation */
                         .automatictrading_arrow__3w6eO img {
                             transition: transform 0.3s ease;
@@ -84,9 +84,9 @@
                             <div class="flex flex-col justify-center">
                                 <div class="flex items-center gap-[16px]">
                                     <div class="flex flex-col justify-center items-center">
-                                  <p id="selectedNetwork" class="text-[14px] text-nowrap">
-                               {{ $selectedNetwork ?? 'BSC' }}
-                                    </p>
+                                        <p id="selectedNetwork" class="text-[14px] text-nowrap">
+                                            {{ $selectedNetwork ?? 'BSC' }}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
                                     src="{{ asset('') }}upnl/_next/static/media/triangle_blue.6e88fabd.svg">
                             </div>
                         </div>
-                        </div>
+                    </div>
 
                     <ul id="networkDropdown" class="networkDropdown absolute rounded-[6px]">
                         <li data-value="BSC">BSC</li>
@@ -110,37 +110,77 @@
             </div>
             <form action="{{ route('user.Withdraw-Request') }}" method="POST">
                 @csrf
-                                    <input type="hidden" name="currency" id="networkInput" value="{{ $selectedNetwork ?? 'BSC' }}">
+                <input type="hidden" name="currency" id="networkInput" value="{{ $selectedNetwork ?? 'BSC' }}">
 
                 <div class="flex-grow self-stretch relative">
                     <div class="withdrawal_body__kspWM">
                         <div class="flex flex-col gap-[24px] w-full">
                             <p class="withdrawal_title__0EcCq">USDT Withdrawal</p>
-                            <div class="withdrawal_list__DCNgj">
+                             <div class="withdrawal_list__DCNgj">
+                                            <div class="flex items-center gap-[16px] px-[16px] py-[8px]">
+                                                <div class="withdrawal_circle__IXHVa withdrawal_blue__uZwHD">1</div>
+                                                <p class="min-w-[55px]  text-[14px] text-start ">Place an Order</p>
+                                            </div>
+                                            <div class="withdrawal_line____U3D bg-[#00b2c8]"></div>
+                                            <div class="flex items-center gap-[16px] px-[16px] py-[8px]">
+                                                <div class="withdrawal_circle__IXHVa">2</div>
+                                                <p class="  text-[14px] text-center ">Confirmation</p>
+                                            </div>
+                                            <div class="withdrawal_line____U3D bg-[#a1aebe]"></div>
+                                            <div class="flex items-center gap-[16px] px-[16px] py-[8px]">
+                                                <div class="withdrawal_circle__IXHVa">3</div>
+                                                <p class="  text-[14px] text-center ">Processing</p>
+                                            </div>
+                                        </div>
+                            <!-- <div class="withdrawal_list__DCNgj">
                                 <div class="flex items-center gap-[16px] px-[16px] py-[8px]">
-  <input type="radio" name="payment" value="1" class="custom-radio mb-[8px]">
-        
-        <p class="text-[14px] mt-[4px]">Swap USDT Wallet</p>
+                                    <input type="radio" name="payment" value="1" class="custom-radio mb-[8px]">
+
+                                    <p class="text-[14px] mt-[4px]">Swap USDT Wallet</p>
                                 </div>
                                 <div class="flex items-center gap-[16px] px-[16px] py-[8px]">
-  <input type="radio" name="payment" value="2" class="custom-radio mb-[8px]">
-        
-        <p class="text-[14px] mt-[4px]">Swap Wallet</p>
+                                    <input type="radio" name="payment" value="2" class="custom-radio mb-[8px]">
+
+                                    <p class="text-[14px] mt-[4px]">Swap Wallet</p>
 
                                 </div>
-                               
-                            </div>
+
+                            </div> -->
                         </div>
 
                         <div class="flex self-stretch gap-[20px]">
                             <div class="flex flex-col flex-grow gap-[22px]">
                                 <div class="withdrawal_ammount__EIZjs">
                                     <!-- ✅ Only USD input (now wider) -->
+                                     <div class="withdrawal_select__custom flex flex-col max-w-[650px] flex-grow flex-shrink gap-[16px]">
+    <p class="self-stretch text-[14px]">Select Network</p>
+
+    <div class="flex self-stretch">
+        <!-- Left part: select box -->
+        <div
+            class="flex justify-between items-center self-stretch flex-grow px-[16px] py-[8px] rounded-tl-md rounded-bl-md bg-neutral-50 border-t-[1px] border-solid border-r-0 border-b-[1px] border-l-[1px] border-[#cecece]">
+            <select name="payment" id="networkSelect"
+                class="text-[14px] bg-transparent w-full outline-none appearance-none cursor-pointer">
+                <option value="">-- Select Wallet --</option>
+                <option value="1">Swap USDT Wallet</option>
+                <option value="2">Swap Wallet</option>
+            </select>
+        </div>
+
+        <!-- Right part: network icon or label -->
+        <div
+            class="flex flex-col items-center justify-center self-stretch gap-[8px] px-[16px] py-[8px] rounded-tr-md rounded-br-md bg-[#00b2c8]">
+            <p class="text-base uppercase text-white">NET</p>
+        </div>
+    </div>
+</div>
+
                                     <div class="flex flex-col max-w-[650px] flex-grow flex-shrink gap-[16px]">
                                         <p class="self-stretch text-[14px]">Withdrawal amount USD</p>
+                                        
                                         <div class="flex self-stretch">
                                             <div class="flex justify-between items-center self-stretch flex-grow px-[16px] py-[8px] rounded-tl-md rounded-bl-md bg-neutral-50 border-t-[1px] border-solid border-r-0 border-b-[1px] border-l-[1px] border-[#cecece]">
-                                                <input class="text-[14px] bg-transparent w-full" type="text" name="amount" placeholder="Enter amount in USD" >
+                                                <input class="text-[14px] bg-transparent w-full" type="text" name="amount" placeholder="Enter amount in USD">
                                                 <p class="text-[14px] cursor-pointer">MAX</p>
                                             </div>
                                             <div class="flex flex-col items-center self-stretch gap-[8px] px-[16px] py-[8px] rounded-tr-md rounded-br-md bg-[#00b2c8]">
@@ -152,23 +192,23 @@
 
                                 <!-- ✅ Wallet address -->
                                 <!-- ✅ Wallet Address Input -->
-<div class="flex flex-col self-stretch gap-[16px]">
-    <div class="flex justify-between items-center self-stretch">
-        <p class="text-[14px]">Wallet Address</p>
-    </div>
-    <div class="flex flex-col justify-center min-h-[40px] items-center self-stretch gap-[8px] px-[16px] py-[8px] rounded-[6px] bg-neutral-50 border-[1px] border-solid border-[#cecece]">
-        <input id="walletAddress" 
-               class="text-[14px] text-[#8a8181] bg-transparent w-full" 
-               name="wallet" 
-               placeholder="Enter wallet address for withdrawal (only USDT)" 
-               type="text" 
-               value="">
-    </div>
-</div>
+                                <div class="flex flex-col self-stretch gap-[16px]">
+                                    <div class="flex justify-between items-center self-stretch">
+                                        <p class="text-[14px]">Wallet Address</p>
+                                    </div>
+                                    <div class="flex flex-col justify-center min-h-[40px] items-center self-stretch gap-[8px] px-[16px] py-[8px] rounded-[6px] bg-neutral-50 border-[1px] border-solid border-[#cecece]">
+                                        <input id="walletAddress"
+                                            class="text-[14px] text-[#8a8181] bg-transparent w-full"
+                                            name="wallet"
+                                            placeholder="Enter wallet address for withdrawal (only USDT)"
+                                            type="text"
+                                            value="">
+                                    </div>
+                                </div>
 
-<!-- Hidden data from backend -->
-<input type="hidden" id="bscAddress" value="{{ $usdtbep20 }}">
-<input type="hidden" id="tronAddress" value="{{ $usdttrc20 }}">
+                                <!-- Hidden data from backend -->
+                                <input type="hidden" id="bscAddress" value="{{ $usdtbep20 }}">
+                                <input type="hidden" id="tronAddress" value="{{ $usdttrc20 }}">
 
                             </div>
                         </div>
@@ -177,7 +217,7 @@
 
                         <div class="withdrawal_buttons__vgBBe">
                             <button type="submit" class="button_blue_body__xatTr">
-                                <p>Next</p>
+                                <p>Submit</p>
                             </button>
                         </div>
                     </div>
@@ -195,82 +235,82 @@
 </div>
 
 <style>
-/* Hide the default radio */
-.custom-radio {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
-  border: 2px solid #00b2c8; /* sky blue border */
-  border-radius: 50%;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
+    /* Hide the default radio */
+    .custom-radio {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 18px;
+        height: 18px;
+        border: 2px solid #00b2c8;
+        /* sky blue border */
+        border-radius: 50%;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
 
-/* Inner filled circle (when checked) */
-.custom-radio:checked::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 9px;
-  height: 9px;
-  background: #00b2c8;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
+    /* Inner filled circle (when checked) */
+    .custom-radio:checked::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 9px;
+        height: 9px;
+        background: #00b2c8;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
 
-/* Optional hover effect */
-.custom-radio:hover {
-  box-shadow: 0 0 0 3px rgba(0, 178, 200, 0.2);
-}
+    /* Optional hover effect */
+    .custom-radio:hover {
+        box-shadow: 0 0 0 3px rgba(0, 178, 200, 0.2);
+    }
 </style>
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-    const btn = document.getElementById("networkDropdownBtn");
-    const dropdown = document.getElementById("networkDropdown");
-    const arrow = document.getElementById("dropdownArrow");
-    const items = dropdown.querySelectorAll("li");
-    const selected = document.getElementById("selectedNetwork");
-    const walletInput = document.getElementById("walletAddress");
+        const btn = document.getElementById("networkDropdownBtn");
+        const dropdown = document.getElementById("networkDropdown");
+        const arrow = document.getElementById("dropdownArrow");
+        const items = dropdown.querySelectorAll("li");
+        const selected = document.getElementById("selectedNetwork");
+        const walletInput = document.getElementById("walletAddress");
 
-    // hidden input values
-    const bscAddress = document.getElementById("bscAddress").value;
-    const tronAddress = document.getElementById("tronAddress").value;
+        // hidden input values
+        const bscAddress = document.getElementById("bscAddress").value;
+        const tronAddress = document.getElementById("tronAddress").value;
 
-    // Default load BSC
-    walletInput.value = bscAddress;
+        // Default load BSC
+        walletInput.value = bscAddress;
 
-    btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-        arrow.classList.toggle("open");
-    });
+        btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+            arrow.classList.toggle("open");
+        });
 
-    items.forEach(item => {
-        item.addEventListener("click", () => {
-            const selectedNetwork = item.getAttribute("data-value");
-            selected.textContent = selectedNetwork;
+        items.forEach(item => {
+            item.addEventListener("click", () => {
+                const selectedNetwork = item.getAttribute("data-value");
+                selected.textContent = selectedNetwork;
+                dropdown.style.display = "none";
+                arrow.classList.remove("open");
+
+                // ✅ Fetch address according to selected network
+                if (selectedNetwork === "BSC") {
+                    walletInput.value = bscAddress;
+                } else if (selectedNetwork === "Tron") {
+                    walletInput.value = tronAddress;
+                }
+            });
+        });
+
+        document.addEventListener("click", () => {
             dropdown.style.display = "none";
             arrow.classList.remove("open");
-
-            // ✅ Fetch address according to selected network
-            if (selectedNetwork === "BSC") {
-                walletInput.value = bscAddress;
-            } else if (selectedNetwork === "Tron") {
-                walletInput.value = tronAddress;
-            }
         });
     });
+</script>
 
-    document.addEventListener("click", () => {
-        dropdown.style.display = "none";
-        arrow.classList.remove("open");
-    });
-});
-
-                    </script>
-                    
 </html>
