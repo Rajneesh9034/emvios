@@ -51,7 +51,7 @@ class Dashboard extends Controller
         $transaction_data = Income::where('user_id',$user->id)->orderBy('id', 'desc')->take(10)->get();
          $total_teams=User::whereIn('id',(!empty($tolteam)?$tolteam:array()))->count();
         $income_data = Income::where('user_id', $user->id)
-    ->where('remark', 'Order Revenue')
+    ->where('remarks', 'Order Revenue')
     ->get();
 
          $total_team=User::whereIn('id',(!empty($tolteam)?$tolteam:array()))->where('active_status','Active')->count();
