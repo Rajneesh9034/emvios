@@ -380,7 +380,7 @@
                             left: auto;
                             background: #fff;
                             border-radius: 8px;
-                            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); */
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
                             display: none;
                             min-width: 100px;
                             z-index: 10;
